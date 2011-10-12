@@ -39,6 +39,8 @@
 \usepackage{listings}
 \usepackage{xspace}
 \usepackage{amsmath}
+\usepackage{wasysym}
+\usepackage{cclicenses}
 \usepackage{fontspec,xunicode,xltxtra}
 \usepackage[slantfont,boldfont]{xeCJK} % 允许斜体和粗体
 
@@ -160,24 +162,40 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
 
   \begin{itemize}
     \item a typysetting system for beautiful books
-    \item developed by Donald E.~Knuth in 1980s
+    \item originally developed by Donald E.~Knuth in 1978
     \item free to use, free to modify with naming exception
-    \item \TeX\ 3.1415926 as of 2011
+    \item \TeX\ 3.1415926 as of March 2008, and till today
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Why \TeX ?}
-  \begin{itemize}
-    \item excel in typesetting math formular (\AmS-\TeX{})
-    \item allow the author to focus on the content without bothering the
-      layout
-    \item enhanced in many aspects
-      \begin{itemize}
-        \item Chinese
-        \item slides (Beamer)
-        \item music notes, chess, etc
-      \end{itemize}
-  \end{itemize}
+\begin{frame}{Why \TeX\ (and why not)?}
+  \begin{columns}[t]
+    \begin{column}{.45\textwidth}
+      \begin{block}{Pros}
+        \begin{itemize}
+          \item excel in typesetting math formular%(\AmS-\TeX{})
+          \item allow focusing on the content without bothering the
+            layout
+          \item enhanced in many aspects
+            \begin{itemize}
+              \item Chinese 華夏文明
+              \item slides ({\scshape Beamer})
+              \item music notes(\twonotes), chess, etc
+            \end{itemize}
+        \end{itemize}
+      \end{block}
+    \end{column}
+
+    \begin{column}{.45\textwidth}
+      \begin{block}{Cons}
+        \begin{itemize}
+          \item not WYSIWYG
+          \item not easy to be \TeX{}pert
+        \end{itemize}
+      \end{block}
+    \end{column}
+
+  \end{columns}
 \end{frame}
 
 %\begin{frame}{Make Titles Informative.}
@@ -212,6 +230,8 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
 %\end{frame}
 
 \begin{frame}{An overview of \TeX\ system}
+  %TODO
+  % a graph ?
   \begin{itemize}
     \item Formats: Plain \TeX, \LaTeX, \AmS-\TeX, Con\TeX{}t
     \item Engines: tex, latex, pdf(la)tex, xe(la)tex, lua(la)tex
@@ -237,10 +257,10 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
 \subsection{local version}
 \begin{frame}{Methods}
   \begin{itemize}
-    \item download the huge DVD iso
-    \item be a member of TUG and get \TL on DVD
+    \item download the huge DVD iso \frownie
+    \item be a member of TUG and get \TL on DVD \$
       \pause
-    \item net install
+    \item net install \smiley
   \end{itemize}
 \end{frame}
 
@@ -507,11 +527,10 @@ xelatex template-xetex.tex
   \begin{itemize}
     \item Get these materials from \alert{github}
       \begin{itemize}
-          % FIXME
         \item templates: \url{http://github.com/alick9188/TeXLab}
         \item FAD slides: \url{http://github.com/alick9188/fad-texlive-talk}
       \end{itemize}
-    \item License: CC-BY-SA
+    \item License: CC-BY-SA \cc\ccby\ccsa
   \end{itemize}
 \end{frame}
 
