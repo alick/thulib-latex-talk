@@ -33,22 +33,22 @@
   % or whatever (possibly just delete it)
 }
 
-
 \usepackage{graphicx}
+\usepackage{mflogo} % for \MF, \MP
 \graphicspath{{fig/}}
 \usepackage{listings}
 \usepackage{xspace}
 \usepackage{amsmath}
-\usepackage{wasysym}
-\usepackage{cclicenses}
-\usepackage{fontspec,xunicode,xltxtra}
-\usepackage[slantfont,boldfont]{xeCJK} % 允许斜体和粗体
+\usepackage{wasysym} % for \smiley etc
+\usepackage{cclicenses} % CC symbols
+\usepackage{fontspec}
+\usepackage{xunicode,xltxtra}
+\usepackage{xeCJK}
 
 \setCJKmainfont[BoldFont={WenQuanYi Zen Hei},
-%ItalicFont={AR PL UKai CN}]{AR PL UMing CN}
 ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
 \setCJKsansfont{WenQuanYi Zen Hei}
-\setCJKmonofont{WenQuanYi Zen Hei Mono}
+\setCJKmonofont{WenQuanYi Micro Hei Mono}
 
 \setCJKfamilyfont{zhsong}{AR PL UMing CN}
 \setCJKfamilyfont{zhhei}{WenQuanYi Zen Hei}
@@ -58,9 +58,11 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
 \newcommand*{\heiti}{\CJKfamily{zhhei}}   % 黑体
 \newcommand*{\kaishu}{\CJKfamily{zhkai}}  % 楷书
 
-\setmainfont{TeX Gyre Pagella} % 英文衬线字体
-%\setmonofont{Microsoft YaHei} % 英文等宽字体
-%\setsansfont{Trebuchet MS} % 英文无衬线字体
+%\setmainfont{DejaVu Serif} % 英文衬线字体
+%\setmonofont{DejaVu Sans Mono} % 英文等宽字体
+%\setsansfont{DejaVu Sans} % 英文无衬线字体
+
+\renewcommand\tablename{表格}
 
 % fix: navi button not working with XeTeX
 % SEE: http://bbs.ctex.org/viewthread.php?tid=64104
@@ -75,6 +77,10 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
 
 \def\TeXLive{\TeX{} Live\xspace}
 \let\TL=\TeXLive
+% from btxdoc.tex
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
 \title % (optional, use only with long paper titles)
 {Fedora and \TL}
 
@@ -193,6 +199,8 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
         \begin{itemize}
           \item not WYSIWYG
           \item not easy to be \TeX{}pert
+            \bigskip
+          \item only .doc permitted
         \end{itemize}
       \end{block}
     \end{column}
@@ -237,9 +245,8 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
   \begin{itemize}
     \item Formats: Plain \TeX, \LaTeX, \AmS-\TeX, Con\TeX{}t
     \item Engines: tex, latex, pdf(la)tex, xe(la)tex, lua(la)tex
-    %\item utils: dvips, xdvipdfmx, 
       \pause
-    \item Distros: \TL, MiKTeX, MacTeX
+    \item Distros: \TL, MiK\TeX, Mac\TeX
   \end{itemize}
 \end{frame}
 
@@ -379,7 +386,7 @@ keywordstyle=\color{red!70},
   \frametitle{网络安装后测试}
   \framesubtitle{English Tests}
 
-  \begin{block}{Use installed sample files:}
+  \begin{exampleblock}{Use installed sample files:}
     \begin{itemize}
       \item \texttt{latex sample2e.tex \#} .tex $\rightarrow$ .dvi (device independent)
 
@@ -388,7 +395,7 @@ keywordstyle=\color{red!70},
       \item \texttt{xetex opentype-info.tex \#} test of xetex's OpenType support
     \end{itemize}
 
-  \end{block}
+  \end{exampleblock}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -409,7 +416,7 @@ keywordstyle=\color{red!70},
 xelatex test-chinese
 evince test-chinese.pdf
   \end{lstlisting}
-  \fbox{\TeX{}你好！}
+  \fbox{\textrm \TeX{}你好！}
 \end{column}
 \end{columns}
 
@@ -422,6 +429,7 @@ evince test-chinese.pdf
 % Ubuntu: as of July 2011 the texlive package that ships with Ubuntu
 % (TeX Live 2009) is lagging two years behind the current TeX Live
 % release (TeX Live 2011). (https://help.ubuntu.com/community/LaTeX)
+
 \begin{frame}
   \input{poll_result.tex}
 \end{frame}
@@ -431,7 +439,7 @@ evince test-chinese.pdf
   \begin{itemize}
     \item Fedora offical repo: \TL 2007 \hfill Not good.
     \item Ubuntu offical repo: \TL 2009 \hfill Not good.
-    \item jnovy's repo \TL 2010\&2011 \hfill Good news.
+    \item jnovy's repo \TL 2010\&2011 \hfill \alert{Good} news.
 
       \url{http://fedoraproject.org/wiki/Features/TeXLive}
   \end{itemize}
@@ -443,12 +451,11 @@ evince test-chinese.pdf
   \frametitle{安装步骤}
   
 \begin{lstlisting}
-# rpm -i http://jnovy.fedorapeople.org/texlive/packages.f14/texlive-release.noarch.rpm
-# yum clean all
-# yum install texlive
+rpm -i http://jnovy.fedorapeople.org/texlive/packages.f14/texlive-release.noarch.rpm
+yum clean all
+yum install texlive # basic scheme
+OR yum install texlive-scheme-full # if disk space is enough
 \end{lstlisting}
-Then you get basic \TL scheme.
-(yum install texlive-scheme-full, if space is not an issue.)
 
 \begin{lstlisting}
 yum install texlive-collection-xetex texlive-ctex
@@ -472,6 +479,7 @@ xelatex template-xetex.tex
 
 \section{Use \TL}
 
+\subsection{Get Help}
 \begin{frame}{Help Yourself}
   \begin{itemize}
     \item tlmgr (Yum in Fedora version)
@@ -490,22 +498,32 @@ xelatex template-xetex.tex
 \end{frame}
 
 \begin{frame}{\TeX\ community}
-  \begin{itemize}
-    \item BBS
+  \begin{columns}[c]
+    \begin{column}{.45\textwidth}
       \begin{itemize}
-        \item smth TeX board
-        \item bbs.ctex.org
+        \item BBS
+          \begin{itemize}
+            \item \href{http://www.newsmth.net/nForum/board/TeX}{smth TeX
+              board}
+            \item \href{http://bbs.ctex.org/}{bbs.ctex.org}
+          \end{itemize}
+        \item Mailing list
+          \begin{itemize}
+            \item \href{http://tug.org/mailman/listinfo/tex-live}{\TL}
+            \item \href{http://www.linux.cz/pipermail/texlive/}{Fedora \TL
+              Packaging}
+          \end{itemize}
+        \item \href{http://www.tex.ac.uk/cgi-bin/texfaq2html}{UK FAQ}
+        \item \href{http://justfuckinggoogleit.com/}{Google}
       \end{itemize}
-    \item Mailing list
-      \begin{itemize}
-        \item \TL: \url{http://tug.org/mailman/listinfo/tex-live}
-        \item Fedora: \url{http://www.linux.cz/pipermail/texlive/}
-      \end{itemize}
-    \item uk FAQ: \url{http://www.tex.ac.uk/cgi-bin/texfaq2html}
-    \item google
-  \end{itemize}
+    \end{column}
+    \begin{column}{.45\textwidth}
+      \includegraphics[width=\textwidth]{TFZsuperellipse-crop.pdf}
+    \end{column}
+  \end{columns}
 \end{frame}
 
+\subsection{Tips}
 \begin{frame}{General Tips}
   \begin{itemize}
     \item focus on the content, not the layout
@@ -533,10 +551,8 @@ xelatex template-xetex.tex
   \item
     Outlook
     \begin{itemize}
-    \item MakeIndex, BibTeX, Asymptote
-      %Vim LaTeX suite
-    \item
-      Show the procedure of using \TeX?
+      \item \textit{MakeIndex}, \BibTeX
+    \item \MP, Asymptote
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -556,11 +572,15 @@ xelatex template-xetex.tex
 
 \begin{frame}
   \begin{center}
-    \Large
-  Thanks!
+    {\LARGE Thanks!
+    \bigskip
 
-  Q\&A
-\end{center}
+    Q\&A}
+    \medskip
+
+    \pause
+    $\dagger$ Show the procedure of using \TeX?
+  \end{center}
 \end{frame}
 
 \end{document}
