@@ -1,14 +1,11 @@
-% $Header: /home/vedranm/bitbucket/beamer/solutions/generic-talks/generic-ornate-15min-45min.en.tex,v 90e850259b8b 2007/01/28 20:48:30 tantau $
-
 \documentclass{beamer}
+% Author: alick<alick9188@gmail.com>
 
-% This file is a solution template for:
+% This file is modified from a solution template for:
 
 % - Giving a talk on some subject.
 % - The talk is between 15min and 45min long.
 % - Style is ornate.
-
-
 
 % Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
 %
@@ -22,19 +19,15 @@
 % modify this file as you see fit and even to delete this copyright
 % notice. 
 
-
 \mode<presentation>
 {
   \usetheme[secheader]{Boadilla}
-  %\usetheme{Warsaw}
-  % or ...
 
   \setbeamercovered{transparent}
-  % or whatever (possibly just delete it)
 }
 
-\usepackage{graphicx}
 \usepackage{mflogo} % for \MF, \MP
+\usepackage{graphicx}
 \graphicspath{{fig/}}
 \usepackage{listings}
 \usepackage{xspace}
@@ -58,10 +51,6 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
 \newcommand*{\heiti}{\CJKfamily{zhhei}}   % 黑体
 \newcommand*{\kaishu}{\CJKfamily{zhkai}}  % 楷书
 
-%\setmainfont{DejaVu Serif} % 英文衬线字体
-%\setmonofont{DejaVu Sans Mono} % 英文等宽字体
-%\setsansfont{DejaVu Sans} % 英文无衬线字体
-
 \renewcommand\tablename{表格}
 
 % fix: navi button not working with XeTeX
@@ -81,18 +70,14 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
-\title % (optional, use only with long paper titles)
+\title
 {Fedora and \TL}
 
 \author[alick] % (optional, use only with lots of authors)
-{Alick Zhao\inst{1}}
-% - Use the \inst{?} command only if the authors have different
-%   affiliation.
+{Zhao Tao\\ \texttt{alick9188@gmail.com}}
 
-\institute[Tsinghua University] % (optional, but mostly needed)
+\institute[Thu] % (optional, but mostly needed)
 {
-  %\inst{1}%
-  \texttt{alick9188@gmail.com}\\
   Department of Electronic Engineering\\
   Tsinghua University
 }
@@ -103,17 +88,6 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
 {Oct 15, 2011 / FAD Beijing 2011}
 
 \subject{Talks, TeX Live, FAD, Fedora}
-% This is only inserted into the PDF information catalog. Can be left
-% out. 
-
-% If you have a file called "university-logo-filename.xxx", where xxx
-% is a graphic format that can be processed by latex or pdflatex,
-% resp., then you can add a logo as follows:
-
-% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
-% \logo{\pgfuseimage{university-logo}}
-
-
 
 % Delete this, if you do not want the table of contents to pop up at
 % the beginning of each subsection:
@@ -132,7 +106,6 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
 
 \lstset{basicstyle=\ttfamily,breaklines=true}
 \hypersetup{
-%colorlinks=true,
 %pdfpagemode=FullScreen,
 }
 
@@ -208,44 +181,11 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
   \end{columns}
 \end{frame}
 
-%\begin{frame}{Make Titles Informative.}
-%
-  %You can create overlays\dots
-  %\begin{itemize}
-  %\item using the \texttt{pause} command:
-    %\begin{itemize}
-    %\item
-      %First item.
-      %\pause
-    %\item    
-      %Second item.
-    %\end{itemize}
-  %\item
-    %using overlay specifications:
-    %\begin{itemize}
-    %\item<3->
-      %First item.
-    %\item<4->
-      %Second item.
-    %\end{itemize}
-  %\item
-    %using the general \texttt{uncover} command:
-    %\begin{itemize}
-      %\uncover<5->{\item
-        %First item.}
-      %\uncover<6->{\item
-        %Second item.}
-    %\end{itemize}
-  %\end{itemize}
-%\end{frame}
-
 \begin{frame}{An overview of \TeX\ system}
-  %TODO
-  % a graph ?
   \begin{itemize}
+    \item Core: low-level macro language
     \item Formats: Plain \TeX, \LaTeX, \AmS-\TeX, Con\TeX{}t
     \item Engines: tex, latex, pdf(la)tex, xe(la)tex, lua(la)tex
-      \pause
     \item Distros: \TL, MiK\TeX, Mac\TeX
   \end{itemize}
 \end{frame}
@@ -255,10 +195,18 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
 \begin{frame}{What is \TL ?}
   \begin{itemize}
     \item a \TeX\ distro: a comprehensive collection of \TeX\ utils
-    \item developed since 1996 by collaboration between TeX user groups
+
+      Schemes
+      \begin{itemize}
+        \item Collections
+          \begin{itemize}
+            \item Packages
+          \end{itemize}
+      \end{itemize}
+
+    \item developed since 1996 by TeX user groups
     \item originally for Linux, now cross-platform
     \item can run live from a DVD (up to v2009)
-    \item default TeX distro for Fedora, Ubuntu, Debian, Gentoo
   \end{itemize}
 \end{frame}
 
@@ -318,7 +266,14 @@ su -c'./install-tl -gui -repository http://mirrors.tuna.tsinghua.edu.cn/CTAN/sys
 \begin{frame}
   \begin{figure}[h]
   \centering
-\includegraphics[scale=0.45]{标准安装.png}
+\includegraphics[scale=0.35]{main-init.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}[h]
+  \centering
+\includegraphics[scale=0.4]{标准安装.png}
   \end{figure}
 \end{frame}
 
@@ -329,6 +284,22 @@ su -c'./install-tl -gui -repository http://mirrors.tuna.tsinghua.edu.cn/CTAN/sys
   \end{figure}
 \end{frame}
 
+\begin{frame}
+  \begin{figure}[h]
+  \centering
+\includegraphics[scale=0.35]{main-customed.png}
+  \end{figure}
+\end{frame}
+
+% 安装进行中
+\begin{frame}
+  \begin{figure}[h]
+  \centering
+\includegraphics[scale=0.45]{term.png}
+  \end{figure}
+\end{frame}
+
+% 安装完成
 \begin{frame}
   \begin{figure}[h]
   \centering
@@ -405,7 +376,7 @@ keywordstyle=\color{red!70},
     \begin{column}{.45\textwidth}
 \begin{lstlisting}[style=latex]
 \documentclass{ctexart}
-\setCJKmainfont{WenQuanYi Zen Hei}
+\setCJKmainfont{AR PL UMing CN}
 \begin{document}
 \TeX{}`你好！`
 \end{document}
@@ -416,14 +387,13 @@ keywordstyle=\color{red!70},
 xelatex test-chinese
 evince test-chinese.pdf
   \end{lstlisting}
-  \fbox{\textrm \TeX{}你好！}
+  \fbox{\textrm \TeX{}\songti 你好！}
 \end{column}
 \end{columns}
 
 \end{frame}
 
 \subsection{sys version/ rpm}
-%texlive 2007 :(
 
 % TeX Live in Linux distro repo
 % Ubuntu: as of July 2011 the texlive package that ships with Ubuntu
@@ -446,7 +416,6 @@ evince test-chinese.pdf
 \end{frame}
 
 % jnovy's repo 2011
-% wiki page
 \begin{frame}[fragile]
   \frametitle{安装步骤}
   
@@ -474,6 +443,10 @@ xelatex template-xetex.tex
     \item single installation tool
     \item package dependency
     \item no old packages in \TL repo
+  \end{itemize}
+  \vskip0pt plus.5fill
+  \begin{itemize}
+    \item Volunteers needed
   \end{itemize}
 \end{frame}
 
@@ -528,7 +501,7 @@ xelatex template-xetex.tex
   \begin{itemize}
     \item focus on the content, not the layout
       (use well-defined classes/templates: ctexart, beamer, thuthesis)
-    \item TeX Editor? (Vim, Emacs, LyX, TeX IDE\dots)
+    \item Which TeX Editor? (Vim, Emacs, LyX, TeX IDE\dots)
     \item \texttt{texcount -ch report.tex}: count words
     \item Makefile
   \end{itemize}
@@ -575,11 +548,8 @@ xelatex template-xetex.tex
     {\LARGE Thanks!
     \bigskip
 
-    Q\&A}
-    \medskip
+    Questions?}
 
-    \pause
-    $\dagger$ Show the procedure of using \TeX?
   \end{center}
 \end{frame}
 
