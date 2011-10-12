@@ -173,9 +173,11 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
     \begin{column}{.45\textwidth}
       \begin{block}{Pros}
         \begin{itemize}
-          \item excel in typesetting math formular%(\AmS-\TeX{})
           \item allow focusing on the content without bothering the
-            layout
+            layout(including TOC, references, etc)
+          \item excel in typesetting math formular
+            $$ \mathcal{F}(\xi)=\int_{-\infty}^{\infty}
+            f(x)\mathrm{e}^{-\mathrm{j}2\pi \xi x}\,\mathrm{d}x $$
           \item enhanced in many aspects
             \begin{itemize}
               \item Chinese 華夏文明
@@ -256,26 +258,27 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
 \section{Install \TL}
 \subsection{local version}
 \begin{frame}{Methods}
-  \begin{itemize}
-    \item download the huge DVD iso \frownie
-    \item be a member of TUG and get \TL on DVD \$
+  \begin{description}
+    \item[\frownie] download the huge DVD iso
       \pause
-    \item net install \smiley
-  \end{itemize}
+    \item[\$\$] be a member of TUG and get \TL on DVD
+      \pause
+    \item[\smiley] net install
+  \end{description}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{网络安装}
   \begin{itemize}
     \item 
-从 \TeXLive 镜像下载
+从 CTAN 镜像下载
 install-tl-unx.tar.gz
 和
 install-tl-unx.tar.gz.sha256
 \begin{itemize} % several mirror url
   \item \url{http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/}
   \item \url{http://ftp.ctex.org/mirrors/CTAN/systems/texlive/tlnet/}
-  \item Check \url{http://mirror.ctan.org/README.mirrors}
+  \item More at \url{http://mirror.ctan.org/README.mirrors}
 \end{itemize}
 
 \item 校验
@@ -290,14 +293,18 @@ install-tl-unx.tar.gz: OK
 \begin{frame}[fragile]
   \frametitle{网络安装}
   \begin{itemize}
-    \item 安装
+    \item Install 安装
       \begin{lstlisting}
 su -c'./install-tl -gui -repository http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/'
       \end{lstlisting}
 
-（图形界面需要 Perl Tk 模块，可能还需要 xhost +）
-
-\item 截图
+      \begin{itemize}
+        \item 图形安装界面需要 Perl Tk 模块：\texttt{yum install
+          perl-Tk}
+        \item root 使用 X 程序，可能还需要 \texttt{xhost
+          +si:localuser:root}
+      \end{itemize}
+\item 截图\dots
 \end{itemize}
 \end{frame}
 
@@ -326,19 +333,19 @@ su -c'./install-tl -gui -repository http://mirrors.tuna.tsinghua.edu.cn/CTAN/sys
   \frametitle{网络安装后配置}
 \begin{itemize}
   \item 
-打开 \TeXLive 指南中文版 ``texlive-zh-cn.pdf''，
-关注第 3.4 节
-  \begin{lstlisting}
-texdoc texlive-zh
-  \end{lstlisting}
-
-  \item 
     Add the following lines into your \nolinkurl{~/.bash_profile}:
     \begin{lstlisting}
 export PATH=/usr/local/texlive/2011/bin/x86_64-linux:$PATH
 export MANPATH=/usr/local/texlive/2011/texmf/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2011/texmf/doc/info:$INFOPATH
     \end{lstlisting}
+
+  \item 
+打开 \TeXLive 指南中文版 ``texlive-zh-cn.pdf''，
+关注第 3.4 节
+  \begin{lstlisting}
+texdoc texlive-zh
+  \end{lstlisting}
 
 \end{itemize}
 \end{frame}
@@ -349,8 +356,8 @@ export INFOPATH=/usr/local/texlive/2011/texmf/doc/info:$INFOPATH
 \item
 \XeTeX\ and fontconfig:
 \begin{lstlisting}
-# cp /usr/local/texlive/2011/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
-# fc-cache -fsv
+cp /usr/local/texlive/2011/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
+fc-cache -fsv
 \end{lstlisting}
 
 \item Con\TeX{}t Mark IV
@@ -368,31 +375,44 @@ escapeinside=``,
 keywordstyle=\color{red!70},
 }
 
+\begin{frame}
+  \frametitle{网络安装后测试}
+  \framesubtitle{English Tests}
+
+  \begin{block}{Use installed sample files:}
+    \begin{itemize}
+      \item \texttt{latex sample2e.tex \#} .tex $\rightarrow$ .dvi (device independent)
+
+      \texttt{xdvi sample2e.dvi \#} also try dvipdf sample2e.dvi
+      \item try \texttt{pdflatex sample2e} directly
+      \item \texttt{xetex opentype-info.tex \#} test of xetex's OpenType support
+    \end{itemize}
+
+  \end{block}
+\end{frame}
+
 \begin{frame}[fragile]
   \frametitle{网络安装后测试}
-  \begin{itemize}
-    \item 
-  \begin{lstlisting}
-latex sample2e.tex
-xdvi sample2e.dvi
-xetex opentype-info.tex
-  \end{lstlisting}
-
-\item 编写文件 ``test-chinese.tex''
-  \begin{lstlisting}[style=latex]
+  \framesubtitle{中文测试 ``test-chinese.tex''}
+  \begin{columns}[t]
+    \begin{column}{.45\textwidth}
+\begin{lstlisting}[style=latex]
 \documentclass{ctexart}
 \setCJKmainfont{WenQuanYi Zen Hei}
 \begin{document}
 \TeX{}`你好！`
 \end{document}
-  \end{lstlisting}
-  编译得到 PDF 文档
+\end{lstlisting}
+\end{column}
+    \begin{column}{.45\textwidth}
   \begin{lstlisting}
 xelatex test-chinese
 evince test-chinese.pdf
   \end{lstlisting}
+  \fbox{\TeX{}你好！}
+\end{column}
+\end{columns}
 
-  \end{itemize}
 \end{frame}
 
 \subsection{sys version/ rpm}
@@ -513,15 +533,15 @@ xelatex template-xetex.tex
   \item
     Outlook
     \begin{itemize}
-    \item
-      Vim LaTeX suite
+    \item MakeIndex, BibTeX, Asymptote
+      %Vim LaTeX suite
     \item
       Show the procedure of using \TeX?
     \end{itemize}
   \end{itemize}
 \end{frame}
 
-\section*{Appendix}
+\section*{Auxiliary}
 
 \begin{frame}
   \begin{itemize}
