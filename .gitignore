@@ -1,6 +1,9 @@
 *.pdf
 *.latexmain
 
+!texlive-talk.pdf
+!fig/*.pdf
+
 *~
 *.swp
 *.swo
