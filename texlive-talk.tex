@@ -17,7 +17,7 @@
 % template and not specifically distribute it as part of a another
 % package/program, I grant the extra permission to freely copy and
 % modify this file as you see fit and even to delete this copyright
-% notice. 
+% notice.
 
 \mode<presentation>
 {
@@ -36,12 +36,16 @@
 \usepackage{cclicenses} % CC symbols
 \usepackage{fontspec}
 \usepackage{xunicode,xltxtra}
-\usepackage{xeCJK}
+\usepackage[CJKchecksingle]{xeCJK}
 
-\setCJKmainfont[BoldFont={WenQuanYi Zen Hei},
-ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
-\setCJKsansfont{WenQuanYi Zen Hei}
-\setCJKmonofont{WenQuanYi Micro Hei Mono}
+% xeCJK conf setup
+\punctstyle{kaiming}
+\renewcommand\CJKfamilydefault{\CJKsfdefault} % for slides
+
+\setCJKmainfont[BoldFont={WenQuanYi Micro Hei},
+ItalicFont={AR PL UKai CN}]{AR PL UMing CN}
+\setCJKsansfont{WenQuanYi Micro Hei}
+\setCJKmonofont+{WenQuanYi Micro Hei Mono}
 
 \setCJKfamilyfont{zhsong}{AR PL UMing CN}
 \setCJKfamilyfont{zhhei}{WenQuanYi Zen Hei}
@@ -100,7 +104,7 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
 
 
 % If you wish to uncover everything in a step-wise fashion, uncomment
-% the following command: 
+% the following command:
 
 %\beamerdefaultoverlayspecification{<+->}
 
@@ -124,7 +128,7 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
 % Since this a solution template for a generic talk, very little can
 % be said about how it should be structured. However, the talk length
 % of between 15min and 45min and the theme suggest that you stick to
-% the following rules:  
+% the following rules:
 
 % - Exactly two or three sections (other than the summary).
 % - At *most* three subsections per section.
@@ -181,13 +185,15 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
   \end{columns}
 \end{frame}
 
-\begin{frame}{An overview of \TeX\ system}
-  \begin{itemize}
-    \item Core: low-level macro language
-    \item Formats: Plain \TeX, \LaTeX, \AmS-\TeX, Con\TeX{}t
-    \item Engines: tex, latex, pdf(la)tex, xe(la)tex, lua(la)tex
-    \item Distros: \TL, MiK\TeX, Mac\TeX
-  \end{itemize}
+\begin{frame}{Overview}
+  \begin{block}{\TeX\ system}
+    \begin{itemize}
+      \item Core: low-level macro language
+      \item Formats: Plain \TeX, \alert{\LaTeX}, \AmS-\TeX, Con\TeX{}t
+      \item Engines: tex, latex, pdf(la)tex, \alert{xe(la)tex}, lua(la)tex
+      \item Distros: \TL, MiK\TeX, Mac\TeX
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \subsection{\TeXLive}
@@ -225,7 +231,7 @@ ItalicFont={AR PL UKai CN}]{WenQuanYi Micro Hei}
 \begin{frame}[fragile]
   \frametitle{网络安装}
   \begin{itemize}
-    \item 
+    \item
 从 CTAN 镜像下载
 install-tl-unx.tar.gz
 和
@@ -238,7 +244,7 @@ install-tl-unx.tar.gz.sha256
 
 \item 校验
 \begin{lstlisting}
-$ LANG=C sha256sum --check install-tl-unx.tar.gz.sha256 
+$ LANG=C sha256sum --check install-tl-unx.tar.gz.sha256
 install-tl-unx.tar.gz: OK
 \end{lstlisting}
 
@@ -310,7 +316,7 @@ su -c'./install-tl -gui -repository http://mirrors.tuna.tsinghua.edu.cn/CTAN/sys
 \begin{frame}[fragile]
   \frametitle{网络安装后配置}
 \begin{itemize}
-  \item 
+  \item
     Add the following lines into your \nolinkurl{~/.bash_profile}:
     \begin{lstlisting}
 export PATH=/usr/local/texlive/2011/bin/x86_64-linux:$PATH
@@ -318,7 +324,7 @@ export MANPATH=/usr/local/texlive/2011/texmf/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2011/texmf/doc/info:$INFOPATH
     \end{lstlisting}
 
-  \item 
+  \item
 打开 \TeXLive 指南中文版 ``texlive-zh-cn.pdf''，
 关注第 3.4 节
   \begin{lstlisting}
@@ -418,7 +424,7 @@ evince test-chinese.pdf
 % jnovy's repo 2011
 \begin{frame}[fragile]
   \frametitle{安装步骤}
-  
+
 \begin{lstlisting}
 rpm -i http://jnovy.fedorapeople.org/texlive/packages.f14/texlive-release.noarch.rpm
 yum clean all
@@ -451,6 +457,23 @@ xelatex template-xetex.tex
 \end{frame}
 
 \section{Use \TL}
+
+\subsection{Tips}
+\begin{frame}{General Tips}
+  \begin{itemize}
+    \item focus on the content, not the layout
+      \begin{itemize}
+        \item use well-defined classes/templates: ctexart, beamer,
+          thuthesis
+        \item packages: siunitx, listings, xeCJK
+        \item structure: section, subsection, etc
+        \item meaning: emph, label
+      \end{itemize}
+    \item \texttt{texcount -ch report.tex}: count words
+    \item Project(input, include, Makefile, git)
+    \item Which TeX Editor? (Vim, Emacs, LyX, TeX IDE\dots)
+  \end{itemize}
+\end{frame}
 
 \subsection{Get Help}
 \begin{frame}{Help Yourself}
@@ -496,17 +519,6 @@ xelatex template-xetex.tex
   \end{columns}
 \end{frame}
 
-\subsection{Tips}
-\begin{frame}{General Tips}
-  \begin{itemize}
-    \item focus on the content, not the layout
-      (use well-defined classes/templates: ctexart, beamer, thuthesis)
-    \item Which TeX Editor? (Vim, Emacs, LyX, TeX IDE\dots)
-    \item \texttt{texcount -ch report.tex}: count words
-    \item Makefile
-  \end{itemize}
-\end{frame}
-
 \section*{Summary}
 
 \begin{frame}{Summary}
@@ -517,7 +529,7 @@ xelatex template-xetex.tex
   \item The installation of \TL is easy.
   \item Happy \LaTeX{}ing!
   \end{itemize}
-  
+
   % The following outlook is optional.
   \vskip0pt plus.5fill
   \begin{itemize}
@@ -539,7 +551,7 @@ xelatex template-xetex.tex
         \item templates: \url{http://github.com/alick9188/TeXLab}
         \item FAD slides: \url{http://github.com/alick9188/fad-texlive-talk}
       \end{itemize}
-    \item License: CC-BY-SA \cc\ccby\ccsa
+    \item License: CC BY-SA 3.0 Unported \cc\ccby\ccsa
   \end{itemize}
 \end{frame}
 
