@@ -51,6 +51,10 @@ pdfcopyright={Copyright (C) 2015 by Alick Zhao.
 Licensed under CC-BY-SA 4.0. Some rights reserved.},
 pdflicenseurl={http://creativecommons.org/licenses/by-sa/4.0/},
 }
+
+% For tipa to work.
+\newfontfamily\useTIPAfont{Times New Roman}
+
 % xeCJK conf setup
 \punctstyle{kaiming}
 \renewcommand\CJKfamilydefault{\CJKsfdefault} % for slides
@@ -139,54 +143,37 @@ ItalicFont={AR PL UKai CN}]{AR PL UMing CN}
 % - Talk about 30s to 2min per frame. So there should be between about
 %   15 and 30 frames, all told.
 
-\section{Introduction}
+\section{简介}
 
 \subsection{\TeX}
 
-\begin{frame}{What is \TeX ?}
-  % - A title should summarize the slide in an understandable fashion
-  %   for anyone how does not follow everything on the slide itself.
-
+\begin{frame}[fragile]{\TeX 是什么？}
   \begin{itemize}
-    \item a typysetting system for beautiful books
-    \item originally developed by Donald E.~Knuth in 1978
-    \item free to use, free to modify with naming exception
-    \item \TeX\ 3.1415926 as of March 2008, and till today
+    \item 生成精美图书的排版系统
+    \item 最初由 高德纳 (Donald E.~Knuth) 于 1978 年开发
+    \item 可以免费且自由使用
+    \item 最新版本为 \TeX\ 3.14159265
+    \item 漂亮、美观、稳定、通用
+    \item 尤其擅长数学公式排版
+      \begin{equation}
+        \mathcal{F}(\xi)=\int_{-\infty}^{\infty}
+        f(x)\mathrm{e}^{-\mathrm{j}2\pi \xi x}\,\mathrm{d}x
+      \end{equation}
+    \item 读作 \textipa{/'tEx/} 或 \textipa{/'tEk/}
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Why \TeX\ (and why not)?}
-  \begin{columns}[t]
-    \begin{column}{.45\textwidth}
-      \begin{block}{Pros}
-        \begin{itemize}
-          \item allow focusing on the content without bothering the
-            layout(including TOC, references, etc)
-          \item excel in typesetting math formular
-            $$ \mathcal{F}(\xi)=\int_{-\infty}^{\infty}
-            f(x)\mathrm{e}^{-\mathrm{j}2\pi \xi x}\,\mathrm{d}x $$
-          \item enhanced in many aspects
-            \begin{itemize}
-              \item Chinese 華夏文明
-              \item slides ({\scshape Beamer})
-              \item music notes(\twonotes), chess, etc
-            \end{itemize}
-        \end{itemize}
-      \end{block}
-    \end{column}
-
-    \begin{column}{.45\textwidth}
-      \begin{block}{Cons}
-        \begin{itemize}
-          \item not WYSIWYG
-          \item not easy to be \TeX{}pert
-            \bigskip
-          \item only .doc permitted
-        \end{itemize}
-      \end{block}
-    \end{column}
-
-  \end{columns}
+\begin{frame}{\LaTeX 是什么？}
+  \begin{itemize}
+    \item \TeX 用户接口不够友好，使用不便
+    \item Leslie Lamport 开发 \LaTeX 降低使用门槛
+    \item 核心仍是 \TeX
+    \item 极其丰富的宏包(package)，提供扩展功能
+    \item 广泛用于学术界，期刊会议论文模板
+    \item 大学论文模板
+    \item 当前版本 \LaTeX2e
+    \item 读作 \textipa{/'ltEx/} 或 \textipa{/'tEk/}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Overview}
