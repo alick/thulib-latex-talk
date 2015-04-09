@@ -35,8 +35,8 @@
 \usepackage{wasysym} % for \smiley etc
 \usepackage{cclicenses} % CC symbols
 \usepackage{fontspec}
-\usepackage{xunicode,xltxtra}
-\usepackage[CJKchecksingle]{xeCJK}
+\usepackage[UTF8,nofonts]{ctex}
+\usepackage{hologo}
 
 % xeCJK conf setup
 \punctstyle{kaiming}
@@ -45,7 +45,7 @@
 \setCJKmainfont[BoldFont={WenQuanYi Micro Hei},
 ItalicFont={AR PL UKai CN}]{AR PL UMing CN}
 \setCJKsansfont{WenQuanYi Micro Hei}
-\setCJKmonofont+{WenQuanYi Micro Hei Mono}
+\setCJKmonofont{WenQuanYi Micro Hei Mono}
 
 \setCJKfamilyfont{zhsong}{AR PL UMing CN}
 \setCJKfamilyfont{zhhei}{WenQuanYi Zen Hei}
@@ -57,22 +57,10 @@ ItalicFont={AR PL UKai CN}]{AR PL UMing CN}
 
 \renewcommand\tablename{表格}
 
-% fix: navi button not working with XeTeX
-% SEE: http://bbs.ctex.org/viewthread.php?tid=64104
-\makeatletter
-\def\beamer@linkspace#1{%
-  \begin{pgfpicture}{0pt}{-1.5pt}{#1}{5.5pt}
-    \pgfsetfillopacity{0}
-    \pgftext[x=0pt,y=-1.5pt]{.}
-    \pgftext[x=#1,y=5.5pt]{.}
-  \end{pgfpicture}}
-\makeatother
-
+\newcommand{\XeTeX}{\hologo{XeTeX}}
+\newcommand{\BibTeX}{\hologo{BibTeX}}
 \def\TeXLive{\TeX{} Live\xspace}
 \let\TL=\TeXLive
-% from btxdoc.tex
-\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \title
 {Fedora and \TL}
@@ -400,15 +388,6 @@ evince test-chinese.pdf
 \end{frame}
 
 \subsection{sys version/ rpm}
-
-% TeX Live in Linux distro repo
-% Ubuntu: as of July 2011 the texlive package that ships with Ubuntu
-% (TeX Live 2009) is lagging two years behind the current TeX Live
-% release (TeX Live 2011). (https://help.ubuntu.com/community/LaTeX)
-
-\begin{frame}
-  \input{poll_result.tex}
-\end{frame}
 
 \begin{frame}
   \frametitle{\TL in Linux distros}
