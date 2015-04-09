@@ -22,8 +22,15 @@
 \mode<presentation>
 {
   \usetheme[secheader]{Boadilla}
-
-  \setbeamercovered{transparent}
+  \usefonttheme[onlymath]{serif}
+  \setbeamercovered{transparent=5}
+  %\definecolor{fedorablue}{RGB}{60,110,180}
+  %\definecolor{fedoradarkblue}{RGB}{41,65,114}
+  %\definecolor{fedoradarkgrey}{RGB}{76,76,76}
+  %\setbeamercolor*{palette primary}{fg=white,bg=fedorablue}
+  %\setbeamercolor*{palette secondary}{fg=white,bg=fedoradarkblue}
+  %\setbeamercolor*{palette tertiary}{fg=white,bg=fedorablue}
+  %\setbeamercolor*{palette quaternary}{fg=white,bg=black}
 }
 
 \usepackage{mflogo} % for \MF, \MP
@@ -37,7 +44,13 @@
 \usepackage{fontspec}
 \usepackage[UTF8,nofonts]{ctex}
 \usepackage{hologo}
-
+\usepackage{hyperxmp}
+\hypersetup{
+pdfauthor={Alick Zhao},
+pdfcopyright={Copyright (C) 2015 by Alick Zhao.
+Licensed under CC-BY-SA 4.0. Some rights reserved.},
+pdflicenseurl={http://creativecommons.org/licenses/by-sa/4.0/},
+}
 % xeCJK conf setup
 \punctstyle{kaiming}
 \renewcommand\CJKfamilydefault{\CJKsfdefault} % for slides
@@ -57,8 +70,10 @@ ItalicFont={AR PL UKai CN}]{AR PL UMing CN}
 
 \renewcommand\tablename{表格}
 
-\newcommand{\XeTeX}{\hologo{XeTeX}}
 \newcommand{\BibTeX}{\hologo{BibTeX}}
+\newcommand{\XeTeX}{\hologo{XeTeX}}
+\newcommand{\pdfTeX}{\hologo{pdfTeX}}
+\newcommand{\beamer}{\textsc{beamer}}
 \def\TeXLive{\TeX{} Live\xspace}
 \let\TL=\TeXLive
 
@@ -99,6 +114,8 @@ ItalicFont={AR PL UKai CN}]{AR PL UMing CN}
 \hypersetup{
 %pdfpagemode=FullScreen,
 }
+
+%\logo{\includegraphics[height=.1\textheight]{Logo_fedoralogo.png}}
 
 \begin{document}
 
