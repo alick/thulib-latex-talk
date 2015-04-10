@@ -145,7 +145,7 @@ ItalicFont={AR PL UKai CN}]{AR PL UMing CN}
 
 \section{简介}
 
-\subsection{\TeX}
+\subsection{\TeX 和它的朋友们}
 
 \begin{frame}[fragile]{\TeX 是什么？}
   \begin{itemize}
@@ -170,70 +170,46 @@ ItalicFont={AR PL UKai CN}]{AR PL UMing CN}
     \item 核心仍是 \TeX
     \item 极其丰富的宏包(package)，提供扩展功能
     \item 广泛用于学术界，期刊会议论文模板
-    \item 大学论文模板
-    \item 当前版本 \LaTeX2e
-    \item 读作 \textipa{/'ltEx/} 或 \textipa{/'tEk/}
+    \item 大学学位论文模板，如 ThuThesis
+    \item 当前版本 \LaTeXe
+    %\item 读作 \textipa{/'ltEx/} 或 \textipa{/'tEk/}
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Overview}
-  \begin{block}{\TeX\ system}
+\begin{frame}{\TeX 和它的朋友们}
+  \begin{block}{\TeX\ 系统组成}
     \begin{itemize}
-      \item Core: low-level macro language
-      \item Formats: Plain \TeX, \alert{\LaTeX}, \AmS-\TeX, Con\TeX{}t
-      \item Engines: tex, latex, pdf(la)tex, \alert{xe(la)tex}, lua(la)tex
-      \item Distros: \TL, MiK\TeX, Mac\TeX
+      \item 核心：宏语言
+      \item 格式：Plain \TeX, \alert{\LaTeX} 等
+      \item 引擎：tex, latex, pdf(la)tex, \alert{xe(la)tex} 等
+      \item 发行版（套件）：\alert{\TL}, MiK\TeX, Mac\TeX 等
     \end{itemize}
   \end{block}
 \end{frame}
 
-\subsection{\TeXLive}
+\subsection{安装（以 \TL 为例）}
 
-\begin{frame}{What is \TL ?}
+\begin{frame}{\TL 简介}
   \begin{itemize}
-    \item a \TeX\ distro: a comprehensive collection of \TeX\ utils
-
-      Schemes
-      \begin{itemize}
-        \item Collections
-          \begin{itemize}
-            \item Packages
-          \end{itemize}
-      \end{itemize}
-
-    \item developed since 1996 by TeX user groups
-    \item originally for Linux, now cross-platform
-    \item can run live from a DVD (up to v2009)
+    \item \TeX\ 发行版：相关引擎、宏包、文档的集合
+    \item 由 \TeX 用户组 (TUG) 于 1996 年开始开发
+    \item 跨平台支持：Linux, Windows, Mac OS X (Mac\TeX)
+    \item 每年一个新版本发布，当前 \TL 2014
   \end{itemize}
-\end{frame}
-
-\section{Install \TL}
-\subsection{local version}
-\begin{frame}{Methods}
-  \begin{description}
-    \item[\frownie] download the huge DVD iso
-      \pause
-    \item[\$\$] be a member of TUG and get \TL on DVD
-      \pause
-    \item[\smiley] net install
-  \end{description}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{网络安装}
   \begin{itemize}
-    \item
-从 CTAN 镜像下载
-install-tl-unx.tar.gz
-和
-install-tl-unx.tar.gz.sha256
+    \item 从 CTAN 镜像下载安装包（.zip 或 .tar.gz 格式）
+（和相应的校验文件，以 .sha256 结尾）
 \begin{itemize} % several mirror url
-  \item \url{http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/}
-  \item \url{http://ftp.ctex.org/mirrors/CTAN/systems/texlive/tlnet/}
-  \item More at \url{http://mirror.ctan.org/README.mirrors}
+  \item 清华镜像 \url{http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/}
+  \item CTeX 镜像 \url{http://ftp.ctex.org/mirrors/CTAN/systems/texlive/tlnet/}
+  \item 更多可见 \url{http://mirror.ctan.org/README.mirrors}
 \end{itemize}
 
-\item 校验
+\item 可选步骤：校验安装包
 \begin{lstlisting}
 $ LANG=C sha256sum --check install-tl-unx.tar.gz.sha256
 install-tl-unx.tar.gz: OK
@@ -245,16 +221,20 @@ install-tl-unx.tar.gz: OK
 \begin{frame}[fragile]
   \frametitle{网络安装}
   \begin{itemize}
-    \item Install 安装
-      \begin{lstlisting}
-su -c'./install-tl -gui -repository http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/'
-      \end{lstlisting}
-
+    \item Windows
+      \begin{itemize}
+        \item 双击 \lstinline|install-tl-windows.bat| 或
+          \lstinline|install-tl-advanced.bat|
+      \end{itemize}
+    \item Linux
       \begin{itemize}
         \item 图形安装界面需要 Perl Tk 模块：\texttt{yum install
           perl-Tk}
-        \item root 使用 X 程序，可能还需要 \texttt{xhost
-          +si:localuser:root}
+      \begin{lstlisting}
+sudo mkdir /usr/local/texlive
+sudo chown yourname:yourname /usr/local/texlive
+./install-tl -gui -repository http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/
+      \end{lstlisting}
       \end{itemize}
 \item 截图\dots
 \end{itemize}
@@ -305,10 +285,10 @@ su -c'./install-tl -gui -repository http://mirrors.tuna.tsinghua.edu.cn/CTAN/sys
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{网络安装后配置}
+  \frametitle{网络安装后配置（仅 Linux）}
 \begin{itemize}
   \item
-    Add the following lines into your \nolinkurl{~/.bash_profile}:
+    添加环境变量到 \nolinkurl{~/.bash_profile} 文件：
     \begin{lstlisting}
 export PATH=/usr/local/texlive/2011/bin/x86_64-linux:$PATH
 export MANPATH=/usr/local/texlive/2011/texmf/doc/man:$MANPATH
@@ -326,19 +306,14 @@ texdoc texlive-zh
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{网络安装后配置}
+  \frametitle{网络安装后配置（仅 Linux）}
   \begin{itemize}
 \item
-\XeTeX\ and fontconfig:
+\XeTeX\ 系统字体配置
 \begin{lstlisting}
 cp /usr/local/texlive/2011/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
 fc-cache -fsv
 \end{lstlisting}
-
-\item Con\TeX{}t Mark IV
-  \begin{lstlisting}
-context --generate
-  \end{lstlisting}
 
 \end{itemize}
 \end{frame}
@@ -352,9 +327,9 @@ keywordstyle=\color{red!70},
 
 \begin{frame}
   \frametitle{网络安装后测试}
-  \framesubtitle{English Tests}
+  \framesubtitle{English 测试}
 
-  \begin{exampleblock}{Use installed sample files:}
+  \begin{exampleblock}{使用已安装的示例文件}
     \begin{itemize}
       \item \texttt{latex sample2e.tex \#} .tex $\rightarrow$ .dvi (device independent)
 
@@ -390,102 +365,45 @@ evince test-chinese.pdf
 
 \end{frame}
 
-\subsection{sys version/ rpm}
+\section{论文排版}
 
-\begin{frame}
-  \frametitle{\TL in Linux distros}
+\begin{frame}{论文排版（以 IEEEtran 为例）}
   \begin{itemize}
-    \item Fedora offical repo: \TL 2007 \hfill Not good.
-    \item Ubuntu offical repo: \TL 2009 \hfill Not good.
-    \item jnovy's repo \TL 2010\&2011 \hfill \alert{Good} news.
-
-      \url{http://fedoraproject.org/wiki/Features/TeXLive}
+    \item 获取模板 （.cls 文件、示例 .tex 文件）
+    \item 编辑 .tex 文件
+    \item 编译
   \end{itemize}
 \end{frame}
 
-% jnovy's repo 2011
-\begin{frame}[fragile]
-  \frametitle{安装步骤}
+%\subsection{获取帮助}
+%\begin{frame}{利用文档}
+  %\begin{itemize}
+    %\item tlmgr
+      %\begin{itemize}
+        %\item \texttt{tlmgr gui}
+        %\item \texttt{man tlmgr}
+      %\end{itemize}
 
-\begin{lstlisting}
-rpm -i http://jnovy.fedorapeople.org/texlive/packages.f14/texlive-release.noarch.rpm
-yum clean all
-yum install texlive # basic scheme
-OR yum install texlive-scheme-full # if disk space is enough
-\end{lstlisting}
+    %\item texdoc
+      %\begin{itemize}
+        %\item e.g. \texttt{texdoc xecjk},
+          %\texttt{texdoc mathmode}, and \texttt{texdoc symbols}
+        %\item \texttt{texdoctk} --- GUI
+      %\end{itemize}
+  %\end{itemize}
+%\end{frame}
 
-\begin{lstlisting}
-yum install texlive-collection-xetex texlive-ctex
-yum install 'tex(savesym.sty)'
-yum install 'tex(siunitx.sty)'
-\end{lstlisting}
-
-\begin{lstlisting}
-xelatex template-xetex.tex
-\end{lstlisting}
-
-\end{frame}
-
-\begin{frame}{Why rpm?}
-  \begin{itemize}
-    \item single installation tool
-    \item package dependency
-    \item no old packages in \TL repo
-  \end{itemize}
-  \vskip0pt plus.5fill
-  \begin{itemize}
-    \item Volunteers needed
-  \end{itemize}
-\end{frame}
-
-\section{Use \TL}
-
-\subsection{Tips}
-\begin{frame}{General Tips}
-  \begin{itemize}
-    \item focus on the content, not the layout
-      \begin{itemize}
-        \item use well-defined classes/templates: ctexart, beamer,
-          thuthesis
-        \item packages: siunitx, listings, xeCJK
-        \item structure: section, subsection, etc
-        \item meaning: emph, label
-      \end{itemize}
-    \item \texttt{texcount -ch report.tex}: count words
-    \item Project(input, include, Makefile, git)
-    \item Which TeX Editor? (Vim, Emacs, LyX, TeX IDE\dots)
-  \end{itemize}
-\end{frame}
-
-\subsection{Get Help}
-\begin{frame}{Help Yourself}
-  \begin{itemize}
-    \item tlmgr (Yum in Fedora version)
-      \begin{itemize}
-        \item \texttt{tlmgr gui}
-        \item \texttt{man tlmgr}
-      \end{itemize}
-
-    \item texdoc (may need yum install)
-      \begin{itemize}
-        \item e.g. \texttt{texdoc xecjk},
-          \texttt{texdoc mathmode}, and \texttt{texdoc symbols}
-        \item \texttt{texdoctk} --- GUI
-      \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{\TeX\ community}
+\begin{frame}{\TeX\ 社区}
   \begin{columns}[c]
     \begin{column}{.45\textwidth}
       \begin{itemize}
         \item BBS
           \begin{itemize}
-            \item \href{http://www.newsmth.net/nForum/board/TeX}{smth TeX
-              board}
+            \item \href{http://www.newsmth.net/nForum/board/TeX}{水木
+              社区 TeX 版}
             \item \href{http://bbs.ctex.org/}{bbs.ctex.org}
           \end{itemize}
-        \item Mailing list
+        \item 邮件列表
           \begin{itemize}
             \item \href{http://tug.org/mailman/listinfo/tex-live}{\TL}
             \item \href{http://www.linux.cz/pipermail/texlive/}{Fedora \TL
@@ -493,6 +411,7 @@ xelatex template-xetex.tex
           \end{itemize}
         \item \href{http://www.tex.ac.uk/cgi-bin/texfaq2html}{UK FAQ}
         \item \href{http://justfuckinggoogleit.com/}{Google}
+        \item TeX StackExchange
       \end{itemize}
     \end{column}
     \begin{column}{.45\textwidth}
@@ -501,39 +420,19 @@ xelatex template-xetex.tex
   \end{columns}
 \end{frame}
 
-\section*{Summary}
+\section*{总结}
 
-\begin{frame}{Summary}
-
-  % Keep the summary *very short*.
-  \begin{itemize}
-  \item \TL makes typesetting easy.
-  \item The installation of \TL is easy.
-  \item Happy \LaTeX{}ing!
-  \end{itemize}
-
-  % The following outlook is optional.
-  \vskip0pt plus.5fill
-  \begin{itemize}
-  \item
-    Outlook
-    \begin{itemize}
-      \item \textit{MakeIndex}, \BibTeX
-    \item \MP, Asymptote
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\section*{Auxiliary}
+\section*{附录}
 
 \begin{frame}
   \begin{itemize}
-    \item Get these materials from \alert{github}
+    \item 本幻灯片基于：
       \begin{itemize}
-        \item templates: \url{http://github.com/alick9188/TeXLab}
-        \item FAD slides: \url{http://github.com/alick9188/fad-texlive-talk}
+        %\item templates: \url{http://github.com/alick9188/TeXLab}
+        \item \url{http://github.com/alick9188/fad-texlive-talk}
+        \item ThuThesis 使用向导
       \end{itemize}
-    \item License: CC BY-SA 3.0 Unported \cc\ccby\ccsa
+    \item License: CC BY-SA 4.0 Unported \cc\ccby\ccsa
   \end{itemize}
 \end{frame}
 
