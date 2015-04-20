@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[xcolor=table,svgnames]{beamer}
 % Author: alick<alick9188@gmail.com>
 
 % This file is modified from a solution template for:
@@ -43,7 +43,11 @@
 \usepackage{cclicenses} % CC symbols
 \usepackage{fontspec}
 \usepackage[UTF8,nofonts]{ctex}
+\usepackage{tabularx}
 \usepackage{hologo}
+\usepackage{colortbl}
+\usepackage{shapepar}
+\usepackage{lipsum}
 \usepackage{hyperxmp}
 \hypersetup{
 pdfauthor={Alick Zhao},
@@ -80,6 +84,7 @@ ItalicFont={AR PL UKai CN}]{AR PL UMing CN}
 \newcommand{\beamer}{\textsc{beamer}}
 \def\TeXLive{\TeX{} Live\xspace}
 \let\TL=\TeXLive
+\newcommand{\ThuThesis}{\textsc{ThuThesis}}
 
 \title
 {如何使用 \LaTeX 排版论文}
@@ -145,46 +150,132 @@ ItalicFont={AR PL UKai CN}]{AR PL UMing CN}
 
 \section{简介}
 
-\subsection{\TeX 和它的朋友们}
+\subsection{\TeX 与 \LaTeX}
 
-\begin{frame}[fragile]{\TeX 是什么？}
+\begin{frame}[fragile]{\TeX 与 \LaTeX}
+  % TODO: photo of Knuth & Lamport
   \begin{itemize}
-    \item 生成精美图书的排版系统
-    \item 最初由 高德纳 (Donald E.~Knuth) 于 1978 年开发
-    \item 可以免费且自由使用
-    \item 最新版本为 \TeX\ 3.14159265
-    \item 漂亮、美观、稳定、通用
-    \item 尤其擅长数学公式排版
-      \begin{equation}
-        \mathcal{F}(\xi)=\int_{-\infty}^{\infty}
-        f(x)\mathrm{e}^{-\mathrm{j}2\pi \xi x}\,\mathrm{d}x
-      \end{equation}
-    \item 读作 \textipa{/'tEx/} 或 \textipa{/'tEk/}
+    \item \TeX: $\tau\varepsilon\chi$ (\textipa{/'tEx/},
+      \textipa{/'tEk/})
+      \begin{itemize}
+         % FIXME: E/e?
+         \item 生成精美图书的排版系统
+         \item 最初由 高德纳 (Donald E.~Knuth) 于 1978 年开发
+           %\item 最新版本为 \TeX\ 3.14159265
+         \item 漂亮、美观、稳定、通用
+         \item 尤其擅长数学公式排版
+       \end{itemize}
+    \item \LaTeX\ (\textipa{/'la:tEx/}, \textipa{/'leItEk/})
+      \begin{itemize}
+        \item Leslie Lamport 开发 \LaTeX 降低使用门槛
+        \item 极其丰富的宏包，提供扩展功能
+        \item 广泛用于学术界，期刊会议论文模板
+        \item 大学学位论文模板，如 \ThuThesis
+      \end{itemize}
   \end{itemize}
 \end{frame}
 
-\begin{frame}{\LaTeX 是什么？}
-  \begin{itemize}
-    \item \TeX 用户接口不够友好，使用不便
-    \item Leslie Lamport 开发 \LaTeX 降低使用门槛
-    \item 核心仍是 \TeX
-    \item 极其丰富的宏包(package)，提供扩展功能
-    \item 广泛用于学术界，期刊会议论文模板
-    \item 大学学位论文模板，如 ThuThesis
-    \item 当前版本 \LaTeXe
-    %\item 读作 \textipa{/'ltEx/} 或 \textipa{/'tEk/}
-  \end{itemize}
+\begin{frame}{和 Word 对比}
+  \begin{table}[h]
+    \centering
+    \rowcolors[]{1}{blue!20}{blue!10}
+    \begin{tabular}{c|c}
+      Word & \LaTeX \\
+      \hline
+      字处理工具 & 专业排版软件 \\
+      容易上手，简单直观 & 容易上手 \\
+      所见即所得 & 所见即所想，所想即所得 \\
+      高级功能不易掌握 & 进阶难，但一般用不到 \\
+      处理长文档需要丰富经验 & 和短文档处理基本无异 \\
+      花费大量时间调格式'' & 无需担心格式，专心作者内容 \\
+      公式排版差强人意 & 尤其擅长公式排版 \\
+      二进制格式，兼容性差 & 文本文件，易读、稳定 \\
+      付费商业许可 & 自由免费使用 \\
+    \end{tabular}
+  \end{table}
 \end{frame}
 
-\begin{frame}{\TeX 和它的朋友们}
-  \begin{block}{\TeX\ 系统组成}
-    \begin{itemize}
-      \item 核心：宏语言
-      \item 格式：Plain \TeX, \alert{\LaTeX} 等
-      \item 引擎：tex, latex, pdf(la)tex, \alert{xe(la)tex} 等
-      \item 发行版（套件）：\alert{\TL}, MiK\TeX, Mac\TeX 等
-    \end{itemize}
-  \end{block}
+\begin{frame}{\TeX{}排版举例}
+  \begin{exampleblock}{无编号公式}
+  \begin{equation*}
+    \mathcal{F}(\xi)=\int_{-\infty}^{\infty}
+    f(x)\mathrm{e}^{-\mathrm{j}2\pi \xi x}\,\mathrm{d}x
+  \end{equation*}
+  \end{exampleblock}
+  \begin{exampleblock}{多行多列公式}
+    % Taken from Mathmode.tex
+\begin{align}
+	y & =d & z & =1\\
+	y & =cx+d & z & =x+1\\
+	y_{12} & =bx^{2}+cx+d & z & =x^{2}+x+1\nonumber \\
+	y(x) & =ax^{3}+bx^{2}+cx+d & z & =x^{3}+x^{2}+x+1
+\end{align}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{\TeX{}排版举例}
+  \begin{exampleblock}{编号多行公式}
+    % Taken from Mathmode.tex
+  \begin{multline}
+    A=\lim_{n\rightarrow\infty}\Delta x\left(a^{2}+\left(a^{2}+2a\Delta x+\left(\Delta x\right)^{2}\right)\right.\label{eq:reset}\\
+    +\left(a^{2}+2\cdot2a\Delta x+2^{2}\left(\Delta x\right)^{2}\right)\\
+    +\left(a^{2}+2\cdot3a\Delta x+3^{2}\left(\Delta x\right)^{2}\right)\\
+    +\ldots\\
+    \left.+\left(a^{2}+2\cdot(n-1)a\Delta x+(n-1)^{2}\left(\Delta x\right)^{2}\right)\right)\\
+    =\frac{1}{3}\left(b^{3}-a^{3}\right)
+  \end{multline}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{\TeX{}排版举例}
+  \begin{columns}
+    \begin{column}{.45\textwidth}
+      \begin{figure}[h]
+        \centering
+        \includegraphics[height=.3\textheight]{smiley.pdf}
+        \vspace{2ex}
+        \includegraphics[height=.4\textheight]{dtmf.pdf}
+      \end{figure}
+    \end{column}
+    \begin{column}{.45\textwidth}
+      \begin{figure}[h]
+        \centering
+        \includegraphics[height=.75\textheight]{randomwalk.pdf}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{\TeX{}排版举例}
+  %\begin{columns}
+    %\begin{column}{.45\textwidth}
+      %\begin{figure}[h]
+        %\centering
+        %\includegraphics[width=\textwidth]{references.pdf}
+      %\end{figure}
+    %\end{column}
+    %\begin{column}{.45\textwidth}
+      %\textcolor{Crimson}{\heartpar{\tiny\lipsum[1]}}
+      %\heartpar{\tiny\lipsum[1]}
+    %\end{column}
+  %\end{columns}
+\end{frame}
+
+\begin{frame}{\TeX{}排版举例}
+  \begin{columns}
+    \begin{column}{.45\textwidth}
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{slides-powerdot.pdf}
+      \end{figure}
+    \end{column}
+    \begin{column}{.45\textwidth}
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{slides-beamer.pdf}
+      \end{figure}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \subsection{安装（以 \TL 为例）}
