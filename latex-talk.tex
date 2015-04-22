@@ -1,4 +1,4 @@
-\documentclass[xcolor=table,svgnames]{beamer}
+\documentclass[xcolor=table,dvipsnames,svgnames]{beamer}
 % Author: alick<alick9188@gmail.com>
 
 % This file is modified from a solution template for:
@@ -44,11 +44,10 @@
 \usepackage{cclicenses} % CC symbols
 \usepackage{fontspec}
 \usepackage[UTF8,nofonts]{ctex}
-\usepackage{tabularx}
 \usepackage{hologo}
 \usepackage{colortbl}
-\usepackage{shapepar}
-\usepackage{lipsum}
+\usepackage{pstricks}
+\usepackage{pst-node}
 \usepackage{hyperxmp}
 \hypersetup{
 pdfauthor={Alick Zhao},
@@ -56,6 +55,16 @@ pdfcopyright={Copyright (C) 2015 by Alick Zhao.
 Licensed under CC-BY-SA 4.0. Some rights reserved.},
 pdflicenseurl={http://creativecommons.org/licenses/by-sa/4.0/},
 }
+
+% From thuthesis user guide
+\makeatletter
+\def\psRotation#1(#2,#3)#4{%
+  \rput{#1}(#2,#3){%
+    \psellipticarc[linewidth=.4pt]{->}(0,-0.1)(0.6,0.15){120}{70}
+    \ifdim#1pt>\z@\rput[l]{*0}(0.675,0){#4}\else\rput[l](0.675,0){#4}\fi
+  }%
+}
+\makeatother
 
 % For tipa to work.
 \newfontfamily\useTIPAfont{Times New Roman}
@@ -196,7 +205,7 @@ ItalicFont={AR PL UKai CN}]{AR PL UMing CN}
   \end{table}
 \end{frame}
 
-\begin{frame}{\TeX{}排版举例}
+\begin{frame}{\TeX{}排版举例：公式}
   \begin{exampleblock}{无编号公式}
   \begin{equation*}
     \mathcal{F}(\xi)=\int_{-\infty}^{\infty}
@@ -214,7 +223,7 @@ ItalicFont={AR PL UKai CN}]{AR PL UMing CN}
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{\TeX{}排版举例}
+\begin{frame}{\TeX{}排版举例：公式}
   \begin{exampleblock}{编号多行公式}
     % Taken from Mathmode.tex
   \begin{multline}
@@ -228,41 +237,100 @@ ItalicFont={AR PL UKai CN}]{AR PL UMing CN}
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{\TeX{}排版举例}
+\begin{frame}{\TeX{}排版举例：图形}
+  \begin{minipage}[c]{0.3\linewidth}
+\psset{unit=0.8cm}
+  \begin{pspicture}(-1.75,-3)(3.25,4)
+\psline[linewidth=0.25pt](0,0)(0,4)
+\rput[tl]{0}(0.2,2){$\vec e_z$}
+\rput[tr]{0}(-0.9,1.4){$\vec e$}
+\rput[tl]{0}(2.8,-1.1){$\vec C_{ptm{ext}}$}
+\rput[br]{0}(-0.3,2.1){$\theta$}
+\rput{25}(0,0){%
+  \psframe[fillstyle=solid,fillcolor=lightgray,linewidth=.8pt](-0.1,-3.2)(0.1,0)}
+\rput{25}(0,0){%
+  \psellipse[fillstyle=solid,fillcolor=yellow,linewidth=3pt](0,0)(1.5,0.5)}
+\rput{25}(0,0){%
+  \psframe[fillstyle=solid,fillcolor=lightgray,linewidth=.8pt](-0.1,0)(0.1,3.2)}
+\rput{25}(0,0){\psline[linecolor=red,linewidth=1.5pt]{->}(0,0)(0.,2)}
+\psRotation{0}(0,3.5){$\dot\phi$}
+\psRotation{25}(-1.2,2.6){$\dot\psi$}
+\psline[linecolor=red,linewidth=1.25pt]{->}(0,0)(0,2)
+\psline[linecolor=red,linewidth=1.25pt]{->}(0,0)(3,-1)
+\psline[linecolor=red,linewidth=1.25pt]{->}(0,0)(2.85,-0.95)
+\psarc{->}{2.1}{90}{112.5}
+\rput[bl](.1,.01){C}
+\end{pspicture}
+  \end{minipage}\hspace{1cm}
+\begin{minipage}[t]{0.5\linewidth}
+\psset{unit=0.3cm}
+\begin{pspicture}(1,2)(18,14)
+%\psgrid[gridcolor=lightgray,subgriddiv=0,subgridcolor=lightgray]
+%
+\psline[linewidth=1pt,linecolor=black](6,0.5)(6,14)
+\psline[linewidth=1pt,linecolor=black](1,8.5)(6,7)
+\psline[linewidth=1pt,linecolor=black](1.5,5.5)(11,8.5)
+%
+\rput(17,3){$x$}
+\rput(5.5,13){$y$}
+\rput(10.5,8.75){$z$}
+\rput(11,7.1){$\vec{r}$}
+%
+\psline[linewidth=1.5pt,linecolor=black]{<->}(6,7)(6,11.25)
+\rput(5.35,9.4){$R$}
+\psline[linewidth=1.5pt,linecolor=Green]{->}(6.5,12)(4.75,12)
+\rput(7.5,12.8){ $I d\vec{l}$}
+%
+\psellipse[doubleline=true,doublecolor=yellow,doublesep=3pt,linecolor=blue](6,7)(3,4.5)
+\psline[linewidth=1pt,linecolor=black](6,7)(17.5,3.5)
+\psline[linewidth=1.5pt,linecolor=black]{->}(6,11.38)(11.95,5.225)
+%
+\psarc[linewidth=1.5pt,linecolor=gray](6,8){3.4}{85}{95}
+%
+\psline[linewidth=1.5pt,linecolor=gray]{->}(12,5.15)(12,8.15)
+\psline[linewidth=1.5pt,linecolor=black]{->}(12,5.15)(15,7.25)
+\psline[linewidth=1.5pt,linecolor=gray]{->}(12,5.15)(15,4.25)
+%
+\psline[linewidth=1pt,linecolor=black](12,8.15)(15,7.25)(15,4.25)
+%
+\Cnode*[linecolor=black,radius=0.1cm](12,5.15){a}
+\rput(11.5,4.5){ $P$}
+%
+\rput(12.5,8.9){$dB_y$}
+\rput(14.5,3.4){$dB_x$}
+\rput(15.5,8){ $d \boldmath{\vec{B}}$}
+%
+\psarc[linewidth=1pt]{<->}(12,5){5.5}{133}{161}
+\rput(7.2,8.5){ $\theta$}
+\end{pspicture}
+\medskip
+
+%\hspace{2cm}
+\begin{figure}[h]
+  \centering
+  \includegraphics[height=.33\textheight]{dtmf.pdf}
+\end{figure}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{\TeX{}排版举例：文档}
   \begin{columns}
     \begin{column}{.45\textwidth}
       \begin{figure}[h]
         \centering
-        \includegraphics[height=.3\textheight]{smiley.pdf}
-        \vspace{2ex}
-        \includegraphics[height=.4\textheight]{dtmf.pdf}
+        \includegraphics[width=\textwidth]{references.pdf}
       \end{figure}
     \end{column}
     \begin{column}{.45\textwidth}
       \begin{figure}[h]
         \centering
-        \includegraphics[height=.75\textheight]{randomwalk.pdf}
+        \includegraphics[width=\textwidth]{shapepar.pdf}
       \end{figure}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{frame}{\TeX{}排版举例}
-  %\begin{columns}
-    %\begin{column}{.45\textwidth}
-      %\begin{figure}[h]
-        %\centering
-        %\includegraphics[width=\textwidth]{references.pdf}
-      %\end{figure}
-    %\end{column}
-    %\begin{column}{.45\textwidth}
-      %\textcolor{Crimson}{\heartpar{\tiny\lipsum[1]}}
-      %\heartpar{\tiny\lipsum[1]}
-    %\end{column}
-  %\end{columns}
-\end{frame}
-
-\begin{frame}{\TeX{}排版举例}
+\begin{frame}{\TeX{}排版举例：幻灯片}
   \begin{columns}
     \begin{column}{.45\textwidth}
       \begin{figure}[h]
