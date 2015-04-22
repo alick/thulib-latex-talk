@@ -278,14 +278,20 @@ ItalicFont={AR PL UKai CN}]{AR PL UMing CN}
   \end{columns}
 \end{frame}
 
-\subsection{安装（以 \TL 为例）}
+\subsection{安装}
 
-\begin{frame}{\TL 简介}
+\begin{frame}{如何安装 \hologo{(La)TeX}？}
   \begin{itemize}
-    \item \TeX\ 发行版：相关引擎、宏包、文档的集合
-    \item 由 \TeX 用户组 (TUG) 于 1996 年开始开发
-    \item 跨平台支持：Linux, Windows, Mac OS X (Mac\TeX)
-    \item 每年一个新版本发布，当前 \TL 2014
+    \item \TeX{}发行版(Distro)
+      \begin{itemize}
+        \item \TeX{}实用工具大集合：引擎、宏包、文档等
+        \item 常见\TeX{}发行版：CTeX 套装、\hologo{MiKTeX}、\TL
+      \end{itemize}
+    \item \TL
+      \begin{itemize}
+        \item 跨平台：Windows, Linux, Mac OS X (Mac\TeX)
+        \item 每年一个新版本发布，当前 \TL 2014
+      \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -416,44 +422,44 @@ escapeinside=``,
 keywordstyle=\color{red!70},
 }
 
-\begin{frame}
-  \frametitle{网络安装后测试}
-  \framesubtitle{English 测试}
+%\begin{frame}
+  %\frametitle{网络安装后测试}
+  %\framesubtitle{English 测试}
 
-  \begin{exampleblock}{使用已安装的示例文件}
-    \begin{itemize}
-      \item \texttt{latex sample2e.tex \#} .tex $\rightarrow$ .dvi (device independent)
+  %\begin{exampleblock}{使用已安装的示例文件}
+    %\begin{itemize}
+      %\item \texttt{latex sample2e.tex \#} .tex $\rightarrow$ .dvi (device independent)
 
-      \texttt{xdvi sample2e.dvi \#} also try dvipdf sample2e.dvi
-      \item try \texttt{pdflatex sample2e} directly
-      \item \texttt{xetex opentype-info.tex \#} test of xetex's OpenType support
-    \end{itemize}
+      %\texttt{xdvi sample2e.dvi \#} also try dvipdf sample2e.dvi
+      %\item try \texttt{pdflatex sample2e} directly
+      %\item \texttt{xetex opentype-info.tex \#} test of xetex's OpenType support
+    %\end{itemize}
 
-  \end{exampleblock}
-\end{frame}
+  %\end{exampleblock}
+%\end{frame}
 
 \begin{frame}[fragile]
   \frametitle{网络安装后测试}
-  \framesubtitle{中文测试 ``test-chinese.tex''}
-  \begin{columns}[t]
-    \begin{column}{.45\textwidth}
+
+  \begin{itemize}
+    \item 编辑 ``test-chinese.tex''
+      \begin{center}
 \begin{lstlisting}[style=latex]
 \documentclass{ctexart}
-\setCJKmainfont{AR PL UMing CN}
 \begin{document}
-\TeX{}`你好！`
+\TeX{}你好！
 \end{document}
 \end{lstlisting}
-\end{column}
-    \begin{column}{.45\textwidth}
-  \begin{lstlisting}
-xelatex test-chinese
-evince test-chinese.pdf
-  \end{lstlisting}
-  \fbox{\textrm \TeX{}\songti 你好！}
-\end{column}
-\end{columns}
-
+      \end{center}
+      \begin{itemize}
+        \item Windows 下缺省使用中易字体
+        \item Linux 下需要自定义字体（nofonts 选项）
+      \end{itemize}
+    \item 使用 XeLaTeX 引擎编译，得到 PDF 文档
+      \begin{center}
+      \fbox{\textrm \TeX{}\songti 你好！}
+      \end{center}
+  \end{itemize}
 \end{frame}
 
 \section{论文排版}
