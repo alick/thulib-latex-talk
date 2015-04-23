@@ -74,13 +74,13 @@ pdflicenseurl={http://creativecommons.org/licenses/by-sa/4.0/},
 \punctstyle{kaiming}
 \renewcommand\CJKfamilydefault{\CJKsfdefault} % for slides
 
-\setCJKmainfont[BoldFont={WenQuanYi Micro Hei},
+\setCJKmainfont[BoldFont={SimHei},
 ItalicFont={KaiTi}]{SimSun}
 \setCJKsansfont{WenQuanYi Micro Hei}
 \setCJKmonofont{WenQuanYi Micro Hei Mono}
 
 \setCJKfamilyfont{zhsong}{SimSun}
-\setCJKfamilyfont{zhhei}{WenQuanYi Zen Hei}
+\setCJKfamilyfont{zhhei}{SimHei}
 \setCJKfamilyfont{zhkai}{KaiTi}
 
 \newcommand*{\songti}{\CJKfamily{zhsong}} % 宋体
@@ -95,7 +95,14 @@ ItalicFont={KaiTi}]{SimSun}
 \newcommand{\beamer}{\textsc{beamer}}
 \def\TeXLive{\TeX{} Live\xspace}
 \let\TL=\TeXLive
-\newcommand{\ThuThesis}{\textsc{ThuThesis}}
+\newcommand{\ThuThesis}{\textsc{ThuThesis}\xspace}
+
+% From thuthesis user guide.
+\def\cmd#1{\texttt{\color{DarkBlue}\footnotesize $\backslash$#1}}
+\def\env#1{\texttt{\color{DarkBlue}\footnotesize #1}}
+\def\cmdxmp#1#2#3{\small{\texttt{\color{DarkBlue}$\backslash$#1}\{#2\}\hspace{1em}\\ $\Rightarrow$\hspace{1em} {#3}\par\vskip1em}}
+
+%\includeonlyframes{current}
 
 \title
 {如何使用 \LaTeX 排版论文}
@@ -130,7 +137,7 @@ ItalicFont={KaiTi}]{SimSun}
 
 %\beamerdefaultoverlayspecification{<+->}
 
-\lstset{basicstyle=\ttfamily,breaklines=true}
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
 \hypersetup{
 %pdfpagemode=FullScreen,
 }
@@ -515,9 +522,11 @@ fc-cache -fsv
   \end{itemize}
   \begin{exampleblock}{TeXworks 配置}
     \begin{itemize}
-      \item 菜单：编辑--首选项
-      \item 编辑器：打开行号
-      \item 排版：处理工具下默认 XeLaTeX
+      \item 菜单：编辑---首选项
+        \begin{itemize}
+          \item 编辑器：打开行号
+          \item 排版：处理工具下方默认 $\Rightarrow$ 选择 XeLaTeX
+        \end{itemize}
     \end{itemize}
   \end{exampleblock}
 \end{frame}
@@ -525,8 +534,11 @@ fc-cache -fsv
 \lstdefinestyle{latex}{
 language={[LaTeX]TeX},
 frame=single,
+rulecolor=\color{red!75!green!50!blue},
+fillcolor=\color{red!75!green!50!blue!15},
 escapeinside=``,
-keywordstyle=\color{red!70},
+%keywordstyle=\color{red!70},
+basicstyle=\color{DarkBlue},
 }
 
 %\begin{frame}
@@ -549,7 +561,7 @@ keywordstyle=\color{red!70},
   \frametitle{网络安装后测试}
 
   \begin{itemize}
-    \item 编辑 ``test-chinese.tex''
+    \item 编辑 \texttt{test-chinese.tex} （Windows 下不要用中文文件名）
       \begin{center}
 \begin{lstlisting}[style=latex]
 \documentclass{ctexart}
@@ -626,31 +638,376 @@ keywordstyle=\color{red!70},
 
 \subsection{\LaTeX{}常用命令}
 
+\begin{frame}[fragile]{\LaTeX{}命令}
+  \framesubtitle{\emph{宏} (Macro)、或者\emph{控制序列} (control sequence)}
+\begin{itemize}
+\item 简单命令
+  \begin{itemize}
+    \item \verb|\命令|\hspace{2em}
+    \verb|{\songti 中国人民解放军}| ~$\Rightarrow$ {\songti 中国人民解放军}
+  \item \verb|\命令[可选参数]{必选参数}|\\
+\verb|section[精简标题]}{这个题目实在太长了放到目录里面不太好看|\\
+$\Rightarrow$ {\heiti 1.1 \hspace{1em} \songti 这个题目实在太长了放到目录里面不太好看}
+  \end{itemize}
+\item 环境
+  \begin{columns}[c]
+  \begin{column}{0.45\textwidth}
+\begin{lstlisting}[style=latex]
+\begin{equation*}
+  a^2-b^2=(a+b)(a-b)
+\end{equation*}
+\end{lstlisting}
+\end{column}\hspace{1em}
+  \begin{column}{0.45\textwidth}
+$ a^2-b^2=(a+b)(a-b)$
+\end{column}
+  \end{columns}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\LaTeX{} 常用命令}
+  \begin{exampleblock}{命令}
+\centering
+\footnotesize
+  \begin{tabular}{llll}
+    \cmd{chapter} & \cmd{section} & \cmd{subsection} & \cmd{paragraph} \\
+    章 & 节 & 小节 & 带题头段落 \\\hline
+    \cmd{centering} & \cmd{emph} & \cmd{verb} & \cmd{url} \\
+   居中对齐         &  强调      & 原样输出   & 超链接 \\\hline
+  \cmd{footnote} & \cmd{item} & \cmd{caption} & \cmd{includegraphics} \\
+   脚注 & 列表条目 & 标题 & 插入图片 \\\hline
+  \cmd{label} & \cmd{cite} & \cmd{ref} \\
+  标号 & 引用参考文献 & 引用图表公式等\\\hline
+  \end{tabular}
+\end{exampleblock}
+\end{frame}
+\begin{frame}[fragile]{\LaTeX{} 常用命令}
+\begin{exampleblock}{环境}
+\centering
+\footnotesize
+\begin{tabular}{lll}
+  \env{table} & \env{figure} & \env{equation}\\
+  表格 & 图片 & 公式 \\\hline
+  \env{itemize} & \env{enumerate} & \env{description}\\
+  无编号列表 & 编号列表 & 描述 \\\hline
+\end{tabular}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{\LaTeX{}命令举例}
+\cmdxmp{chapter}{前言}{\heiti 第 1 章\hspace{1em} 前言}
+\cmdxmp{section[精简标题]}{这个题目实在太长了放到目录里面不太好看}{\heiti 1.1
+  \hspace{1em} 这个题目实在太长了放到目录里面不太好看}
+\cmdxmp{footnote}{我是可爱的脚注}{前方高能\footnote{我是可爱的脚注}}
+\end{frame}
+
+\begin{frame}[fragile]{\LaTeX{} 环境命令举例}
+  \begin{minipage}{0.4\linewidth}
+\begin{lstlisting}[style=latex]
+\begin{itemize}
+  \item 一条
+  \item 次条
+  \item 再条
+\end{itemize}
+\end{lstlisting}
+  \end{minipage}\hspace{1.5cm}
+  \begin{minipage}{0.4\linewidth}
+\begin{itemize}
+  \item 一条
+  \item 次条
+  \item 再条
+\end{itemize}
+  \end{minipage}
+\medskip
+
+  \begin{minipage}{0.4\linewidth}
+\begin{lstlisting}[style=latex]
+\begin{enumerate}
+  \item 一条
+  \item 次条
+  \item 再条
+\end{enumerate}
+\end{lstlisting}
+  \end{minipage}\hspace{1.5cm}
+  \begin{minipage}{0.4\linewidth}
+\begin{enumerate}
+  \item 一条
+  \item 次条
+  \item 再条
+\end{enumerate}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]{自动引用举例}
+  \begin{itemize}
+  \item 给对象命名：图片、表格、公式等\\
+  \verb|\label{name}|
+\item 引用对象\\
+  \verb|\ref{name}|
+  \end{itemize}
+\bigskip
+
+  \begin{minipage}{0.5\linewidth}
+\begin{lstlisting}[style=latex,basicstyle=\tiny]
+图书馆馆徽请参见图~\ref{fig:lib}。
+\begin{figure}
+  \centering
+  \includegraphics[height=0.2\textheight]%
+  {libicon.jpg}
+  \caption{图书馆馆徽。}
+  \label{fig:lib}
+\end{figure}
+\end{lstlisting}
+  \end{minipage}\hfill
+  \begin{minipage}{0.4\linewidth}\centering
+    {\songti 图书馆馆徽请参见图~1。}\\[1em]
+ \includegraphics[height=0.2\textheight]{libicon.jpg}\\
+ {\footnotesize\heiti 图~1. 图书馆馆徽。}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]{自动引用举例}
+\begin{minipage}{0.5\linewidth}
+  \begin{lstlisting}[style=latex,basicstyle=\tiny]
+\begin{table}
+   \centering
+   \begin{tabular}{ll}\hline
+     编号 & 含义 \\\hline
+     1    & 第一 \\
+     2    & 第二 \\\hline
+   \end{tabular}
+   \caption{编号与含义。}
+   \label{tab:number}
+\end{table}
+编号与含义请参见表~\ref{tab:number}。
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{0.4\linewidth}
+\centering\small
+ \begin{tabular}{ll}\hline
+编号 & 含义 \\\hline
+1 & 第一\\
+2  & 第二\\\hline
+\end{tabular}\\[5pt]
+{\small 表~1. 编号与含义}\\[1em]
+\normalsize 编号与含义请参见表~1。
+\end{minipage}
+\end{frame}
+
 \section{学位论文排版}
-\subsection{\ThuThesis 简介}
-\subsection{深入 \ThuThesis}
+\subsection{\ThuThesis 清华大学学位论文模板}
+
+\begin{frame}{\ThuThesis}
+  \framesubtitle{清华大学学位论文 \LaTeX{} 模板}
+  \begin{itemize}
+  \item 最早：王磊~(2004.4)
+  \item 2005 年：薛瑞尼
+  \item 最新发布版：\ThuThesis v4.8.1 (2014/12/09)
+  \item 全面支持本科、硕士、博士、博士后论文格式
+  \end{itemize}
+  \begin{figure}[htbp]
+    \centering
+    \includegraphics[height=.4\textheight]{cover-bachelor-crop.pdf}\hfill
+    \includegraphics[height=.4\textheight]{cover-master-crop.pdf}\hfill
+    \includegraphics[height=.4\textheight]{cover-doctor-crop.pdf}\hfill
+    \includegraphics[height=.4\textheight]{cover-postdoctor-crop.pdf}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{安装\ThuThesis}
+  \framesubtitle{以开发版本为例}
+      \begin{columns}
+        \begin{column}{.7\textwidth}
+  \begin{itemize}
+    \item 下载最新版
+      \begin{itemize}
+        \item \url{https://github.com/xueruini/thuthesis}
+        \item 右边栏
+          \href{https://github.com/xueruini/thuthesis/archive/master.zip}%
+          {Download ZIP} 按钮
+        \item Git 用户还可以直接克隆仓库
+      \end{itemize}
+  \end{itemize}
+        \end{column}
+        \begin{column}{.3\textwidth}
+          \begin{figure}[htbp]
+            \centering
+            \includegraphics[width=\textwidth]{thuthesis-download.png}
+          \end{figure}
+        \end{column}
+      \end{columns}
+  \begin{itemize}
+    \item 安装
+      \begin{itemize}
+        \item 解压缩看文档 \texttt{README.md}
+        \item 模板文档类：latex 引擎处理 \texttt{thuthesis.ins} $\Rightarrow$
+          \texttt{thuthesis.cls} 和 \texttt{thuthesis.cfg}
+        \item 用户手册：latexmk 处理 \texttt{thuthesis.dtx} $\Rightarrow$
+          \texttt{thuthesis.pdf}
+        \item 论文示例：latexmk 处理 \texttt{main.tex} $\Rightarrow$ \texttt{main.pdf}
+        \item 提供有 Makefile 自动化上述过程
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{论文选项}
+\begin{description}
+\item[bachelor] 我要写本科论文
+  \begin{lstlisting}
+\documentclass[bachelor]{thuthesis}
+  \end{lstlisting}
+\item[master] 我要写硕士论文
+  \begin{lstlisting}
+\documentclass[master]{thuthesis}
+  \end{lstlisting}
+\item[doctor] 我要写博士论文
+  \begin{lstlisting}
+\documentclass[doctor]{thuthesis}
+  \end{lstlisting}
+\item[secret] 论文有保密要求
+  \begin{lstlisting}
+\documentclass[doctor, secret]{thuthesis}
+\secretlevel{机密}
+\secretyear{2010}
+  \end{lstlisting}
+\end{description}
+\end{frame}
+
+\begin{frame}{封面}
+  \begin{table}[h]
+    \centering
+\footnotesize
+  \begin{tabular}{lll}
+    命令作用 & 中文命令 & 英文命令 \\\hline\hline
+  论文标题 & \cmd{ctitle} &\cmd{etitle}\\
+  作者姓名&  \cmd{cauthor} &\cmd{eauthor}\\
+  申请学位名称 & \cmd{cdegree}&\cmd{edegree}\\
+  院系名称 & \cmd{cdepartment} & \cmd{edepartment}\\
+  专业名称 & \cmd{cmajor} & \cmd{emajor}\\
+  导师 & \cmd{csupervisor} & \cmd{esupervisor}\\
+  副导师 & \cmd{cassosupervisor} & \cmd{eassosupervisor}\\
+  联合导师 & \cmd{ccosupervisor} & \cmd{ecosupervisor}\\
+  日期 & \cmd{cdate} & \cmd{edate}\\
+  摘要 & \cmd{cabstract} & \cmd{eabstract}\\
+  关键词 & \cmd{ckeywords} & \cmd{ekeywords}\\\hline
+  \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}{数学}
+  \begin{itemize}
+    \item 公式示例：\nolinkurl{data/chap01.tex}
+    \item \ThuThesis{} 定义了常用的数学环境
+      \begin{table}[h]
+        \centering
+    \begin{tabular}{lllll}\hline
+axiom & theorem & definition & proposition & lemma \\
+公理 & 定理 & 定义 & 命题 & 引理 \\\hline
+proof & corollary & example & exercise &\\
+证明 & 推论 & 例子& 练习 &\\\hline
+    \end{tabular}
+      \end{table}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,]{参考文献}
+  \begin{itemize}
+    \item 推荐 \BibTeX
+      \begin{itemize}
+        \item 参考文献管理自动化
+        \item bib 文件
+        \item bst 参考文献样式文件：thubib.bst
+      \end{itemize}
+    \item 学校要求两种引用方式：
+      \begin{itemize}
+        \item 上标模式：如``在许多文献$^{[12,13]}$中……''
+        \begin{lstlisting}
+  \cite{key12, key13}
+        \end{lstlisting}
+      \item 正文模式：如``文献~[14] 证明了……''
+        \begin{lstlisting}
+  \onlinecite{key14}
+        \end{lstlisting}
+      \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{作图}
+  \begin{columns}[c]
+    \begin{column}{.5\textwidth}
+  \begin{itemize}
+  \item 矢量图 eps, ps, pdf
+    \begin{itemize}
+    \item \MP, pstricks, pgf $\ldots$
+    \item Xfig, Dia, Visio, Inkscape $\ldots$
+    \end{itemize}
+  \item 标量图 png, jpg, tiff $\ldots$
+    \begin{itemize}
+      \item 提高清晰度，避免发虚
+    \end{itemize}
+  \item 转化
+    \begin{itemize}
+    \item 虚拟打印机
+    \item ImageMagick
+    \item epstopdf
+    \item pdfcrop
+    \end{itemize}
+  \end{itemize}
+    \end{column}
+    \begin{column}{.4\textwidth}
+\begin{figure}[h]
+  \centering
+\includegraphics[height=.3\textheight]{shapepar.pdf}\\\vspace{1cm}
+\includegraphics[height=.3\textheight]{thuthesis-download.png}
+\end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
 
 \section{总结}
 
-%\subsection{获取帮助}
-%\begin{frame}{利用文档}
-  %\begin{itemize}
-    %\item tlmgr
-      %\begin{itemize}
-        %\item \texttt{tlmgr gui}
-        %\item \texttt{man tlmgr}
-      %\end{itemize}
+\begin{frame}{常见问题}
+  \begin{itemize}
+  \item \alert{编译不通过} 缺少必要宏包，命令拼写错误，括号未配对等
+  \item \alert{表格图片乱跑} \LaTeX{} 自身的浮动定位算法
+  \item \alert{段落间距变大} \LaTeX{} 排版算法
+  \item \alert{参考文献} 推荐使用 \BibTeX{}，也可以手写 \cmd{bibitem}
+  \end{itemize}
+\end{frame}
 
-    %\item texdoc
-      %\begin{itemize}
-        %\item e.g. \texttt{texdoc xecjk},
-          %\texttt{texdoc mathmode}, and \texttt{texdoc symbols}
-        %\item \texttt{texdoctk} --- GUI
-      %\end{itemize}
-  %\end{itemize}
-%\end{frame}
+\begin{frame}{一点建议}
+  \begin{itemize}
+    \item 先学习
+      \begin{itemize}
+        \item 仔细阅读《一份不太简短的~\LaTeXe{} 介绍》(lshort-zh)~(1--2 天)
+        \item 粗略阅读《\LaTeXe{} 插图指南》~(2--3 小时)
+        \item 仔细阅读《\ThuThesis{} 用户手册》~(20 分钟)
+        \item 从~\ThuThesis{} 示例文档入手
+      \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\begin{frame}{\TeX\ 社区}
+\begin{frame}{利用文档}
+  \begin{itemize}
+    \item 常用文档
+      \begin{itemize}
+        \item symbols: 符号大全
+        \item Mathmode: 数学参考
+        \item ctex, xeCJK: 中文支持
+        \item texlive-zh: \TL 安装与使用
+        \item 所用宏包文档
+      \end{itemize}
+    \item 工具
+      \begin{itemize}
+        \item tlmgr: \TL 管理器
+        \item texdoc: \TeX{} 文档查看器\\
+          例如：\texttt{texdoc lshort-zh}
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% 寻求帮助
+\begin{frame}{求助}
   \begin{columns}[c]
     \begin{column}{.45\textwidth}
       \begin{itemize}
@@ -660,15 +1017,9 @@ keywordstyle=\color{red!70},
               社区 TeX 版}
             \item \href{http://bbs.ctex.org/}{bbs.ctex.org}
           \end{itemize}
-        \item 邮件列表
-          \begin{itemize}
-            \item \href{http://tug.org/mailman/listinfo/tex-live}{\TL}
-            \item \href{http://www.linux.cz/pipermail/texlive/}{Fedora \TL
-              Packaging}
-          \end{itemize}
         \item \href{http://www.tex.ac.uk/cgi-bin/texfaq2html}{UK FAQ}
-        \item \href{http://justfuckinggoogleit.com/}{Google}
         \item TeX StackExchange
+        \item \href{http://justfuckinggoogleit.com/}{Google}
       \end{itemize}
     \end{column}
     \begin{column}{.45\textwidth}
@@ -677,17 +1028,58 @@ keywordstyle=\color{red!70},
   \end{columns}
 \end{frame}
 
+\begin{frame}{\ThuThesis 问题}
+\begin{itemize}
+\item GitHub Issues 提问
+\item \TeX @newsmth 查找或发文
+\item \href{http://groups.google.com/group/thuthesis}\ThuThesis{} Google Group 发问
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{你也可以帮助}
+\begin{itemize}
+\item 错误反馈：GitHub Issues
+\item 改进建议：GitHub Issues
+\item 出力维护：LaTeX 宏包编写、Git
+\item 科普、答疑\pause \hspace{2em}\alert{图书馆讲座征主讲人！}
+\end{itemize}
+\end{frame}
+
 \section*{附录}
 
 \begin{frame}
   \begin{itemize}
     \item 本幻灯片基于：
       \begin{itemize}
-        %\item templates: \url{http://github.com/alick/TeXLab}
         \item \url{http://github.com/alick/fad-texlive-talk}
-        \item ThuThesis 使用向导
+        \item \ThuThesis{}使用向导 v3.0
       \end{itemize}
-    \item License: CC BY-SA 4.0 Unported \cc\ccby\ccsa
+    \item 许可证：CC BY-SA 4.0 Unported \cc\ccby\ccsa
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{扩展阅读}
+  \begin{itemize}
+    \item \LaTeX\ Tips:
+      \url{https://alick.fedorapeople.org/fudcon-apac-2014/latex-tips.pdf} \\
+      （例如：\LaTeX{} 中引号的正确输入姿势）
+    \item Linux 用户：\url{https://github.com/alick/fad-texlive-talk}
+    \item \ThuThesis{}使用向导 v3.0 （薛瑞尼）
+    \item \LaTeX{}杂谈（刘海洋）
+    \item 《\LaTeX{}入门》（刘海洋）
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{\LaTeX{}讲座预告}
+  \begin{itemize}
+    \item \TeX{} 与汉字处理
+      \begin{itemize}
+        \item 主讲人：马起园、刘海洋
+        \item 主办：清华 TUNA 协会
+        \item 时间：暂定下月
+        \item 地点：校内
+      \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -698,4 +1090,4 @@ keywordstyle=\color{red!70},
 \end{frame}
 
 \end{document}
-%%% vim: set sw=2 isk+=\: et tw=70 formatoptions+=mM:
+%%% vim: set sw=2 isk+=\: et tw=80 cc=+1 formatoptions+=mM:
