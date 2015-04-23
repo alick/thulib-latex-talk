@@ -40,7 +40,6 @@
 \usepackage{listings}
 \usepackage{xspace}
 \usepackage{amsmath}
-\usepackage{wasysym} % for \smiley etc
 \usepackage{calligra}
 \usepackage{cclicenses} % CC symbols
 \usepackage{fontspec}
@@ -87,8 +86,6 @@ ItalicFont={KaiTi}]{SimSun}
 \newcommand*{\heiti}{\CJKfamily{zhhei}}   % 黑体
 \newcommand*{\kaishu}{\CJKfamily{zhkai}}  % 楷书
 
-%\renewcommand\tablename{表格}
-
 \newcommand{\BibTeX}{\hologo{BibTeX}}
 \newcommand{\XeTeX}{\hologo{XeTeX}}
 \newcommand{\pdfTeX}{\hologo{pdfTeX}}
@@ -102,6 +99,7 @@ ItalicFont={KaiTi}]{SimSun}
 \def\env#1{\texttt{\color{DarkBlue}\footnotesize #1}}
 \def\cmdxmp#1#2#3{\small{\texttt{\color{DarkBlue}$\backslash$#1}\{#2\}\hspace{1em}\\ $\Rightarrow$\hspace{1em} {#3}\par\vskip1em}}
 
+% For debugging.
 %\includeonlyframes{current}
 
 \title
@@ -176,7 +174,6 @@ ItalicFont={KaiTi}]{SimSun}
     \item \TeX: $\tau\varepsilon\chi$ (\textipa{/'tEx/},
       \textipa{/'tEk/})
       \begin{itemize}
-         % FIXME: E/e?
          \item 生成精美图书的排版系统
          \item 最初由 高德纳 (Donald E.~Knuth) 于 1978 年开发
            %\item 最新版本为 \TeX\ 3.14159265
@@ -246,6 +243,7 @@ ItalicFont={KaiTi}]{SimSun}
 \end{frame}
 
 \begin{frame}{\TeX{}排版举例：图形}
+  % From thuthesis user guide.
   \begin{minipage}[c]{0.3\linewidth}
 \psset{unit=0.8cm}
   \begin{pspicture}(-1.75,-3)(3.25,4)
@@ -561,7 +559,8 @@ basicstyle=\color{DarkBlue},
   \frametitle{网络安装后测试}
 
   \begin{itemize}
-    \item 编辑 \texttt{test-chinese.tex} （Windows 下不要用中文文件名）
+    \item 编辑 \texttt{test-chinese.tex} （Windows 下不要用中文文件名；注意
+      \LaTeX{} 文档对大小写敏感。）
       \begin{center}
 \begin{lstlisting}[style=latex]
 \documentclass{ctexart}
@@ -572,7 +571,7 @@ basicstyle=\color{DarkBlue},
       \end{center}
       \begin{itemize}
         \item Windows 下缺省使用中易字体
-        \item Linux 下需要自定义字体（nofonts 选项）
+        \item Linux、Mac OS X 下需要自定义字体（nofonts 选项，参见 ctex 文档）
       \end{itemize}
     \item 使用 XeLaTeX 引擎编译，得到 PDF 文档
       \begin{center}
@@ -598,7 +597,7 @@ basicstyle=\color{DarkBlue},
         \item 定义自己的标题？定义自己的列表？定义自己的段落样式？
         \item 自动化，还是手工调？
         \item 经常被折腾的精疲力竭
-        \item 写论文成了学习 WORD，大量不必要的精力消耗
+        \item 写论文成了学习 Word，大量不必要的精力消耗
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -608,10 +607,10 @@ basicstyle=\color{DarkBlue},
     \item 获取模板
       \begin{itemize}
         \item 随发行版自带、手动网络下载
-        \item 模板文档类 .cls 文件
-        \item 示例 .tex 文件
+        \item 模板文档类 \texttt{.cls} 文件
+        \item 示例 \texttt{.tex} 文件
       \end{itemize}
-    \item 编辑 .tex 文件：添加用户内容
+    \item 编辑 \texttt{.tex} 文件：添加用户内容
     \item 编译：生成 PDF 文档
   \end{itemize}
 \end{frame}
@@ -624,9 +623,10 @@ basicstyle=\color{DarkBlue},
           \item 在安装目录 \lstinline|<prefix>\texlive\2014\|
             下搜索 \lstinline|bare_jrnl.tex|
         \end{itemize}
-      \item 编辑 .tex 文件
+      \item 编辑 \texttt{.tex} 文件
         \begin{itemize}
           \item 打开 \lstinline|bare_jrnl.tex|，另存到个人论文存放的文件夹
+          \item 英文模板：不支持中文
         \end{itemize}
       \item 编译
         \begin{itemize}
@@ -825,14 +825,14 @@ $ a^2-b^2=(a+b)(a-b)$
         \item 右边栏
           \href{https://github.com/xueruini/thuthesis/archive/master.zip}%
           {Download ZIP} 按钮
-        \item Git 用户还可以直接克隆仓库
+        %\item Git 用户还可以直接克隆仓库
       \end{itemize}
   \end{itemize}
         \end{column}
         \begin{column}{.3\textwidth}
           \begin{figure}[htbp]
             \centering
-            \includegraphics[width=\textwidth]{thuthesis-download.png}
+            \includegraphics[width=.8\textwidth]{thuthesis-download.png}
           \end{figure}
         \end{column}
       \end{columns}
@@ -840,12 +840,15 @@ $ a^2-b^2=(a+b)(a-b)$
     \item 安装
       \begin{itemize}
         \item 解压缩看文档 \texttt{README.md}
-        \item 模板文档类：latex 引擎处理 \texttt{thuthesis.ins} $\Rightarrow$
+        \item 模板文档类：(Xe)LaTeX 引擎处理 \texttt{thuthesis.ins} $\Rightarrow$
           \texttt{thuthesis.cls} 和 \texttt{thuthesis.cfg}
         \item 用户手册：latexmk 处理 \texttt{thuthesis.dtx} $\Rightarrow$
           \texttt{thuthesis.pdf}
-        \item 论文示例：latexmk 处理 \texttt{main.tex} $\Rightarrow$ \texttt{main.pdf}
-        \item 提供有 Makefile 自动化上述过程
+        \item 论文示例：latexmk 处理 \texttt{main.tex} $\Rightarrow$
+          \texttt{main.pdf}\\
+          （或对 \texttt{main.tex} 执行一次 XeLaTeX，一次 BibTeX，再两次
+          XeLaTeX）
+        \item 可使用或参考附带的 Makefile
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -910,13 +913,13 @@ proof & corollary & example & exercise &\\
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile,]{参考文献}
+\begin{frame}[fragile]{参考文献}
   \begin{itemize}
     \item 推荐 \BibTeX
       \begin{itemize}
         \item 参考文献管理自动化
         \item bib 文件
-        \item bst 参考文献样式文件：thubib.bst
+        \item bst 参考文献样式文件：\texttt{thubib.bst}
       \end{itemize}
     \item 学校要求两种引用方式：
       \begin{itemize}
