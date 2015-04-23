@@ -368,7 +368,7 @@ ItalicFont={KaiTi}]{SimSun}
 \begin{frame}[fragile]
   \frametitle{网络安装}
   \begin{itemize}
-    \item 从 CTAN 镜像下载安装包（.zip 或 .tar.gz 格式）
+    \item 从 CTAN 镜像下载安装包（.exe 或 .zip 或 .tar.gz 格式）
 （和相应的校验文件，以 .sha256 结尾）
 \begin{itemize} % several mirror url
   \item 清华镜像 \url{http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/}
@@ -390,8 +390,8 @@ install-tl-unx.tar.gz: OK
   \begin{itemize}
     \item Windows
       \begin{itemize}
-        \item 双击 \lstinline|install-tl-windows.bat| 或
-          \lstinline|install-tl-advanced.bat|
+        \item 双击下载的安装程序
+        \item 切换默认仓库为国内镜像：加速网络下载
       \end{itemize}
     \item Linux
       \begin{itemize}
@@ -410,28 +410,38 @@ sudo chown yourname:yourname /usr/local/texlive
 \begin{frame}
   \begin{figure}[h]
   \centering
-\includegraphics[scale=0.35]{main-init.png}
+\includegraphics[scale=0.5]{simple1.png}
   \end{figure}
 \end{frame}
 
 \begin{frame}
   \begin{figure}[h]
   \centering
-\includegraphics[scale=0.4]{标准安装.png}
+\includegraphics[scale=0.5]{simple2-ustc.png}
   \end{figure}
 \end{frame}
 
 \begin{frame}
   \begin{figure}[h]
   \centering
-\includegraphics[scale=0.4]{语言集合.png}
+  \includegraphics[height=.25\textheight]{simple3-dir.png}\\
+  \includegraphics[scale=0.4]{simple4.png}
   \end{figure}
 \end{frame}
 
 \begin{frame}
   \begin{figure}[h]
   \centering
-\includegraphics[scale=0.35]{main-customed.png}
+\includegraphics[scale=0.5]{simple5-opt.png}
+  \end{figure}
+\end{frame}
+
+% 准备安装
+
+\begin{frame}
+  \begin{figure}[h]
+  \centering
+\includegraphics[scale=0.5]{simple6-preinstall.png}
   \end{figure}
 \end{frame}
 
@@ -439,7 +449,15 @@ sudo chown yourname:yourname /usr/local/texlive
 \begin{frame}
   \begin{figure}[h]
   \centering
-\includegraphics[scale=0.45]{term.png}
+  \includegraphics[scale=0.5]{simple7-installing.png}
+  \end{figure}
+\end{frame}
+
+% 安装后期
+\begin{frame}
+  \begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.5]{simple8-postinstall.png}
   \end{figure}
 \end{frame}
 
@@ -447,7 +465,9 @@ sudo chown yourname:yourname /usr/local/texlive
 \begin{frame}
   \begin{figure}[h]
   \centering
-\includegraphics[scale=0.5]{安装过程.png}
+  \includegraphics[width=.5\textwidth]{simple9-installed.png}%
+  \hspace{2em}
+  \includegraphics[width=.3\textwidth]{simple10-close.png}
   \end{figure}
 \end{frame}
 
