@@ -572,12 +572,56 @@ keywordstyle=\color{red!70},
 \section{学术论文排版}
 \subsection{论文模板使用}
 
-\begin{frame}{论文排版（以 IEEEtran 为例）}
+\begin{frame}{模板是什么？}
   \begin{itemize}
-    \item 获取模板 （.cls 文件、示例 .tex 文件）
-    \item 编辑 .tex 文件
-    \item 编译
+    \item 模板
+      \begin{itemize}
+        \item 已经设计好的格式框架
+        \item 好的模板：使用户专注于内容
+        \item 不应将时间花费在调整框架上
+      \end{itemize}
+    \item 再提 Office 和 Word
+      \begin{itemize}
+        \item 很少有人会有意识地在 Word 中使用模板
+        \item 定义自己的标题？定义自己的列表？定义自己的段落样式？
+        \item 自动化，还是手工调？
+        \item 经常被折腾的精疲力竭
+        \item 写论文成了学习 WORD，大量不必要的精力消耗
+      \end{itemize}
   \end{itemize}
+\end{frame}
+
+\begin{frame}{论文排版}
+  \begin{itemize}
+    \item 获取模板
+      \begin{itemize}
+        \item 随发行版自带、手动网络下载
+        \item 模板文档类 .cls 文件
+        \item 示例 .tex 文件
+      \end{itemize}
+    \item 编辑 .tex 文件：添加用户内容
+    \item 编译：生成 PDF 文档
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{论文排版举例}
+  \begin{exampleblock}{IEEE 期刊论文}
+    \begin{itemize}
+      \item 获取模板：已随发行版自带
+        \begin{itemize}
+          \item 在安装目录 \lstinline|<prefix>\texlive\2014\|
+            下搜索 \lstinline|bare_jrnl.tex|
+        \end{itemize}
+      \item 编辑 .tex 文件
+        \begin{itemize}
+          \item 打开 \lstinline|bare_jrnl.tex|，另存到个人论文存放的文件夹
+        \end{itemize}
+      \item 编译
+        \begin{itemize}
+          \item 英文文献：XeLaTeX、PDFLaTeX 编译均可
+        \end{itemize}
+    \end{itemize}
+  \end{exampleblock}
 \end{frame}
 
 \subsection{\LaTeX{}常用命令}
