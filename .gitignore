@@ -31,3 +31,5 @@
 *.lot
 *.loe
 
+*.fls
+*.fdb_latexmk

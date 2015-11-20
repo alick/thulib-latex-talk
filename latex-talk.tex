@@ -19,6 +19,7 @@
 % modify this file as you see fit and even to delete this copyright
 % notice.
 
+\usepackage{tikz}
 \mode<presentation>
 {
   \usetheme[secheader]{Boadilla}
@@ -32,6 +33,41 @@
   \setbeamercolor*{palette secondary}{fg=white,bg=thupurple}
   \setbeamercolor*{palette tertiary}{fg=white,bg=thudarkpurple}
   \setbeamercolor*{palette quaternary}{fg=white,bg=black}
+  \setbeamertemplate{itemize item}{\raise1.25pt\hbox{\tikz\draw[fill=fg] (0,0) circle (.3ex);}}
+  \setbeamertemplate{itemize subitem}{\color{fg}\tiny\raise1.25pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
+  \setbeamertemplate{itemize subsubitem}{\raise2.5pt\hbox{\tikz\draw[fill=fg] (0,0) rectangle (.7ex, .2ex);}}
+
+  \setbeamertemplate{section in toc}
+  {
+    \leavevmode\leftskip=2ex%
+    \llap{%
+      \usebeamerfont*{section number projected}%
+      \usebeamercolor{section number projected}%
+      \begin{pgfpicture}{0ex}{0ex}{1ex}{2ex}
+        \color{bg}
+        \pgfpathcircle{\pgfpoint{0pt}{1.2ex}}{1.5ex}
+        \pgfusepath{fill}
+        \pgftext[at={\pgfpoint{0}{4pt}}]{\color{fg}\fontsize{8}{8}\selectfont\inserttocsectionnumber}
+      \end{pgfpicture}\kern1.5ex%
+    }%
+    \inserttocsection\par
+  }
+  
+  \setbeamertemplate{subsection in toc}
+  {
+    \leavevmode\leftskip=2.1em%
+    \llap{%
+      \usebeamerfont*{subsection number projected}%
+      \usebeamercolor{subsection number projected}%
+      {\color{bg}\tiny\raise1.25pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
+    }%
+    \inserttocsubsection\par
+  }
+
+  \setlength\leftmargini{1.1em}
+  \setlength\leftmarginii{1.1em}
+  \setlength\leftmarginiii{1.1em}
+
 }
 
 \usepackage{mflogo} % for \MF, \MP
@@ -50,7 +86,7 @@
 \usepackage{pst-node}
 \usepackage{hyperxmp}
 \hypersetup{
-pdfauthor={Alick Zhao},
+pdfauthor={Justin Wong, Alick Zhao},
 pdfcopyright={Copyright (C) 2015 by Alick Zhao.
 Licensed under CC-BY-SA 4.0. Some rights reserved.},
 pdflicenseurl={http://creativecommons.org/licenses/by-sa/4.0/},
@@ -105,18 +141,18 @@ ItalicFont={KaiTi}]{SimSun}
 \title
 {如何使用 \LaTeX 排版论文}
 
-\author[alick] % (optional, use only with lots of authors)
-{赵涛\\ \texttt{alick9188@gmail.com}}
+\author[汪彧之] % (optional, use only with lots of authors)
+{汪彧之\\ \texttt{justin.w.xd@gmail.com}}
 
-\institute[GitHub] % (optional, but mostly needed)
+\institute[TUNA] % (optional, but mostly needed)
 {
-  清华大学电子系网络融合实验室
+  清华大学 TUNA 协会
 }
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
 
 \date[图书馆专题培训讲座] % (optional)
-{2015年4月23日}
+{2015 年 11 月 23 日}
 
 \subject{LaTeX, paper, ThuThesis}
 
@@ -1098,4 +1134,5 @@ proof & corollary & example & exercise &\\
 \end{frame}
 
 \end{document}
+
 %%% vim: set sw=2 isk+=\: et tw=80 cc=+1 formatoptions+=mM:
