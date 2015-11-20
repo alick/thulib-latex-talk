@@ -1,0 +1,214 @@
+\section{学术论文排版}
+\subsection{论文模板使用}
+
+\begin{frame}{模板是什么？}
+  \begin{itemize}
+    \item 模板
+      \begin{itemize}
+        \item 已经设计好的格式框架
+        \item 好的模板：使用户专注于内容
+        \item 不应将时间花费在调整框架上
+      \end{itemize}
+    \item 再提 Office 和 Word
+      \begin{itemize}
+        \item 很少有人会有意识地在 Word 中使用模板
+        \item 定义自己的标题？定义自己的列表？定义自己的段落样式？
+        \item 自动化，还是手工调？
+        \item 经常被折腾的精疲力竭
+        \item 写论文成了学习 Word，大量不必要的精力消耗
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{论文排版}
+  \begin{itemize}
+    \item 获取模板
+      \begin{itemize}
+        \item 随发行版自带、手动网络下载
+        \item 模板文档类 \texttt{.cls} 文件
+        \item 示例 \texttt{.tex} 文件
+      \end{itemize}
+    \item 编辑 \texttt{.tex} 文件：添加用户内容
+    \item 编译：生成 PDF 文档
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{论文排版举例}
+  \begin{exampleblock}{IEEE 期刊论文}
+    \begin{itemize}
+      \item 获取模板：已随发行版自带
+        \begin{itemize}
+          \item 在安装目录 \lstinline|<prefix>\texlive\2014\|
+            下搜索 \lstinline|bare_jrnl.tex|
+        \end{itemize}
+      \item 编辑 \texttt{.tex} 文件
+        \begin{itemize}
+          \item 打开 \lstinline|bare_jrnl.tex|，另存到个人论文存放的文件夹
+          \item 英文模板：不支持中文
+        \end{itemize}
+      \item 编译
+        \begin{itemize}
+          \item 英文文献：XeLaTeX、PDFLaTeX 编译均可
+        \end{itemize}
+    \end{itemize}
+  \end{exampleblock}
+\end{frame}
+
+\subsection{\LaTeX{}常用命令}
+
+\begin{frame}[fragile]{\LaTeX{}命令}
+  \framesubtitle{\emph{宏} (Macro)、或者\emph{控制序列} (control sequence)}
+\begin{itemize}
+\item 简单命令
+  \begin{itemize}
+    \item \verb|\命令|\hspace{2em}
+    \verb|{\songti 中国人民解放军}| ~$\Rightarrow$ {\songti 中国人民解放军}
+  \item \verb|\命令[可选参数]{必选参数}|\\
+\verb|section[精简标题]{这个题目实在太长了放到目录里面不太好看}|\\
+$\Rightarrow$ {\heiti 1.1 \hspace{1em} \songti 这个题目实在太长了放到目录里面不太好看}
+  \end{itemize}
+\item 环境
+  \begin{columns}[c]
+  \begin{column}{0.45\textwidth}
+\begin{lstlisting}[style=latex]
+\begin{equation*}
+  a^2-b^2=(a+b)(a-b)
+\end{equation*}
+\end{lstlisting}
+\end{column}\hspace{1em}
+  \begin{column}{0.45\textwidth}
+$ a^2-b^2=(a+b)(a-b)$
+\end{column}
+  \end{columns}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\LaTeX{} 常用命令}
+  \begin{exampleblock}{命令}
+\centering
+\footnotesize
+  \begin{tabular}{llll}
+    \cmd{chapter} & \cmd{section} & \cmd{subsection} & \cmd{paragraph} \\
+    章 & 节 & 小节 & 带题头段落 \\\hline
+    \cmd{centering} & \cmd{emph} & \cmd{verb} & \cmd{url} \\
+   居中对齐         &  强调      & 原样输出   & 超链接 \\\hline
+  \cmd{footnote} & \cmd{item} & \cmd{caption} & \cmd{includegraphics} \\
+   脚注 & 列表条目 & 标题 & 插入图片 \\\hline
+  \cmd{label} & \cmd{cite} & \cmd{ref} \\
+  标号 & 引用参考文献 & 引用图表公式等\\\hline
+  \end{tabular}
+\end{exampleblock}
+\end{frame}
+\begin{frame}[fragile]{\LaTeX{} 常用命令}
+\begin{exampleblock}{环境}
+\centering
+\footnotesize
+\begin{tabular}{lll}
+  \env{table} & \env{figure} & \env{equation}\\
+  表格 & 图片 & 公式 \\\hline
+  \env{itemize} & \env{enumerate} & \env{description}\\
+  无编号列表 & 编号列表 & 描述 \\\hline
+\end{tabular}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{\LaTeX{}命令举例}
+\cmdxmp{chapter}{前言}{\heiti 第 1 章\hspace{1em} 前言}
+\cmdxmp{section[精简标题]}{这个题目实在太长了放到目录里面不太好看}{\heiti 1.1
+  \hspace{1em} 这个题目实在太长了放到目录里面不太好看}
+\cmdxmp{footnote}{我是可爱的脚注}{前方高能\footnote{我是可爱的脚注}}
+\end{frame}
+
+\begin{frame}[fragile]{\LaTeX{} 环境命令举例}
+  \begin{minipage}{0.4\linewidth}
+\begin{lstlisting}[style=latex]
+\begin{itemize}
+  \item 一条
+  \item 次条
+  \item 再条
+\end{itemize}
+\end{lstlisting}
+  \end{minipage}\hspace{1.5cm}
+  \begin{minipage}{0.4\linewidth}
+\begin{itemize}
+  \item 一条
+  \item 次条
+  \item 再条
+\end{itemize}
+  \end{minipage}
+\medskip
+
+  \begin{minipage}{0.4\linewidth}
+\begin{lstlisting}[style=latex]
+\begin{enumerate}
+  \item 一条
+  \item 次条
+  \item 再条
+\end{enumerate}
+\end{lstlisting}
+  \end{minipage}\hspace{1.5cm}
+  \begin{minipage}{0.4\linewidth}
+\begin{enumerate}
+  \item 一条
+  \item 次条
+  \item 再条
+\end{enumerate}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]{自动引用举例}
+  \begin{itemize}
+  \item 给对象命名：图片、表格、公式等\\
+  \verb|\label{name}|
+\item 引用对象\\
+  \verb|\ref{name}|
+  \end{itemize}
+\bigskip
+
+  \begin{minipage}{0.5\linewidth}
+\begin{lstlisting}[style=latex,basicstyle=\tiny]
+图书馆馆徽请参见图~\ref{fig:lib}。
+\begin{figure}
+  \centering
+  \includegraphics[height=0.2\textheight]%
+  {libicon.jpg}
+  \caption{图书馆馆徽。}
+  \label{fig:lib}
+\end{figure}
+\end{lstlisting}
+  \end{minipage}\hfill
+  \begin{minipage}{0.4\linewidth}\centering
+    {\songti 图书馆馆徽请参见图~1。}\\[1em]
+ \includegraphics[height=0.2\textheight]{libicon.jpg}\\
+ {\footnotesize\heiti 图~1. 图书馆馆徽。}
+  \end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]{自动引用举例}
+\begin{minipage}{0.5\linewidth}
+  \begin{lstlisting}[style=latex,basicstyle=\tiny]
+\begin{table}
+   \centering
+   \begin{tabular}{ll}\hline
+     编号 & 含义 \\\hline
+     1    & 第一 \\
+     2    & 第二 \\\hline
+   \end{tabular}
+   \caption{编号与含义。}
+   \label{tab:number}
+\end{table}
+编号与含义请参见表~\ref{tab:number}。
+\end{lstlisting}
+\end{minipage}
+\begin{minipage}{0.4\linewidth}
+\centering\small
+ \begin{tabular}{ll}\hline
+编号 & 含义 \\\hline
+1 & 第一\\
+2  & 第二\\\hline
+\end{tabular}\\[5pt]
+{\small 表~1. 编号与含义}\\[1em]
+\normalsize 编号与含义请参见表~1。
+\end{minipage}
+\end{frame}
+

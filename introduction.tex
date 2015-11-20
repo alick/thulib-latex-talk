@@ -1,0 +1,415 @@
+\section{简介}
+
+\subsection{\TeX 与 \LaTeX}
+
+\begin{frame}[fragile]{\TeX 与 \LaTeX}
+  % TODO: photo of Knuth & Lamport
+  \begin{itemize}
+    \item \TeX: $\tau\varepsilon\chi$ (\textipa{/'tEx/},
+      \textipa{/'tEk/})
+      \begin{itemize}
+         \item 生成精美图书的排版系统
+         \item 最初由 高德纳 (Donald E.~Knuth) 于 1978 年开发
+           %\item 最新版本为 \TeX\ 3.14159265
+         \item 漂亮、美观、稳定、通用
+         \item 尤其擅长数学公式排版
+       \end{itemize}
+    \item \LaTeX\ (\textipa{/'la:tEx/}, \textipa{/'leItEk/})
+      \begin{itemize}
+        \item Leslie Lamport 开发 \LaTeX 降低使用门槛
+        \item 极其丰富的宏包，提供扩展功能
+        \item 广泛用于学术界，期刊会议论文模板
+        \item 大学学位论文模板，如 \ThuThesis
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{和 Word 对比}
+  \begin{table}[h]
+    \centering
+    \rowcolors[]{1}{blue!20}{blue!10}
+    \begin{tabular}{c|c}
+      Word & \LaTeX \\
+      \hline
+      字处理工具 & 专业排版软件 \\
+      容易上手，简单直观 & 容易上手 \\
+      所见即所得 & 所见即所想，所想即所得 \\
+      高级功能不易掌握 & 进阶难，但一般用不到 \\
+      处理长文档需要丰富经验 & 和短文档处理基本无异 \\
+      花费大量时间调格式'' & 无需担心格式，专心作者内容 \\
+      公式排版差强人意 & 尤其擅长公式排版 \\
+      二进制格式，兼容性差 & 文本文件，易读、稳定 \\
+      付费商业许可 & 自由免费使用 \\
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}{\TeX{}排版举例：公式}
+  \begin{exampleblock}{无编号公式}
+  \begin{equation*}
+    \mathcal{F}(\xi)=\int_{-\infty}^{\infty}
+    f(x)\mathrm{e}^{-\mathrm{j}2\pi \xi x}\,\mathrm{d}x
+  \end{equation*}
+  \end{exampleblock}
+  \begin{exampleblock}{多行多列公式}
+    % Taken from Mathmode.tex
+\begin{align}
+	y & =d & z & =1\\
+	y & =cx+d & z & =x+1\\
+	y_{12} & =bx^{2}+cx+d & z & =x^{2}+x+1\nonumber \\
+	y(x) & =ax^{3}+bx^{2}+cx+d & z & =x^{3}+x^{2}+x+1
+\end{align}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{\TeX{}排版举例：公式}
+  \begin{exampleblock}{编号多行公式}
+    % Taken from Mathmode.tex
+  \begin{multline}
+    A=\lim_{n\rightarrow\infty}\Delta x\left(a^{2}+\left(a^{2}+2a\Delta x+\left(\Delta x\right)^{2}\right)\right.\label{eq:reset}\\
+    +\left(a^{2}+2\cdot2a\Delta x+2^{2}\left(\Delta x\right)^{2}\right)\\
+    +\left(a^{2}+2\cdot3a\Delta x+3^{2}\left(\Delta x\right)^{2}\right)\\
+    +\ldots\\
+    \left.+\left(a^{2}+2\cdot(n-1)a\Delta x+(n-1)^{2}\left(\Delta x\right)^{2}\right)\right)\\
+    =\frac{1}{3}\left(b^{3}-a^{3}\right)
+  \end{multline}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{\TeX{}排版举例：图形}
+  % From thuthesis user guide.
+  \begin{minipage}[c]{0.3\linewidth}
+\psset{unit=0.8cm}
+  \begin{pspicture}(-1.75,-3)(3.25,4)
+\psline[linewidth=0.25pt](0,0)(0,4)
+\rput[tl]{0}(0.2,2){$\vec e_z$}
+\rput[tr]{0}(-0.9,1.4){$\vec e$}
+\rput[tl]{0}(2.8,-1.1){$\vec C_{ptm{ext}}$}
+\rput[br]{0}(-0.3,2.1){$\theta$}
+\rput{25}(0,0){%
+  \psframe[fillstyle=solid,fillcolor=lightgray,linewidth=.8pt](-0.1,-3.2)(0.1,0)}
+\rput{25}(0,0){%
+  \psellipse[fillstyle=solid,fillcolor=yellow,linewidth=3pt](0,0)(1.5,0.5)}
+\rput{25}(0,0){%
+  \psframe[fillstyle=solid,fillcolor=lightgray,linewidth=.8pt](-0.1,0)(0.1,3.2)}
+\rput{25}(0,0){\psline[linecolor=red,linewidth=1.5pt]{->}(0,0)(0.,2)}
+\psRotation{0}(0,3.5){$\dot\phi$}
+\psRotation{25}(-1.2,2.6){$\dot\psi$}
+\psline[linecolor=red,linewidth=1.25pt]{->}(0,0)(0,2)
+\psline[linecolor=red,linewidth=1.25pt]{->}(0,0)(3,-1)
+\psline[linecolor=red,linewidth=1.25pt]{->}(0,0)(2.85,-0.95)
+\psarc{->}{2.1}{90}{112.5}
+\rput[bl](.1,.01){C}
+\end{pspicture}
+  \end{minipage}\hspace{1cm}
+\begin{minipage}[t]{0.5\linewidth}
+\psset{unit=0.3cm}
+\begin{pspicture}(1,2)(18,14)
+%\psgrid[gridcolor=lightgray,subgriddiv=0,subgridcolor=lightgray]
+%
+\psline[linewidth=1pt,linecolor=black](6,0.5)(6,14)
+\psline[linewidth=1pt,linecolor=black](1,8.5)(6,7)
+\psline[linewidth=1pt,linecolor=black](1.5,5.5)(11,8.5)
+%
+\rput(17,3){$x$}
+\rput(5.5,13){$y$}
+\rput(10.5,8.75){$z$}
+\rput(11,7.1){$\vec{r}$}
+%
+\psline[linewidth=1.5pt,linecolor=black]{<->}(6,7)(6,11.25)
+\rput(5.35,9.4){$R$}
+\psline[linewidth=1.5pt,linecolor=Green]{->}(6.5,12)(4.75,12)
+\rput(7.5,12.8){ $I d\vec{l}$}
+%
+\psellipse[doubleline=true,doublecolor=yellow,doublesep=3pt,linecolor=blue](6,7)(3,4.5)
+\psline[linewidth=1pt,linecolor=black](6,7)(17.5,3.5)
+\psline[linewidth=1.5pt,linecolor=black]{->}(6,11.38)(11.95,5.225)
+%
+\psarc[linewidth=1.5pt,linecolor=gray](6,8){3.4}{85}{95}
+%
+\psline[linewidth=1.5pt,linecolor=gray]{->}(12,5.15)(12,8.15)
+\psline[linewidth=1.5pt,linecolor=black]{->}(12,5.15)(15,7.25)
+\psline[linewidth=1.5pt,linecolor=gray]{->}(12,5.15)(15,4.25)
+%
+\psline[linewidth=1pt,linecolor=black](12,8.15)(15,7.25)(15,4.25)
+%
+\Cnode*[linecolor=black,radius=0.1cm](12,5.15){a}
+\rput(11.5,4.5){ $P$}
+%
+\rput(12.5,8.9){$dB_y$}
+\rput(14.5,3.4){$dB_x$}
+\rput(15.5,8){ $d \boldmath{\vec{B}}$}
+%
+\psarc[linewidth=1pt]{<->}(12,5){5.5}{133}{161}
+\rput(7.2,8.5){ $\theta$}
+\end{pspicture}
+\medskip
+
+%\hspace{2cm}
+\begin{figure}[h]
+  \centering
+  \includegraphics[height=.33\textheight]{dtmf.pdf}
+\end{figure}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{\TeX{}排版举例：文档}
+  \begin{columns}
+    \begin{column}{.45\textwidth}
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{references.pdf}
+      \end{figure}
+    \end{column}
+    \begin{column}{.45\textwidth}
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{shapepar.pdf}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{\TeX{}排版举例：幻灯片}
+  \begin{columns}
+    \begin{column}{.45\textwidth}
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{slides-powerdot.pdf}
+      \end{figure}
+    \end{column}
+    \begin{column}{.45\textwidth}
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{slides-beamer.pdf}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\subsection{安装}
+
+\begin{frame}{如何安装 \hologo{(La)TeX}？}
+  \begin{itemize}
+    \item \TeX{}发行版(Distro)
+      \begin{itemize}
+        \item \TeX{}实用工具大集合：引擎、宏包、文档等
+        \item 常见\TeX{}发行版：CTeX 套装、\hologo{MiKTeX}、\alert{\TL}
+      \end{itemize}
+    \item \TL
+      \begin{itemize}
+        \item 跨平台：Windows, Linux, Mac OS X (Mac\TeX)
+        \item 每年一个新版本发布，当前 \TL 2014
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{网络安装}
+  \begin{itemize}
+    \item 从 CTAN 镜像下载安装包（.exe 或 .zip 或 .tar.gz 格式）
+（和相应的校验文件，以 .sha256 结尾）
+\begin{itemize} % several mirror url
+  \item 清华镜像 \url{http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/}
+  \item CTeX 镜像 \url{http://ftp.ctex.org/mirrors/CTAN/systems/texlive/tlnet/}
+  \item 更多可见 \url{http://mirror.ctan.org/README.mirrors}
+\end{itemize}
+
+\item 可选步骤：校验安装包
+\begin{lstlisting}
+$ LANG=C sha256sum --check install-tl-unx.tar.gz.sha256
+install-tl-unx.tar.gz: OK
+\end{lstlisting}
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{网络安装}
+  \begin{itemize}
+    \item Windows
+      \begin{itemize}
+        \item 双击下载的安装程序
+        \item 切换默认仓库为国内镜像：加速网络下载
+      \end{itemize}
+    \item Linux
+      \begin{itemize}
+        \item 图形安装界面需要 Perl Tk 模块：\texttt{yum install
+          perl-Tk}
+      \begin{lstlisting}
+sudo mkdir /usr/local/texlive
+sudo chown yourname:yourname /usr/local/texlive
+./install-tl -gui -repository http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/
+      \end{lstlisting}
+      \end{itemize}
+\item 截图\dots
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}[h]
+  \centering
+\includegraphics[scale=0.5]{simple1.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}[h]
+  \centering
+\includegraphics[scale=0.5]{simple2-ustc.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}[h]
+  \centering
+  \includegraphics[height=.25\textheight]{simple3-dir.png}\\
+  \includegraphics[scale=0.4]{simple4.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}
+  \begin{figure}[h]
+  \centering
+\includegraphics[scale=0.5]{simple5-opt.png}
+  \end{figure}
+\end{frame}
+
+% 准备安装
+
+\begin{frame}
+  \begin{figure}[h]
+  \centering
+\includegraphics[scale=0.5]{simple6-preinstall.png}
+  \end{figure}
+\end{frame}
+
+% 安装进行中
+\begin{frame}
+  \begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.5]{simple7-installing.png}
+  \end{figure}
+\end{frame}
+
+% 安装后期
+\begin{frame}
+  \begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.5]{simple8-postinstall.png}
+  \end{figure}
+\end{frame}
+
+% 安装完成
+\begin{frame}
+  \begin{figure}[h]
+  \centering
+  \includegraphics[width=.5\textwidth]{simple9-installed.png}%
+  \hspace{2em}
+  \includegraphics[width=.3\textwidth]{simple10-close.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{网络安装后配置（仅 Linux）}
+\begin{itemize}
+  \item
+    添加环境变量到 \nolinkurl{~/.bash_profile} 文件：
+    \begin{lstlisting}
+export PATH=/usr/local/texlive/2011/bin/x86_64-linux:$PATH
+export MANPATH=/usr/local/texlive/2011/texmf/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2011/texmf/doc/info:$INFOPATH
+    \end{lstlisting}
+
+  \item
+打开 \TeXLive 指南中文版 ``texlive-zh-cn.pdf''，
+关注第 3.4 节
+  \begin{lstlisting}
+texdoc texlive-zh
+  \end{lstlisting}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{网络安装后配置（仅 Linux）}
+  \begin{itemize}
+\item
+\XeTeX\ 系统字体配置
+\begin{lstlisting}
+cp /usr/local/texlive/2011/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
+fc-cache -fsv
+\end{lstlisting}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{编辑器配置}
+  \begin{itemize}
+    \item \TeX{}编辑器
+      \begin{itemize}
+        \item 专用编辑器：TeXworks、WinEdt 等
+        \item 通用编辑器（加 LaTeX 插件）：Vim、Emacs 等
+      \end{itemize}
+  \end{itemize}
+  \begin{exampleblock}{TeXworks 配置}
+    \begin{itemize}
+      \item 菜单：编辑---首选项
+        \begin{itemize}
+          \item 编辑器：打开行号
+          \item 排版：处理工具下方默认 $\Rightarrow$ 选择 XeLaTeX
+        \end{itemize}
+    \end{itemize}
+  \end{exampleblock}
+\end{frame}
+
+\lstdefinestyle{latex}{
+language={[LaTeX]TeX},
+frame=single,
+rulecolor=\color{red!75!green!50!blue},
+fillcolor=\color{red!75!green!50!blue!15},
+escapeinside=``,
+%keywordstyle=\color{red!70},
+basicstyle=\color{DarkBlue},
+}
+
+%\begin{frame}
+  %\frametitle{网络安装后测试}
+  %\framesubtitle{English 测试}
+
+  %\begin{exampleblock}{使用已安装的示例文件}
+    %\begin{itemize}
+      %\item \texttt{latex sample2e.tex \#} .tex $\rightarrow$ .dvi (device independent)
+
+      %\texttt{xdvi sample2e.dvi \#} also try dvipdf sample2e.dvi
+      %\item try \texttt{pdflatex sample2e} directly
+      %\item \texttt{xetex opentype-info.tex \#} test of xetex's OpenType support
+    %\end{itemize}
+
+  %\end{exampleblock}
+%\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{网络安装后测试}
+
+  \begin{itemize}
+    \item 编辑 \texttt{test-chinese.tex} （Windows 下不要用中文文件名；注意
+      \LaTeX{} 文档对大小写敏感。）
+      \begin{center}
+\begin{lstlisting}[style=latex]
+\documentclass{ctexart}
+\begin{document}
+\TeX{}你好！
+\end{document}
+\end{lstlisting}
+      \end{center}
+      \begin{itemize}
+        \item Windows 下缺省使用中易字体
+        \item Linux、Mac OS X 下需要自定义字体（nofonts 选项，参见 ctex 文档）
+      \end{itemize}
+    \item 使用 XeLaTeX 引擎编译，得到 PDF 文档
+      \begin{center}
+      \fbox{\textrm \TeX{}\songti 你好！}
+      \end{center}
+  \end{itemize}
+\end{frame}
