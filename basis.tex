@@ -15,7 +15,7 @@
         \item 定义自己的标题？定义自己的列表？定义自己的段落样式？
         \item 自动化，还是手工调？
         \item 经常被折腾的精疲力竭
-        \item 写论文成了学习 Word，大量不必要的精力消耗
+        \item 学习 \LaTeX{} 能帮助自己更好科学地使用 word
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -38,14 +38,11 @@
     \begin{itemize}
       \item 获取模板：已随发行版自带
         \begin{itemize}
-          \item 在安装目录 \lstinline|<prefix>\texlive\2014\|
-            下搜索 \lstinline|bare_jrnl.tex|
+          \item 在安装目录 \verb|<prefix>\texlive\2015\texmf-dist\doc\latex\IEEEtran|
+            下找到 \verb|bare_jrnl.tex|
+          \item 复制到某个文件夹(比如个人存论文的目录)
         \end{itemize}
-      \item 编辑 \texttt{.tex} 文件
-        \begin{itemize}
-          \item 打开 \lstinline|bare_jrnl.tex|，另存到个人论文存放的文件夹
-          \item 英文模板：不支持中文
-        \end{itemize}
+      \item 编辑 \verb|bare_jrnl.tex| 文件 (英文模板：不支持中文)
       \item 编译
         \begin{itemize}
           \item 英文文献：XeLaTeX、PDFLaTeX 编译均可
@@ -54,7 +51,21 @@
   \end{exampleblock}
 \end{frame}
 
-\subsection{\LaTeX{}常用命令}
+\subsection{\LaTeX{} 排版入门}
+
+\begin{frame}[fragile]{文件结构}
+\begin{minted}{latex}
+\documentclass[a4paper]{article}
+% 文档类型，例如 article，[]内是选项，比如 a4paper 设置为 A4 纸
+% 这里开始是导言区
+\usepackage{graphicx} % 引用宏包
+\graphicspath{{fig/}} % 设置
+% 导言区到此为止
+\begin{document}
+这里开始是正文
+\end{document}
+\end{minted}
+\end{frame}
 
 \begin{frame}[fragile]{\LaTeX{}命令}
   \framesubtitle{\emph{宏} (Macro)、或者\emph{控制序列} (control sequence)}
@@ -70,11 +81,11 @@ $\Rightarrow$ {\heiti 1.1 \hspace{1em} \songti 这个题目实在太长了放到
 \item 环境
   \begin{columns}[c]
   \begin{column}{0.45\textwidth}
-\begin{lstlisting}[style=latex]
+\begin{minted}{latex}
 \begin{equation*}
   a^2-b^2=(a+b)(a-b)
 \end{equation*}
-\end{lstlisting}
+\end{minted}
 \end{column}\hspace{1em}
   \begin{column}{0.45\textwidth}
 $ a^2-b^2=(a+b)(a-b)$
@@ -111,7 +122,7 @@ $ a^2-b^2=(a+b)(a-b)$
 \end{tabular}
 \end{exampleblock}
 \end{frame}
-
+% 
 \begin{frame}{\LaTeX{}命令举例}
 \cmdxmp{chapter}{前言}{\heiti 第 1 章\hspace{1em} 前言}
 \cmdxmp{section[精简标题]}{这个题目实在太长了放到目录里面不太好看}{\heiti 1.1
@@ -121,31 +132,37 @@ $ a^2-b^2=(a+b)(a-b)$
 
 \begin{frame}[fragile]{\LaTeX{} 环境命令举例}
   \begin{minipage}{0.4\linewidth}
-\begin{lstlisting}[style=latex]
+\begin{minted}[fontsize=\small]{latex}
 \begin{itemize}
   \item 一条
   \item 次条
-  \item 再条
+  \item 这一条可以分为 ...
+    \begin{itemize}
+      \item 子一条
+    \end{itemize}
 \end{itemize}
-\end{lstlisting}
+\end{minted}
   \end{minipage}\hspace{1.5cm}
   \begin{minipage}{0.4\linewidth}
 \begin{itemize}
   \item 一条
   \item 次条
-  \item 再条
+  \item 这一条可以分为 ...
+    \begin{itemize}
+      \item 子一条
+    \end{itemize}
 \end{itemize}
   \end{minipage}
 \medskip
 
   \begin{minipage}{0.4\linewidth}
-\begin{lstlisting}[style=latex]
+\begin{minted}[fontsize=\small]{latex}
 \begin{enumerate}
   \item 一条
   \item 次条
   \item 再条
 \end{enumerate}
-\end{lstlisting}
+\end{minted}
   \end{minipage}\hspace{1.5cm}
   \begin{minipage}{0.4\linewidth}
 \begin{enumerate}
@@ -155,8 +172,121 @@ $ a^2-b^2=(a+b)(a-b)$
 \end{enumerate}
   \end{minipage}
 \end{frame}
+% 
 
-\begin{frame}[fragile]{自动引用举例}
+\begin{frame}[fragile]{\LaTeX{} 数学公式}
+
+\begin{columns}
+\begin{column}{.5\textwidth}
+\begin{minted}{latex}
+$V = \frac{4}{3}\pi r^2$
+
+$$V = \frac{4}{3}\pi r^2$$
+
+\begin{equation}
+\label{eq:vsphere}
+V = \frac{4}{3}\pi r^2
+\end{equation}
+\end{minted}
+\end{column}
+
+\begin{column}{.5\textwidth}
+$V = \frac{4}{3}\pi r^2$
+
+$$V = \frac{4}{3}\pi r^2$$
+
+\begin{equation}
+\label{eq:vsphere}
+V = \frac{4}{3}\pi r^2
+\end{equation}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{\LaTeX{} 数学公式}
+\begin{itemize}
+\item 数学公式排版是 \LaTeX{} 的绝对强项
+\item 数学排版需要进入数学模式
+	\begin{itemize}
+	\item 用单个美元符号(\$) 包围起来的内容是 {\bf 行内公式}
+	\item 用两个美元符号(\$\$) 包围起来的是 {\bf 单行公式}
+	\item 使用数学环境，例如 \texttt{equation} 环境内的公式会自动加上编号，
+		\texttt{align} 环境用于多行公式(例如方程组)
+	\end{itemize}
+\item 运行 \texttt{texdoc symbols} 查看符号表
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{层次与目录生成}
+\begin{columns}
+\begin{column}{.5\textwidth}
+
+\begin{minted}{latex}
+\tableofcontents % 这里是目录
+\part{有监督学习}
+\chapter{支持向量机}
+\section{支持向量机简介}
+\subsection{支持向量机的历史}
+\subsubsection{支持向量机的诞生}
+\paragraph{一些趣闻}
+\subparagraph{第一个趣闻}
+\end{minted}
+\end{column}
+\begin{column}{.5\textwidth}
+第一部分\quad 有监督学习\\
+第一章\quad 支持向量机 \\
+1. 支持向量机简介 \\
+1.1 支持向量机的历史 \\
+1.1.1 支持向量机的诞生 \\
+一些趣闻  \\
+第一个趣闻
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{列表与枚举}
+\begin{columns}
+\begin{column}{.5\textwidth}
+
+\begin{minted}{latex}
+\item \LaTeX{} 好处都有啥
+  \begin{description}
+    \item[好用] 体验好才是真的好
+    \item[好看] 强迫症的福音
+    \item[开源] 众人拾柴火焰高
+  \end{description}
+\item 还有呢?
+  \begin{itemize}
+    \item 好处 1
+    \item 好处 2
+  \end{itemize}
+\end{enumerate}
+\end{minted}
+\end{column}
+\begin{column}{.5\textwidth}
+\begin{enumerate}
+\item \LaTeX{} 好处都有啥
+  \begin{description}
+    \item[好用] 体验好才是真的好
+    \item[好看] 治疗强迫症
+    \item[开源] 众人拾柴火焰高
+  \end{description}
+\item 还有呢?
+  \begin{itemize}
+    \item 好处 1
+    \item 好处 2
+  \end{itemize}
+\end{enumerate}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{交叉引用}
   \begin{itemize}
   \item 给对象命名：图片、表格、公式等\\
   \verb|\label{name}|
@@ -166,16 +296,16 @@ $ a^2-b^2=(a+b)(a-b)$
 \bigskip
 
   \begin{minipage}{0.5\linewidth}
-\begin{lstlisting}[style=latex,basicstyle=\tiny]
+\begin{minted}{latex}
 图书馆馆徽请参见图~\ref{fig:lib}。
-\begin{figure}
+\begin{figure}[htbp]
   \centering
   \includegraphics[height=0.2\textheight]%
   {libicon.jpg}
   \caption{图书馆馆徽。}
   \label{fig:lib}
 \end{figure}
-\end{lstlisting}
+\end{minted}
   \end{minipage}\hfill
   \begin{minipage}{0.4\linewidth}\centering
     {\songti 图书馆馆徽请参见图~1。}\\[1em]
@@ -184,31 +314,47 @@ $ a^2-b^2=(a+b)(a-b)$
   \end{minipage}
 \end{frame}
 
-\begin{frame}[fragile]{自动引用举例}
+\begin{frame}[fragile]{交叉引用}
 \begin{minipage}{0.5\linewidth}
-  \begin{lstlisting}[style=latex,basicstyle=\tiny]
-\begin{table}
-   \centering
-   \begin{tabular}{ll}\hline
-     编号 & 含义 \\\hline
-     1    & 第一 \\
-     2    & 第二 \\\hline
-   \end{tabular}
-   \caption{编号与含义。}
+  \begin{minted}{latex}
+\begin{table}[htbp]
+   \caption{编号与含义}
    \label{tab:number}
+   \centering
+   \begin{tabular}{cl}\toprule
+     编号 & 含义 \\\midrule
+     1    & 第一 \\
+     2    & 第二 \\\bottomrule
+   \end{tabular}
 \end{table}
-编号与含义请参见表~\ref{tab:number}。
-\end{lstlisting}
+公式~(\ref{eq:vsphere})中编号与含义
+请参见表~\ref{tab:number}。
+\end{minted}
 \end{minipage}
 \begin{minipage}{0.4\linewidth}
-\centering\small
- \begin{tabular}{ll}\hline
-编号 & 含义 \\\hline
+\centering
+{\small 表~1. 编号与含义}\\[2pt]
+ \begin{tabular}{cl}\toprule
+编号 & 含义 \\\midrule
 1 & 第一\\
-2  & 第二\\\hline
+2  & 第二\\\bottomrule
 \end{tabular}\\[5pt]
-{\small 表~1. 编号与含义}\\[1em]
-\normalsize 编号与含义请参见表~1。
+
+\normalsize 公式~(\ref{eq:vsphere})编号与含义请参见表~1。
 \end{minipage}
 \end{frame}
 
+\begin{frame}[fragile]{浮动体}
+\begin{itemize}
+\item 初学者最``捉摸不透''的特性之一
+\item 图片和表格有时会很大，在插入的位置不一定放得下，因此需要浮动调整
+\item 避免在文中使用「下图」「上图」的说法，而是使用图表的编号，例如 \verb|图~\ref{fig:fig1}| 。
+\item \verb|\begin{figure}[<位置>] 图片 \end{figure}|
+\begin{itemize}
+\item 位置参数指定浮动体摆放的偏好
+\item \verb|h| 当前位置(here), \verb|t| 顶部(top), \verb|b| 底部(bottom), \verb|p| 单独成页(p)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%%% vim: set ts=2 sts=2 sw=2 isk+=\: et tw=80 cc=+1 formatoptions+=mM:

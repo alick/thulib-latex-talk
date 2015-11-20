@@ -65,16 +65,17 @@
     \inserttocsubsection\par
   }
 
-  \setlength\leftmargini{1.1em}
-  \setlength\leftmarginii{1.1em}
-  \setlength\leftmarginiii{1.1em}
+  \setlength\leftmargini{1.4em}
+  \setlength\leftmarginii{1.4em}
+  \setlength\leftmarginiii{1.4em}
 
 }
 
 \usepackage{mflogo} % for \MF, \MP
 \usepackage{graphicx}
 \graphicspath{{fig/}}
-\usepackage{listings}
+\usepackage{minted}
+\usepackage{verbments}
 \usepackage{xspace}
 \usepackage{amsmath}
 \usepackage{calligra}
@@ -86,6 +87,8 @@
 \usepackage{pstricks}
 \usepackage{pst-node}
 \usepackage{hyperxmp}
+\usepackage{booktabs}
+\usepackage[normalem]{ulem}
 \hypersetup{
 pdfauthor={Justin Wong, Alick Zhao},
 pdfcopyright={Copyright (C) 2015 by Alick Zhao.
@@ -172,12 +175,13 @@ ItalicFont={KaiTi}]{SimSun}
 
 %\beamerdefaultoverlayspecification{<+->}
 
-\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
 \hypersetup{
 %pdfpagemode=FullScreen,
 }
 
 \logo{\includegraphics[height=.15\textheight]{libicon.jpg}}
+
+% \includeonly{introduction}
 
 \begin{document}
 
@@ -210,7 +214,7 @@ ItalicFont={KaiTi}]{SimSun}
 
 \begin{frame}
   \begin{itemize}
-    \item 本幻灯片：\url{https://github.com/alick/thulib-latex-talk}
+    \item 本幻灯片：\url{https://github.com/tuna/thulib-latex-talk}
     \item 本幻灯片基于：
       \begin{itemize}
         \item \url{http://github.com/alick/fad-texlive-talk}
@@ -226,6 +230,8 @@ ItalicFont={KaiTi}]{SimSun}
       \url{https://alick.fedorapeople.org/fudcon-apac-2014/latex-tips.pdf} \\
       （例如：\LaTeX{} 中引号的正确输入姿势）
     \item Linux 用户：\url{https://github.com/alick/fad-texlive-talk}
+    \item 网站推荐: http://www.latexstudio.net/
+    \item 知乎专栏: http://zhuanlan.zhihu.com/LaTeX
     \item \ThuThesis{}使用向导 v3.0 （薛瑞尼）
     \item \LaTeX{}杂谈（刘海洋）
     \item 《\LaTeX{}入门》（刘海洋）
@@ -244,4 +250,4 @@ ItalicFont={KaiTi}]{SimSun}
 
 \end{document}
 
-%%% vim: set sw=2 isk+=\: et tw=80 cc=+1 formatoptions+=mM:
+%%% vim: set ts=2 sts=2 sw=2 isk+=\: et tw=80 cc=+1 formatoptions+=mM:

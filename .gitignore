@@ -33,3 +33,6 @@
 
 *.fls
 *.fdb_latexmk
+_minted-latex-talk/
+*.pyg.lst
+*.synctex.gz
