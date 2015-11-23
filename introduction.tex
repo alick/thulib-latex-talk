@@ -313,6 +313,9 @@ sudo chown yourname:yourname /usr/local/texlive
     \hspace{2em}
     \includegraphics[width=.3\textwidth]{simple10-close.png}
   \end{figure}
+  
+  \centering Windows 上安装过程比较慢，尤其是最后的生成索引阶段，请耐心等待
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -332,14 +335,28 @@ export INFOPATH=/usr/local/texlive/2015/texmf/doc/info:$INFOPATH
       \begin{minted}{bash}
 texdoc texlive-zh
     \end{minted}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{网络安装后配置（仅 Linux）}
+  \begin{itemize}
   \item
     \XeTeX\ 系统字体配置
-    \begin{minted}[fontsize=\small]{bash}
+    \begin{minted}[fontsize=\footnotesize]{bash}
 cp /usr/local/texlive/2015/texmf-var/fonts/conf/texlive-fontconfig.conf \
   /etc/fonts/conf.d/09-texlive.conf
 fc-cache -fsv
     \end{minted}
-
+  \item 让系统的包管理器知道 TeX Live 已经装过了，所以安装一个 dummy package
+    \begin{itemize}
+      \item Arch Linux 用户装 AUR 里的 \verb|texlive-dummy|
+      \item Debian/Ubuntu 用户参照手册做一个包即可 
+        \url{https://www.tug.org/texlive/debian.html\#vanilla}
+      \item Feodra 用户可以在
+        \url{https://copr.fedoraproject.org/coprs/fatka/texlive-dummy/} 下载
+    \end{itemize}
+  \item 教程可参考: \url{http://zhuanlan.zhihu.com/LaTeX/20069414}
   \end{itemize}
 \end{frame}
 
@@ -347,8 +364,8 @@ fc-cache -fsv
   \begin{itemize}
     \item \TeX{}编辑器
       \begin{itemize}
-        \item 专用编辑器：TeXworks、\alert{TeXstudio}, TeXmaker 等
-        \item 通用编辑器（加 LaTeX 插件）：Vim、Emacs、Sublime、Atom 等
+        \item 专用编辑器：TeXworks,\alert{TeXstudio}, TeXmaker 等
+        \item 通用编辑器（加 LaTeX 插件）：Vim, Emacs, Sublime, Atom 等
       \end{itemize}
   \end{itemize}
   \begin{exampleblock}{TeXStudio 配置}
