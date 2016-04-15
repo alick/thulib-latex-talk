@@ -6,8 +6,8 @@
   \begin{itemize}
   \item 最早：王磊~(2004.4)
   \item 2005 年：薛瑞尼
-  \item 最新正式版：4.8.1 (2014-12-09)
-  \item 最近更新：2015/11/16
+  \item 最新正式版：5.3.1 (2016-03-20)
+  \item 最近更新：2016/03/25
   \item 全面支持本科、硕士、博士、博士后论文格式
   \end{itemize}
   \begin{figure}[htbp]
@@ -22,25 +22,29 @@
 \begin{frame}{安装\ThuThesis}
 
 \begin{itemize}
-	\item<1-2> \TL 已经带了，一般不用特地装
-	\item<2> 但是每年都会更新，还是装最新的开发版吧……
+	\item \TL 已经带了，一般不用特地装
+    \item 也可以到 CTAN 自行下载
+	\item 但是每年都会更新，有时需要装最新开发版……
 \end{itemize}
 	
 
 \end{frame}
 
 \begin{frame}{安装\ThuThesis}
-  \framesubtitle{以开发版本为例}
       \begin{columns}
         \begin{column}{.7\textwidth}
   \begin{itemize}
-    \item 下载最新版
+    \item 下载最新开发版
       \begin{itemize}
         \item \url{https://github.com/xueruini/thuthesis}
         \item 右边栏
           \href{https://github.com/xueruini/thuthesis/archive/master.zip}%
           {Download ZIP} 按钮
         %\item Git 用户还可以直接克隆仓库
+      \end{itemize}
+    \item 下载最新正式版
+      \begin{itemize}
+        \item \url{http://mirrors.ctan.org/macros/latex/contrib/thuthesis.zip}
       \end{itemize}
   \end{itemize}
         \end{column}
@@ -69,23 +73,23 @@
 \begin{frame}[fragile]{论文选项}
 \begin{description}
 \item[bachelor] 我要写本科论文
-  \begin{minted}{latex}
+  \begin{lstlisting}[basicstyle=\ttfamily]
 \documentclass[bachelor]{thuthesis}
-  \end{minted}
+  \end{lstlisting}
 \item[master] 我要写硕士论文
-  \begin{minted}{latex}
+  \begin{lstlisting}[basicstyle=\ttfamily]
 \documentclass[master]{thuthesis}
-  \end{minted}
+  \end{lstlisting}
 \item[doctor] 我要写博士论文
-  \begin{minted}{latex}
+  \begin{lstlisting}[basicstyle=\ttfamily]
 \documentclass[doctor]{thuthesis}
-  \end{minted}
+  \end{lstlisting}
 \item[secret] 论文有保密要求
-  \begin{minted}{latex}
+  \begin{lstlisting}[basicstyle=\ttfamily]
 \documentclass[doctor, secret]{thuthesis}
 \secretlevel{机密}
 \secretyear{2010}
-  \end{minted}
+  \end{lstlisting}
 \end{description}
 \end{frame}
 
@@ -137,13 +141,13 @@ proof & corollary & example & exercise &\\
     \item 学校要求两种引用方式：
       \begin{itemize}
         \item 上标模式：如``在许多文献\textsuperscript{[12,13]}中……''
-        \begin{minted}{latex}
+        \begin{lstlisting}[basicstyle=\ttfamily]
   \cite{key12, key13}
-        \end{minted}
+        \end{lstlisting}
       \item 正文模式：如``文献~[14] 证明了……''
-        \begin{minted}{latex}
+        \begin{lstlisting}[basicstyle=\ttfamily]
   \onlinecite{key14}
-        \end{minted}
+        \end{lstlisting}
       \end{itemize}
     \end{itemize}
 \end{frame}

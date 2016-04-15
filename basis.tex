@@ -54,7 +54,8 @@
 \subsection{\LaTeX{} 排版入门}
 
 \begin{frame}[fragile]{文件结构}
-\begin{minted}{latex}
+  \lstset{language=[LaTeX]TeX}
+  \begin{lstlisting}[basicstyle=\ttfamily]
 \documentclass[a4paper]{article}
 % 文档类型，例如 article，[]内是选项，比如 a4paper 设置为 A4 纸
 % 这里开始是导言区
@@ -64,7 +65,7 @@
 \begin{document}
 这里开始是正文
 \end{document}
-\end{minted}
+  \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]{\LaTeX{}命令}
@@ -81,11 +82,11 @@ $\Rightarrow$ {\heiti 1.1 \hspace{1em} \songti 这个题目实在太长了放到
 \item 环境
   \begin{columns}[c]
   \begin{column}{0.45\textwidth}
-\begin{minted}{latex}
+    \begin{lstlisting}[basicstyle=\ttfamily]
 \begin{equation*}
   a^2-b^2=(a+b)(a-b)
 \end{equation*}
-\end{minted}
+\end{lstlisting}
 \end{column}\hspace{1em}
   \begin{column}{0.45\textwidth}
 $ a^2-b^2=(a+b)(a-b)$
@@ -132,7 +133,7 @@ $ a^2-b^2=(a+b)(a-b)$
 
 \begin{frame}[fragile]{\LaTeX{} 环境命令举例}
   \begin{minipage}{0.4\linewidth}
-\begin{minted}[fontsize=\small]{latex}
+    \begin{lstlisting}[basicstyle=\ttfamily\small]
 \begin{itemize}
   \item 一条
   \item 次条
@@ -141,7 +142,7 @@ $ a^2-b^2=(a+b)(a-b)$
       \item 子一条
     \end{itemize}
 \end{itemize}
-\end{minted}
+\end{lstlisting}
   \end{minipage}\hspace{1.5cm}
   \begin{minipage}{0.4\linewidth}
 \begin{itemize}
@@ -156,13 +157,13 @@ $ a^2-b^2=(a+b)(a-b)$
 \medskip
 
   \begin{minipage}{0.4\linewidth}
-\begin{minted}[fontsize=\small]{latex}
+\begin{lstlisting}
 \begin{enumerate}
   \item 一条
   \item 次条
   \item 再条
 \end{enumerate}
-\end{minted}
+\end{lstlisting}
   \end{minipage}\hspace{1.5cm}
   \begin{minipage}{0.4\linewidth}
 \begin{enumerate}
@@ -178,7 +179,7 @@ $ a^2-b^2=(a+b)(a-b)$
 
 \begin{columns}
 \begin{column}{.5\textwidth}
-\begin{minted}{latex}
+\begin{lstlisting}[basicstyle=\ttfamily\small]
 $V = \frac{4}{3}\pi r^2$
 
 $$V = \frac{4}{3}\pi r^2$$
@@ -187,7 +188,7 @@ $$V = \frac{4}{3}\pi r^2$$
 \label{eq:vsphere}
 V = \frac{4}{3}\pi r^2
 \end{equation}
-\end{minted}
+\end{lstlisting}
 \end{column}
 
 \begin{column}{.5\textwidth}
@@ -220,9 +221,9 @@ V = \frac{4}{3}\pi r^2
 
 \begin{frame}[fragile]{层次与目录生成}
 \begin{columns}
-\begin{column}{.5\textwidth}
+\begin{column}{.6\textwidth}
 
-\begin{minted}{latex}
+\begin{lstlisting}[basicstyle=\ttfamily\small]
 \tableofcontents % 这里是目录
 \part{有监督学习}
 \chapter{支持向量机}
@@ -231,9 +232,9 @@ V = \frac{4}{3}\pi r^2
 \subsubsection{支持向量机的诞生}
 \paragraph{一些趣闻}
 \subparagraph{第一个趣闻}
-\end{minted}
+\end{lstlisting}
 \end{column}
-\begin{column}{.5\textwidth}
+\begin{column}{.4\textwidth}
 第一部分\quad 有监督学习\\
 第一章\quad 支持向量机 \\
 1. 支持向量机简介 \\
@@ -249,9 +250,9 @@ V = \frac{4}{3}\pi r^2
 
 \begin{frame}[fragile]{列表与枚举}
 \begin{columns}
-\begin{column}{.5\textwidth}
+\begin{column}{.6\textwidth}
 
-\begin{minted}{latex}
+  \begin{lstlisting}[basicstyle=\ttfamily\small]
 \item \LaTeX{} 好处都有啥
   \begin{description}
     \item[好用] 体验好才是真的好
@@ -264,9 +265,10 @@ V = \frac{4}{3}\pi r^2
     \item 好处 2
   \end{itemize}
 \end{enumerate}
-\end{minted}
+\end{lstlisting}
 \end{column}
-\begin{column}{.5\textwidth}
+\begin{column}{.4\textwidth}
+{\small
 \begin{enumerate}
 \item \LaTeX{} 好处都有啥
   \begin{description}
@@ -280,6 +282,7 @@ V = \frac{4}{3}\pi r^2
     \item 好处 2
   \end{itemize}
 \end{enumerate}
+}
 \end{column}
 \end{columns}
 
@@ -295,53 +298,56 @@ V = \frac{4}{3}\pi r^2
   \end{itemize}
 \bigskip
 
-  \begin{minipage}{0.5\linewidth}
-\begin{minted}{latex}
+  \begin{minipage}{0.7\linewidth}
+    \begin{lstlisting}
 图书馆馆徽请参见图~\ref{fig:lib}。
 \begin{figure}[htbp]
   \centering
-  \includegraphics[height=0.2\textheight]%
-  {libicon.jpg}
+  \includegraphics[height=.2\textheight]%
+  {libicon.pdf}
   \caption{图书馆馆徽。}
   \label{fig:lib}
 \end{figure}
-\end{minted}
+\end{lstlisting}
   \end{minipage}\hfill
-  \begin{minipage}{0.4\linewidth}\centering
+  \begin{minipage}{0.3\linewidth}\centering
     {\songti 图书馆馆徽请参见图~1。}\\[1em]
- \includegraphics[height=0.2\textheight]{libicon.jpg}\\
+ \includegraphics[height=0.2\textheight]{libicon.pdf}\\
  {\footnotesize\heiti 图~1. 图书馆馆徽。}
   \end{minipage}
 \end{frame}
 
 \begin{frame}[fragile]{交叉引用}
-\begin{minipage}{0.5\linewidth}
-  \begin{minted}{latex}
+  \begin{columns}
+  \column{.6\textwidth}
+  \begin{lstlisting}
 \begin{table}[htbp]
    \caption{编号与含义}
    \label{tab:number}
    \centering
-   \begin{tabular}{cl}\toprule
-     编号 & 含义 \\\midrule
+   \begin{tabular}{cl}
+     \toprule
+     编号 & 含义 \\
+     \midrule
      1    & 第一 \\
-     2    & 第二 \\\bottomrule
+     2    & 第二 \\
+     \bottomrule
    \end{tabular}
 \end{table}
-公式~(\ref{eq:vsphere})中编号与含义
+公式~(\ref{eq:vsphere}) 中编号与含义
 请参见表~\ref{tab:number}。
-\end{minted}
-\end{minipage}
-\begin{minipage}{0.4\linewidth}
-\centering
+\end{lstlisting}
+\column{.4\textwidth}
+\centering 
 {\small 表~1. 编号与含义}\\[2pt]
- \begin{tabular}{cl}\toprule
+\begin{tabular}{cl}\toprule
 编号 & 含义 \\\midrule
 1 & 第一\\
 2  & 第二\\\bottomrule
 \end{tabular}\\[5pt]
 
 \normalsize 公式~(\ref{eq:vsphere})编号与含义请参见表~1。
-\end{minipage}
+  \end{columns}
 \end{frame}
 
 \begin{frame}[fragile]{浮动体}

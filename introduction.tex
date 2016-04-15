@@ -4,30 +4,40 @@
 
 \begin{frame}[fragile]{\TeX 与 \LaTeX}
   % TODO: photo of Knuth & Lamport
-  \begin{itemize}
-    \item \TeX: $\tau\varepsilon\chi$ (\textipa{/'tEx/},
-      \textipa{/'tEk/})
-      \begin{itemize}
-        \item 生成精美图书的排版系统
-        \item 最初由 高德纳 (Donald E.~Knuth) 于 1978 年开发
-        \item 最新版本为 \TeX\ 3.14159265 
-        \item 漂亮、美观、稳定、通用
-        \item 尤其擅长数学公式排版
-      \end{itemize}
-    \item \LaTeX\ (\textipa{/'la:tEx/}, \textipa{/'leItEk/})
-      \begin{itemize}
-        \item Leslie Lamport 开发 \LaTeX 降低使用门槛
-        \item 极其丰富的宏包，提供扩展功能
-        \item 广泛用于学术界，期刊会议论文模板
-        \item 大学学位论文模板，如 \ThuThesis
-      \end{itemize}
-  \end{itemize}
+  \begin{columns}[T]
+    \column{.8\textwidth}
+    \begin{itemize}
+      \item \TeX: $\tau\varepsilon\chi$ (\textipa{/'tEx/},
+        \textipa{/'tEk/})
+        \begin{itemize}
+          \item 生成精美图书的排版系统
+          \item 最初由 高德纳 (Donald E.~Knuth) 于 1978 年开发
+          \item 最新版本为 \TeX\ 3.14159265 
+          \item 漂亮、美观、稳定、通用
+          \item 尤其擅长数学公式排版
+        \end{itemize}
+      \item \LaTeX\ (\textipa{/'la:tEx/}, \textipa{/'leItEk/})
+        \begin{itemize}
+          \item Leslie Lamport 开发 
+          \item 在 \TeX 的基础上的宏包， 降低使用门槛
+          \item 极其丰富的宏包，提供扩展功能
+          \item 广泛用于学术界，期刊会议论文模板
+          \item 大学学位论文模板，如 \ThuThesis
+        \end{itemize}
+    \end{itemize}
+    \column{.2\textwidth}
+    \includegraphics[width=\textwidth]{Knuth.jpg}
+
+    \vspace{5mm}
+    \includegraphics[width=\textwidth]{Lamport.jpg}
+      
+  \end{columns}
 \end{frame}
 
 \begin{frame}{和 Word 对比}
   \begin{table}[h]
     \centering
-    \rowcolors[]{1}{blue!20}{blue!10}
+    \rowcolors[]{1}{primaryL}{primaryL!40}
     \begin{tabular}{c|c}
       Microsoft\textsuperscript{\textregistered}  Word & \LaTeX \\
       \hline
@@ -195,12 +205,20 @@
       \begin{itemize}
         \item \TeX{}实用工具大集合：引擎、宏包、文档等
         \item 常见\TeX{}发行版：
-          \alert{\TL}, \hologo{MiKTeX}, Mac\TeX, \sout{C\TeX 套装}(不推荐)
+          \alert{\TL}, C\TeX, \hologo{MiKTeX}, Mac\TeX
       \end{itemize}
     \item \TL
       \begin{itemize}
         \item 跨平台：Windows, Linux, Mac OS X (Mac\TeX)
         \item 每年一个新版本发布，当前 \TL 2015
+      \end{itemize}
+    \item C\TeX
+      \begin{itemize}
+        \item 中科院吴凌云研究员基于 \hologo{MiKTeX} 开发
+        \item 极大的方便了中文 \TeX 用户
+        \item 2012年之后疏于维护，长久不更新
+        \item 2016年由Harry Chen和Liam Huang接手继续开发
+        \item 多次跳票，尚未发布正式版
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -211,15 +229,16 @@
     \item 从 CTAN 镜像下载安装包（.exe 或 .zip 或 .tar.gz 格式）
       （和相应的校验文件，以 .sha256 结尾）
       \begin{itemize} % several mirror url
-        \item 清华镜像 \url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/}
+        \item 清华镜像\\
+          {\footnotesize \url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/}}
         \item 更多可见 \url{http://mirror.ctan.org/README.mirrors}
       \end{itemize}
 
     \item 可选步骤：校验安装包
-      \begin{minted}{bash}
+      \begin{lstlisting}[language=tex]
 LANG=C sha256sum --check install-tl-unx.tar.gz.sha256
 install-tl-unx.tar.gz: OK
-      \end{minted}
+      \end{lstlisting}
 
   \end{itemize}
 \end{frame}
@@ -238,14 +257,14 @@ install-tl-unx.tar.gz: OK
       \end{itemize}
     \item Linux
       \begin{itemize}
-        \item 图形安装界面需要 Perl Tk 模块：\texttt{yum install
-          perl-Tk}, \texttt{apt-get install perl-tk}
-          \begin{minted}{bash}
+        \item 图形安装界面需要 Perl Tk 模块：
+          \begin{lstlisting}
+yum install perl-Tk 或 apt-get install per-tk
 sudo mkdir /usr/local/texlive
 sudo chown yourname:yourname /usr/local/texlive
 ./install-tl -gui -repository \
-    https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/
-          \end{minted}
+  https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/
+        \end{lstlisting}
       \end{itemize}
 \item 截图\dots
 \end{itemize}
@@ -320,34 +339,45 @@ sudo chown yourname:yourname /usr/local/texlive
   \begin{itemize}
     \item
       添加环境变量到 \nolinkurl{~/.bash_profile} 文件：
-      \begin{minted}[fontsize=\small]{bash}
+      \begin{lstlisting}[language=bash]
 export PATH=/usr/local/texlive/2015/bin/x86_64-linux:$PATH
 export MANPATH=/usr/local/texlive/2015/texmf/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2015/texmf/doc/info:$INFOPATH
-      \end{minted}
-
+      \end{lstlisting}
   \item
     打开 \TeXLive 指南中文版 ``texlive-zh-cn.pdf''，
-    关注第 3.4 节
-      \begin{minted}{bash}
-texdoc texlive-zh
-    \end{minted}
+    关注第 3.4 节\\
+    \texttt{texdoc texlive-zh}
   \item
     \XeTeX\ 系统字体配置
-    \begin{minted}[fontsize=\small]{bash}
+    \begin{lstlisting}[language=bash]
 cp /usr/local/texlive/2015/texmf-var/fonts/conf/texlive-fontconfig.conf \
   /etc/fonts/conf.d/09-texlive.conf
 fc-cache -fsv
-    \end{minted}
-
+    \end{lstlisting}
   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Windows 安装 C\TeX 清华特别版}
+  
+  \begin{itemize}
+    \item C\TeX 2.9.3 尚未发布，开发者为了这次讲座专门发了一个特别版
+    \item 下载地址: {\small\url{https://mirrors.tuna.tsinghua.edu.cn/ctex/}}
+    \item 傻瓜安装，一路 Next 即可
+    \item 有一些小问题，安装到最后会报错，忽略即可
+    \item 安装前会自动卸载旧版本 C\TeX~2.9.2, 大约3--5分钟
+    \item 总安装时间约10--15分钟
+  \end{itemize}
+
+
 \end{frame}
 
 \begin{frame}{编辑器配置}
   \begin{itemize}
     \item \TeX{}编辑器
       \begin{itemize}
-        \item 专用编辑器：TeXworks、\alert{TeXstudio}, TeXmaker 等
+        \item 专用编辑器：TeXworks、\alert{TeXstudio}, TeXmaker, WinEdt 等
         \item 通用编辑器（加 LaTeX 插件）：Vim、Emacs、Sublime、Atom 等
       \end{itemize}
   \end{itemize}
@@ -357,9 +387,17 @@ fc-cache -fsv
         \begin{itemize}
           \item Build：Default Compiler 选择 XeLaTeX
           \item 搜索框输入 Line Number -> Adv. Editor -> 打开行号
-      \end{itemize}
-  \end{itemize}
-\end{exampleblock}
+        \end{itemize}
+    \end{itemize}
+  \end{exampleblock}
+  \begin{exampleblock}{WinEdt 配置}
+    \begin{itemize}
+      \item Options -> Execution Modes
+        \begin{itemize}
+          \item 如果没有Adobe Reader 的话，需要定义pdf阅读器
+        \end{itemize}
+    \end{itemize}
+  \end{exampleblock}
 \end{frame}
 
 %\begin{frame}
@@ -382,16 +420,15 @@ fc-cache -fsv
   \frametitle{网络安装后测试}
 
   \begin{itemize}
-    \item 编辑 \texttt{test-chinese.tex} （Windows 下不要用中文文件名；注意
+    \item 编辑 \texttt{hello.tex} （Windows 下不要用中文文件名；注意
       \LaTeX{} 文档对大小写敏感。）
-      \begin{center}
-        \begin{minted}{latex}
+      \lstset{language=[LaTeX]TeX}
+      \begin{card} \begin{lstlisting}[basicstyle=\ttfamily]
 \documentclass{ctexart}
 \begin{document}
 \TeX{}你好！
 \end{document}
-        \end{minted}
-      \end{center}
+        \end{lstlisting}\end{card}
       \begin{itemize}
         \item Windows 下缺省使用中易字体
         \item Linux、Mac OS X 下需要注意字体（参见 ctex 文档）
