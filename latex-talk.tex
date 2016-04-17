@@ -28,14 +28,7 @@
   \renewcommand{\MaterialIcon}{tuna.pdf}
   \usefonttheme[onlymath]{serif}
   \setbeamercovered{transparent=5}
-  \definecolor{thupurple}{HTML}{93278F}
-  \definecolor{thudarkpurple}{HTML}{5C307D}
-  \definecolor{thulightpurple}{HTML}{BC9BCC}
   \setbeamercolor*{structure}{fg=primaryD}
-  % \setbeamercolor*{palette primary}{fg=black,bg=thulightpurple}
-  % \setbeamercolor*{palette secondary}{fg=white,bg=thupurple}
-  % \setbeamercolor*{palette tertiary}{fg=white,bg=thudarkpurple}
-  % \setbeamercolor*{palette quaternary}{fg=white,bg=black}
   \setbeamertemplate{itemize item}{\raise1.25pt\hbox{\tikz\draw[fill=fg] (0,0) circle (.3ex);}}
   \setbeamertemplate{itemize subitem}{\color{fg}\tiny\raise1.25pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
   \setbeamertemplate{itemize subsubitem}{\raise2.5pt\hbox{\tikz\draw[fill=fg] (0,0) rectangle (.7ex, .2ex);}}
@@ -56,7 +49,7 @@
 \usepackage{calligra}
 \usepackage{cclicenses} % CC symbols
 \usepackage{fontspec}
-\usepackage[UTF8,nofonts]{ctex}
+\usepackage[UTF8]{ctex}
 \usepackage{hologo}
 \usepackage{colortbl}
 \usepackage{pstricks}
@@ -89,17 +82,8 @@ pdflicenseurl={http://creativecommons.org/licenses/by-sa/4.0/},
 \punctstyle{kaiming}
 \renewcommand\CJKfamilydefault{\CJKsfdefault} % for slides
 
-\setCJKmainfont[BoldFont={SimHei}, ItalicFont={KaiTi}]{SimSun}
 \setCJKsansfont{WenQuanYi Micro Hei}
 \setCJKmonofont{WenQuanYi Micro Hei Mono}
-
-\setCJKfamilyfont{zhsong}{SimSun}
-\setCJKfamilyfont{zhhei}{SimHei}
-\setCJKfamilyfont{zhkai}{KaiTi}
-
-\newcommand*{\songti}{\CJKfamily{zhsong}} % 宋体
-\newcommand*{\heiti}{\CJKfamily{zhhei}}   % 黑体
-\newcommand*{\kaishu}{\CJKfamily{zhkai}}  % 楷书
 
 \renewcommand{\TeX}{\hologo{TeX}}
 \renewcommand{\LaTeX}{\hologo{LaTeX}}
@@ -142,10 +126,6 @@ pdflicenseurl={http://creativecommons.org/licenses/by-sa/4.0/},
 \author[汪彧之] % (optional, use only with lots of authors)
 {汪彧之\\ \texttt{justin.w.xd@gmail.com}}
 
-% \institute[TUNA] % (optional, but mostly needed)
-% {
-%   \includegraphics[height=.2\textheight]{tuna.pdf}
-% }
 \institute{电子工程系 博士生 \\ 清华大学 TUNA 协会}
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
@@ -207,7 +187,12 @@ pdflicenseurl={http://creativecommons.org/licenses/by-sa/4.0/},
 
 \begin{frame}
   \begin{itemize}
-    \item 本幻灯片：\url{https://github.com/tuna/thulib-latex-talk}
+    \item 本幻灯片
+      \begin{itemize}
+        \item \url{https://github.com/tuna/thulib-latex-talk}
+        \item \url{https://www.overleaf.com/read/bdynvrzpqmwq}
+        \item Overleaf 版本有只包含第一章
+      \end{itemize}
     \item 本幻灯片基于：
       \begin{itemize}
         \item \url{http://github.com/alick/fad-texlive-talk}
@@ -235,10 +220,6 @@ pdflicenseurl={http://creativecommons.org/licenses/by-sa/4.0/},
   \begin{center}
     {\Huge\calligra Thank you!}
   \end{center}
-  \begin{figure}[htbp]
-    \centering
-    \includegraphics[height=.2\textheight]{url.pdf}
-  \end{figure}
 \end{frame}
 
 \end{document}
