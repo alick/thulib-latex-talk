@@ -12,6 +12,8 @@
         \begin{itemize}
           \item 生成精美图书的排版系统
           \item 最初由 高德纳 (Donald E.~Knuth) 于 1978 年开发
+          \item 发音接近``泰赫''，而非``泰克斯''，
+            Knuth 对此有\stackon[1pt]{强}{\tiny qi{\v a}ng}迫症
           \item 最新版本为 \TeX\ 3.14159265 
           \item 漂亮、美观、稳定、通用
           \item 尤其擅长数学公式排版
@@ -26,9 +28,10 @@
         \end{itemize}
     \end{itemize}
     \column{.2\textwidth}
+    \vspace*{5mm}
     \includegraphics[width=\textwidth]{Knuth.jpg}
 
-    \vspace{5mm}
+    \vspace*{5mm}
     \includegraphics[width=\textwidth]{Lamport.jpg}
       
   \end{columns}
@@ -205,16 +208,16 @@
       \begin{itemize}
         \item \TeX{}实用工具大集合：引擎、宏包、文档等
         \item 常见\TeX{}发行版：
-          \alert{\TL}, C\TeX, \hologo{MiKTeX}, Mac\TeX
+          \alert{\TL}, \CTeX, \MiKTeX, \MacTeX
       \end{itemize}
     \item \TL
       \begin{itemize}
-        \item 跨平台：Windows, Linux, Mac OS X (Mac\TeX)
+        \item 跨平台：Windows, Linux, Mac OS X (\MacTeX)
         \item 每年一个新版本发布，当前 \TL 2015
       \end{itemize}
-    \item C\TeX
+    \item \CTeX
       \begin{itemize}
-        \item 中科院吴凌云研究员基于 \hologo{MiKTeX} 开发
+        \item 中科院吴凌云研究员基于 \MiKTeX 开发
         \item 极大的方便了中文 \TeX 用户
         \item 2012年之后疏于维护，长久不更新
         \item 2016年由Harry Chen和Liam Huang接手继续开发
@@ -259,7 +262,7 @@ install-tl-unx.tar.gz: OK
       \begin{itemize}
         \item 图形安装界面需要 Perl Tk 模块：
           \begin{lstlisting}
-yum install perl-Tk 或 apt-get install per-tk
+yum install perl-Tk 或 apt-get install perl-tk
 sudo mkdir /usr/local/texlive
 sudo chown yourname:yourname /usr/local/texlive
 ./install-tl -gui -repository \
@@ -359,14 +362,14 @@ fc-cache -fsv
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Windows 安装 C\TeX 清华特别版}
+  \frametitle{Windows 安装 \CTeX 清华特别版}
   
   \begin{itemize}
-    \item C\TeX~2.9.3 尚未发布，开发者为了这次讲座专门发了一个特别版
+    \item \CTeX~2.9.3 尚未发布，开发者为了这次讲座专门发了一个特别版
     \item 下载地址: {\small\url{https://mirrors.tuna.tsinghua.edu.cn/ctex/}}
     \item 傻瓜安装，一路 Next 即可
     \item 有一些小问题，安装到最后会报错，忽略即可
-    \item 安装前会自动卸载旧版本 C\TeX~2.9.2, 大约3--5分钟
+    \item 安装前会自动卸载旧版本 \CTeX~2.9.2, 大约3--5分钟
     \item 总安装时间约10--15分钟
   \end{itemize}
 

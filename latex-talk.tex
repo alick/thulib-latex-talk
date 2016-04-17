@@ -43,7 +43,7 @@
   \setlength\leftmargini{1.4em}
   \setlength\leftmarginii{1.4em}
   \setlength\leftmarginiii{1.4em}
-    \setbeamersize{description width=0.24cm}
+  \setbeamersize{description width=0.24cm}
 
 }
 
@@ -64,6 +64,7 @@
 \usepackage{hyperxmp}
 \usepackage{booktabs}
 \usepackage[normalem]{ulem}
+\usepackage{stackengine}
 \hypersetup{
 pdfauthor={Justin Wong, Alick Zhao},
 pdfcopyright={Copyright (C) 2015 by Alick Zhao.
@@ -88,8 +89,7 @@ pdflicenseurl={http://creativecommons.org/licenses/by-sa/4.0/},
 \punctstyle{kaiming}
 \renewcommand\CJKfamilydefault{\CJKsfdefault} % for slides
 
-\setCJKmainfont[BoldFont={SimHei},
-ItalicFont={KaiTi}]{SimSun}
+\setCJKmainfont[BoldFont={SimHei}, ItalicFont={KaiTi}]{SimSun}
 \setCJKsansfont{WenQuanYi Micro Hei}
 \setCJKmonofont{WenQuanYi Micro Hei Mono}
 
@@ -101,9 +101,14 @@ ItalicFont={KaiTi}]{SimSun}
 \newcommand*{\heiti}{\CJKfamily{zhhei}}   % 黑体
 \newcommand*{\kaishu}{\CJKfamily{zhkai}}  % 楷书
 
+\renewcommand{\TeX}{\hologo{TeX}}
+\renewcommand{\LaTeX}{\hologo{LaTeX}}
 \newcommand{\BibTeX}{\hologo{BibTeX}}
 \newcommand{\XeTeX}{\hologo{XeTeX}}
 \newcommand{\pdfTeX}{\hologo{pdfTeX}}
+\renewcommand{\CTeX}{C\TeX}
+\newcommand{\MiKTeX}{\hologo{MiKTeX}}
+\newcommand{\MacTeX}{Mac\hologo{TeX}}
 \newcommand{\beamer}{\textsc{beamer}}
 \def\TeXLive{\TeX{} Live\xspace}
 \let\TL=\TeXLive
@@ -116,6 +121,8 @@ ItalicFont={KaiTi}]{SimSun}
 
 % For debugging.
 % \includeonlyframes{current}
+% \includeonly{introduction}
+
 
 \lstset{
   language=[LaTeX]TeX,
@@ -139,12 +146,12 @@ ItalicFont={KaiTi}]{SimSun}
 % {
 %   \includegraphics[height=.2\textheight]{tuna.pdf}
 % }
-\institute{清华大学 TUNA 协会}
+\institute{电子工程系 博士生 \\ 清华大学 TUNA 协会}
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
 
 \date[图书馆专题培训讲座] % (optional)
-{2016 年 4 月 16 日}
+{2016 年 4 月 19 日}
 
 \subject{LaTeX, paper, ThuThesis}
 
@@ -168,8 +175,6 @@ ItalicFont={KaiTi}]{SimSun}
 }
 
 \logo{\includegraphics[height=.15\textheight]{libicon.pdf}}
-
-% \includeonly{introduction}
 
 \begin{document}
 

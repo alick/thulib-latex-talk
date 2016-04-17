@@ -134,8 +134,11 @@ proof & corollary & example & exercise &\\
   \begin{itemize}
     \item 推荐 \BibTeX
       \begin{itemize}
-        \item 参考文献管理自动化
-        \item bib 文件
+        \item 使用文献管理软件导出 bib 文件
+          \begin{itemize}
+            \item Menderley, NoteExpress
+          \end{itemize}
+        \item 使用 bibtex 生成参考文献列表
         \item bst 参考文献样式文件：\texttt{thubib.bst}
       \end{itemize}
     \item 学校要求两种引用方式：
@@ -146,7 +149,7 @@ proof & corollary & example & exercise &\\
         \end{lstlisting}
       \item 正文模式：如``文献~[14] 证明了……''
         \begin{lstlisting}[basicstyle=\ttfamily]
-  \onlinecite{key14}
+  \inlinecite{key14}
         \end{lstlisting}
       \end{itemize}
     \end{itemize}
@@ -159,7 +162,7 @@ proof & corollary & example & exercise &\\
   \item 矢量图 eps, ps, pdf
     \begin{itemize}
     \item \MP, pstricks, pgf $\ldots$
-    \item Xfig, Dia, Visio, Inkscape $\ldots$
+    \item Xfig, Dia, \alert{Visio}, \alert{Inkscape} $\ldots$
     \end{itemize}
   \item 标量图 png, jpg, tiff $\ldots$
     \begin{itemize}
