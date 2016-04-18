@@ -426,6 +426,34 @@ fc-cache -fsv
   \end{exampleblock}
 \end{frame}
 
+
+\begin{frame}{后期安装宏包}
+  \begin{exampleblock}{很多时候需要自己安装宏包}
+    \vspace*{-3mm}
+    \begin{itemize}
+      \item 发行版没有预装
+      \item 宏包需要更新
+    \end{itemize}
+  \end{exampleblock}
+  \vspace*{-3mm}
+  \begin{exampleblock}{\TL}
+    \vspace*{-3mm}
+    \begin{itemize}
+      \item 开始菜单里找 Tex Live Manage
+      \item 使用 \texttt{tlmgl install <pkgname>}命令
+    \end{itemize}
+  \end{exampleblock}
+  \vspace*{-3mm}
+  \begin{exampleblock}{\CTeX 或 \MiKTeX}
+    \vspace*{-3mm}
+    \begin{itemize}
+      \item 开始菜单里找 CTeX / MiKTeX -> Package Manager
+      \item 在 WinEdt 里 MiKTex Options -> Packages
+      \item 清华宏包仓库被定位到美国去了，注意找一下
+    \end{itemize}
+  \end{exampleblock}
+\end{frame}
+
 \begin{frame}[fragile]
   \frametitle{使用在线协作平台}
   \begin{itemize}
@@ -435,7 +463,10 @@ fc-cache -fsv
       \end{itemize}
     \item 免去安装/升级等一系列烦恼
     \item 可以多人协作
-    \item 支持中文，但需要自己上传字体
+    \item 支持中文，但有时需要自己上传字体
+      \begin{itemize}
+        \item Overleaf 可直接使用ctex宏包
+      \end{itemize}
     \item 容量有一定限制
   \end{itemize}
 \end{frame}
@@ -464,7 +495,8 @@ fc-cache -fsv
       \LaTeX{} 文档对大小写敏感。）
       \lstset{language=[LaTeX]TeX}
       \begin{card} \begin{lstlisting}[basicstyle=\ttfamily]
-\documentclass{ctexart}
+\documentclass{article}
+\usepackage{ctex}  % 加入中文支持
 \begin{document}
 \TeX{}你好！
 \end{document}
