@@ -21,66 +21,34 @@
 % notice.
 
 \usepackage{tikz}
+\graphicspath{{fig/}}
 \mode<presentation>
 {
-  \usetheme[secheader]{Boadilla}
+  \usetheme{material}
+  \renewcommand{\MaterialIcon}{tuna.pdf}
   \usefonttheme[onlymath]{serif}
   \setbeamercovered{transparent=5}
-  \definecolor{thupurple}{HTML}{93278F}
-  \definecolor{thudarkpurple}{HTML}{5C307D}
-  \definecolor{thulightpurple}{HTML}{BC9BCC}
-  \setbeamercolor*{structure}{fg=thupurple}
-  \setbeamercolor*{palette primary}{fg=black,bg=thulightpurple}
-  \setbeamercolor*{palette secondary}{fg=white,bg=thupurple}
-  \setbeamercolor*{palette tertiary}{fg=white,bg=thudarkpurple}
-  \setbeamercolor*{palette quaternary}{fg=white,bg=black}
+  \setbeamercolor*{structure}{fg=primaryD}
   \setbeamertemplate{itemize item}{\raise1.25pt\hbox{\tikz\draw[fill=fg] (0,0) circle (.3ex);}}
   \setbeamertemplate{itemize subitem}{\color{fg}\tiny\raise1.25pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
   \setbeamertemplate{itemize subsubitem}{\raise2.5pt\hbox{\tikz\draw[fill=fg] (0,0) rectangle (.7ex, .2ex);}}
 
-  \setbeamertemplate{section in toc}
-  {
-    \leavevmode\leftskip=2ex%
-    \llap{%
-      \usebeamerfont*{section number projected}%
-      \usebeamercolor{section number projected}%
-      \begin{pgfpicture}{0ex}{0ex}{1ex}{2ex}
-        \color{bg}
-        \pgfpathcircle{\pgfpoint{0pt}{1.2ex}}{1.5ex}
-        \pgfusepath{fill}
-        \pgftext[at={\pgfpoint{0}{4pt}}]{\color{fg}\fontsize{8}{8}\selectfont\inserttocsectionnumber}
-      \end{pgfpicture}\kern1.5ex%
-    }%
-    \inserttocsection\par
-  }
-  
-  \setbeamertemplate{subsection in toc}
-  {
-    \leavevmode\leftskip=2.1em%
-    \llap{%
-      \usebeamerfont*{subsection number projected}%
-      \usebeamercolor{subsection number projected}%
-      {\color{bg}\tiny\raise1.25pt\hbox{\donotcoloroutermaths$\blacktriangleright$}}
-    }%
-    \inserttocsubsection\par
-  }
-
   \setlength\leftmargini{1.4em}
   \setlength\leftmarginii{1.4em}
   \setlength\leftmarginiii{1.4em}
+  \setbeamersize{description width=0.24cm}
 
 }
 
 \usepackage{mflogo} % for \MF, \MP
 \usepackage{graphicx}
-\graphicspath{{fig/}}
-\usepackage{minted}
+\usepackage{listingsutf8}
 \usepackage{xspace}
 \usepackage{amsmath}
 \usepackage{calligra}
 \usepackage{cclicenses} % CC symbols
 \usepackage{fontspec}
-\usepackage[UTF8,nofonts]{ctex}
+\usepackage[UTF8]{ctex}
 \usepackage{hologo}
 \usepackage{colortbl}
 \usepackage{pstricks}
@@ -88,6 +56,7 @@
 \usepackage{hyperxmp}
 \usepackage{booktabs}
 \usepackage[normalem]{ulem}
+\usepackage{stackengine}
 \hypersetup{
 pdfauthor={Justin Wong, Alick Zhao},
 pdfcopyright={Copyright (C) 2015 by Alick Zhao.
@@ -112,22 +81,17 @@ pdflicenseurl={http://creativecommons.org/licenses/by-sa/4.0/},
 \punctstyle{kaiming}
 \renewcommand\CJKfamilydefault{\CJKsfdefault} % for slides
 
-\setCJKmainfont[BoldFont={SimHei},
-ItalicFont={KaiTi}]{SimSun}
 \setCJKsansfont{WenQuanYi Micro Hei}
 \setCJKmonofont{WenQuanYi Micro Hei Mono}
 
-\setCJKfamilyfont{zhsong}{SimSun}
-\setCJKfamilyfont{zhhei}{SimHei}
-\setCJKfamilyfont{zhkai}{KaiTi}
-
-\newcommand*{\songti}{\CJKfamily{zhsong}} % 宋体
-\newcommand*{\heiti}{\CJKfamily{zhhei}}   % 黑体
-\newcommand*{\kaishu}{\CJKfamily{zhkai}}  % 楷书
-
+\renewcommand{\TeX}{\hologo{TeX}}
+\renewcommand{\LaTeX}{\hologo{LaTeX}}
 \newcommand{\BibTeX}{\hologo{BibTeX}}
 \newcommand{\XeTeX}{\hologo{XeTeX}}
 \newcommand{\pdfTeX}{\hologo{pdfTeX}}
+\renewcommand{\CTeX}{C\TeX}
+\newcommand{\MiKTeX}{\hologo{MiKTeX}}
+\newcommand{\MacTeX}{Mac\hologo{TeX}}
 \newcommand{\beamer}{\textsc{beamer}}
 \def\TeXLive{\TeX{} Live\xspace}
 \let\TL=\TeXLive
@@ -139,7 +103,21 @@ ItalicFont={KaiTi}]{SimSun}
 \def\cmdxmp#1#2#3{\small{\texttt{\color{DarkBlue}$\backslash$#1}\{#2\}\hspace{1em}\\ $\Rightarrow$\hspace{1em} {#3}\par\vskip1em}}
 
 % For debugging.
-%\includeonlyframes{current}
+% \includeonlyframes{current}
+% \includeonly{introduction}
+
+
+\lstset{
+  language=[LaTeX]TeX,
+	basicstyle=\ttfamily\footnotesize,
+	tabsize=2,
+  keywordstyle=\bfseries\ttfamily\color{primaryD},
+	commentstyle=\sl\ttfamily\color[RGB]{100,100,100},
+	stringstyle=\ttfamily\color[RGB]{50,50,50},
+	extendedchars=true,
+	breaklines=true,
+}
+
 
 \title
 {如何使用 \LaTeX 排版论文}
@@ -147,15 +125,12 @@ ItalicFont={KaiTi}]{SimSun}
 \author[汪彧之] % (optional, use only with lots of authors)
 {汪彧之\\ \texttt{justin.w.xd@gmail.com}}
 
-\institute[TUNA] % (optional, but mostly needed)
-{
-  \includegraphics[height=.2\textheight]{tuna.pdf}
-}
+\institute{电子工程系 博士生 \\ 清华大学 TUNA 协会}
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
 
 \date[图书馆专题培训讲座] % (optional)
-{2015 年 11 月 23 日}
+{2016 年 4 月 19 日}
 
 \subject{LaTeX, paper, ThuThesis}
 
@@ -178,9 +153,7 @@ ItalicFont={KaiTi}]{SimSun}
 %pdfpagemode=FullScreen,
 }
 
-\logo{\includegraphics[height=.15\textheight]{libicon.jpg}}
-
-% \includeonly{introduction}
+\logo{\includegraphics[height=.15\textheight]{libicon.pdf}}
 
 \begin{document}
 
@@ -213,7 +186,12 @@ ItalicFont={KaiTi}]{SimSun}
 
 \begin{frame}
   \begin{itemize}
-    \item 本幻灯片：\url{https://github.com/tuna/thulib-latex-talk}
+    \item 本幻灯片
+      \begin{itemize}
+        \item \url{https://github.com/tuna/thulib-latex-talk}
+        \item \url{https://www.overleaf.com/read/bdynvrzpqmwq}
+        \item Overleaf 版本有只包含第一章
+      \end{itemize}
     \item 本幻灯片基于：
       \begin{itemize}
         \item \url{http://github.com/alick/fad-texlive-talk}
