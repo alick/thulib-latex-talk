@@ -182,7 +182,9 @@ $ a^2-b^2=(a+b)(a-b)$
 \begin{lstlisting}[basicstyle=\ttfamily\small]
 $V = \frac{4}{3}\pi r^2$
 
-$$V = \frac{4}{3}\pi r^2$$
+\[
+  V = \frac{4}{3}\pi r^2
+\]
 
 \begin{equation}
 \label{eq:vsphere}
@@ -194,7 +196,9 @@ V = \frac{4}{3}\pi r^2
 \begin{column}{.5\textwidth}
 $V = \frac{4}{3}\pi r^2$
 
-$$V = \frac{4}{3}\pi r^2$$
+\[
+  V = \frac{4}{3}\pi r^2
+\]
 
 \begin{equation}
 \label{eq:vsphere}
@@ -211,7 +215,7 @@ V = \frac{4}{3}\pi r^2
 \item 数学排版需要进入数学模式
 	\begin{itemize}
 	\item 用单个美元符号(\$) 包围起来的内容是 {\bf 行内公式}
-	\item 用两个美元符号(\$\$) 包围起来的是 {\bf 单行公式}
+  \item 用两个美元符号(\$\$) 或\textbackslash{}[~ \textbackslash{}]包围起来的是 {\bf 单行公式} 或 {\bf 行间公式}
 	\item 使用数学环境，例如 \texttt{equation} 环境内的公式会自动加上编号，
 		\texttt{align} 环境用于多行公式(例如方程组)
 	\end{itemize}

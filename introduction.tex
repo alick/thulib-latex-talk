@@ -28,10 +28,10 @@
         \end{itemize}
     \end{itemize}
     \column{.2\textwidth}
-    \vspace*{5mm}
+    %\vspace*{5mm}
     \includegraphics[width=\textwidth]{Knuth.jpg}
 
-    \vspace*{5mm}
+    %\vspace*{5mm}
     \includegraphics[width=\textwidth]{Lamport.jpg}
       
   \end{columns}
@@ -171,13 +171,13 @@
     \begin{column}{.45\textwidth}
       \begin{figure}[h]
         \centering
-        \includegraphics[width=\textwidth]{references.pdf}
+        \includegraphics[width=.8\textwidth]{references.pdf}
       \end{figure}
     \end{column}
     \begin{column}{.45\textwidth}
       \begin{figure}[h]
         \centering
-        \includegraphics[width=\textwidth]{shapepar.pdf}
+        \includegraphics[width=.8\textwidth]{shapepar.pdf}
       \end{figure}
     \end{column}
   \end{columns}
@@ -381,19 +381,6 @@ fc-cache -fsv
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Windows 安装 \CTeX 清华特别版}
-  \begin{itemize}
-    \item \CTeX~2.9.3 尚未发布，开发者为了这次讲座专门发了一个特别版
-    \item 下载地址: {\small\url{https://mirrors.tuna.tsinghua.edu.cn/ctex/}}
-    \item 傻瓜安装，一路 Next 即可
-    \item 有一些小问题，安装到最后会报错，忽略即可
-    \item 安装前会自动卸载旧版本 \CTeX~2.9.2, 大约3--5分钟
-    \item 总安装时间约10--15分钟
-    \item 还有不少小问题需要解决
-  \end{itemize}
-\end{frame}
-
 \begin{frame}{编辑器配置}
   \begin{itemize}
     \item \TeX{}编辑器
@@ -409,19 +396,6 @@ fc-cache -fsv
           \item Build：Default Compiler 选择 XeLaTeX
           \item 搜索框输入 Line Number -> Adv. Editor -> 打开行号
         \end{itemize}
-    \end{itemize}
-  \end{exampleblock}
-  \begin{exampleblock}{WinEdt 配置}
-    \begin{itemize}
-      \item Options -> Execution Modes
-        \begin{itemize}
-          \item 如果没有Adobe Reader 的话，需要定义pdf阅读器
-        \end{itemize}
-      \item 如果遇到中文不正常，到 Options -> Preferences 换个字体
-        \begin{itemize}
-          \item 推荐文泉驿等宽微米黑
-        \end{itemize}
-          
     \end{itemize}
   \end{exampleblock}
 \end{frame}
@@ -449,7 +423,7 @@ fc-cache -fsv
     \begin{itemize}
       \item 开始菜单里找 CTeX / MiKTeX -> Package Manager
       \item 在 WinEdt 里 MiKTex Options -> Packages
-      \item 清华宏包仓库被定位到美国去了，注意找一下
+      \item 清华宏包仓库被定位到日本去了，注意找一下
     \end{itemize}
   \end{exampleblock}
 \end{frame}

@@ -7,7 +7,7 @@
   \item 最早：王磊~(2004.4)
   \item 2005 年：薛瑞尼
   \item 最新正式版：5.3.1 (2016-03-20)
-  \item 最近更新：2016/03/25
+  \item 最近更新：2016/05/16
   \item 全面支持本科、硕士、博士、博士后论文格式
   \end{itemize}
   \begin{figure}[htbp]
@@ -22,7 +22,7 @@
 \begin{frame}{安装\ThuThesis}
 
 \begin{itemize}
-	\item \TL 和 C\TeX 清华特别版已经带了，一般不用特地装
+	\item \TL 已经带了，一般不用特地装
     \item 也可以到 CTAN 自行下载
 	\item 但是每年都会更新，有时需要装最新开发版……
 \end{itemize}
@@ -74,19 +74,19 @@
 \begin{description}
 \item[bachelor] 我要写本科论文
   \begin{lstlisting}[basicstyle=\ttfamily]
-\documentclass[bachelor]{thuthesis}
+\documentclass[type=bachelor]{thuthesis}
   \end{lstlisting}
 \item[master] 我要写硕士论文
   \begin{lstlisting}[basicstyle=\ttfamily]
-\documentclass[master]{thuthesis}
+\documentclass[type=master]{thuthesis}
   \end{lstlisting}
 \item[doctor] 我要写博士论文
   \begin{lstlisting}[basicstyle=\ttfamily]
-\documentclass[doctor]{thuthesis}
+\documentclass[type=doctor]{thuthesis}
   \end{lstlisting}
 \item[secret] 论文有保密要求
   \begin{lstlisting}[basicstyle=\ttfamily]
-\documentclass[doctor, secret]{thuthesis}
+\documentclass[type=doctor,secret]{thuthesis}
 \secretlevel{机密}
 \secretyear{2010}
   \end{lstlisting}
