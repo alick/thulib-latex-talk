@@ -1,56 +1,4 @@
 \section{学术论文排版}
-\subsection{论文模板使用}
-
-\begin{frame}{模板是什么？}
-  \begin{itemize}
-    \item 模板
-      \begin{itemize}
-        \item 已经设计好的格式框架
-        \item 好的模板：使用户专注于内容
-        \item 不应将时间花费在调整框架上
-      \end{itemize}
-    \item 再提 Office 和 Word
-      \begin{itemize}
-        \item 很少有人会有意识地在 Word 中使用模板
-        \item 定义自己的标题？定义自己的列表？定义自己的段落样式？
-        \item 自动化，还是手工调？
-        \item 经常被折腾的精疲力竭
-        \item 学习 \LaTeX{} 能帮助自己更好科学地使用 word
-      \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{论文排版}
-  \begin{itemize}
-    \item 获取模板
-      \begin{itemize}
-        \item 随发行版自带、手动网络下载
-        \item 模板文档类 \texttt{.cls} 文件
-        \item 示例 \texttt{.tex} 文件
-      \end{itemize}
-    \item 编辑 \texttt{.tex} 文件：添加用户内容
-    \item 编译：生成 PDF 文档
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{论文排版举例}
-  \begin{exampleblock}{IEEE 期刊论文}
-    \begin{itemize}
-      \item 获取模板：已随发行版自带
-        \begin{itemize}
-          \item 在安装目录 \verb|<prefix>\texlive\2016\texmf-dist\doc\latex\IEEEtran|
-            下找到 \verb|bare_jrnl.tex|
-          \item 复制到某个文件夹(比如个人存论文的目录)
-        \end{itemize}
-      \item 编辑 \verb|bare_jrnl.tex| 文件 (英文模板：不支持中文)
-      \item 编译
-        \begin{itemize}
-          \item 英文文献：XeLaTeX、PDFLaTeX 编译均可
-        \end{itemize}
-    \end{itemize}
-  \end{exampleblock}
-\end{frame}
-
 \subsection{\LaTeX{} 排版入门}
 
 \begin{frame}[fragile]{文件结构}
@@ -180,29 +128,29 @@ $ a^2-b^2=(a+b)(a-b)$
 \begin{columns}
 \begin{column}{.5\textwidth}
 \begin{lstlisting}[basicstyle=\ttfamily\small]
-$V = \frac{4}{3}\pi r^2$
+$V = \frac{4}{3}\pi r^3$
 
 \[
-  V = \frac{4}{3}\pi r^2
+  V = \frac{4}{3}\pi r^3
 \]
 
 \begin{equation}
 \label{eq:vsphere}
-V = \frac{4}{3}\pi r^2
+V = \frac{4}{3}\pi r^3
 \end{equation}
 \end{lstlisting}
 \end{column}
 
 \begin{column}{.5\textwidth}
-$V = \frac{4}{3}\pi r^2$
+$V = \frac{4}{3}\pi r^3$
 
 \[
-  V = \frac{4}{3}\pi r^2
+  V = \frac{4}{3}\pi r^3
 \]
 
 \begin{equation}
 \label{eq:vsphere}
-V = \frac{4}{3}\pi r^2
+V = \frac{4}{3}\pi r^3
 \end{equation}
 \end{column}
 \end{columns}
@@ -367,5 +315,58 @@ V = \frac{4}{3}\pi r^2
 \end{itemize}
 \end{itemize}
 \end{frame}
+
+\subsection{论文模板使用}
+
+\begin{frame}{模板是什么？}
+  \begin{itemize}
+    \item 模板
+      \begin{itemize}
+        \item 已经设计好的格式框架
+        \item 好的模板：使用户专注于内容
+        \item 不应将时间花费在调整框架上
+      \end{itemize}
+    \item 再提 Office 和 Word
+      \begin{itemize}
+        \item 很少有人会有意识地在 Word 中使用模板
+        \item 定义自己的标题？定义自己的列表？定义自己的段落样式？
+        \item 自动化，还是手工调？
+        \item 经常被折腾的精疲力竭
+        \item 学习 \LaTeX{} 能帮助自己更好科学地使用 word
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{论文排版}
+  \begin{itemize}
+    \item 获取模板
+      \begin{itemize}
+        \item 随发行版自带、手动网络下载
+        \item 模板文档类 \texttt{.cls} 文件
+        \item 示例 \texttt{.tex} 文件
+      \end{itemize}
+    \item 编辑 \texttt{.tex} 文件：添加用户内容
+    \item 编译：生成 PDF 文档
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{论文排版举例}
+  \begin{exampleblock}{IEEE 期刊论文}
+    \begin{itemize}
+      \item 获取模板：已随发行版自带
+        \begin{itemize}
+          \item 在安装目录 \verb|<prefix>\texlive\2016\texmf-dist\doc\latex\IEEEtran|
+            下找到 \verb|bare_jrnl.tex|
+          \item 复制到某个文件夹(比如个人存论文的目录)
+        \end{itemize}
+      \item 编辑 \verb|bare_jrnl.tex| 文件 (英文模板：不支持中文)
+      \item 编译
+        \begin{itemize}
+          \item 英文文献：XeLaTeX、PDFLaTeX 编译均可
+        \end{itemize}
+    \end{itemize}
+  \end{exampleblock}
+\end{frame}
+
 
 %%% vim: set ts=2 sts=2 sw=2 isk+=\: et tw=80 cc=+1 formatoptions+=mM:

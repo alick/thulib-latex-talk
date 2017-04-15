@@ -213,27 +213,39 @@
     \item \TL
       \begin{itemize}
         \item 跨平台：Windows, Linux, Mac OS X (\MacTeX)
-        \item 每年一个新版本发布，当前 \TL 2015
+        \item 每年一个新版本发布，当前 \TL 2016
+      \end{itemize}
+    \item \MiKTeX
+      \begin{itemize}
+        \item 专为 Windows 开发
+        \item 个人维护，作者失联
       \end{itemize}
     \item \CTeX
       \begin{itemize}
         \item 中科院吴凌云研究员基于 \MiKTeX 开发
         \item 极大的方便了中文 \TeX 用户
-        \item 2012年之后疏于维护，长久不更新
-        \item 2016年由Harry Chen和Liam Huang接手继续开发
-        \item 多次跳票，尚未发布正式版
+        \item 2012 之后停止开发
       \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{网络安装}
+  \frametitle{下载}
   \begin{itemize}
-    \item 从 CTAN 镜像下载安装包（.exe 或 .zip 或 .tar.gz 格式）
-      （和相应的校验文件，以 .sha256 结尾）
+    \item 注意!
+      \begin{itemize}
+        \item 不能放在带有中文的路径中
+      \end{itemize}
+    \item 离线安装镜像 (约3GB大小)
+      \begin{itemize}
+        \item {\footnotesize
+          \url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive.iso}}
+      \end{itemize}
+    \item 在线安装包 （和相应的校验文件，以 .sha256 结尾）
       \begin{itemize} % several mirror url
-        \item 清华镜像\\
-          {\footnotesize \url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/}}
+        \item {\footnotesize 
+          \url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/}
+        }
         \item 更多可见 \url{http://mirror.ctan.org/README.mirrors}
       \end{itemize}
 
@@ -247,7 +259,7 @@ install-tl-unx.tar.gz: OK
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{网络安装}
+  \frametitle{下载}
   \begin{itemize}
     \item Windows
       \begin{itemize}
@@ -401,34 +413,6 @@ fc-cache -fsv
 \end{frame}
 
 
-\begin{frame}{后期安装宏包}
-  \begin{exampleblock}{很多时候需要自己安装宏包}
-    \vspace*{-3mm}
-    \begin{itemize}
-      \item 发行版没有预装
-      \item 宏包需要更新
-    \end{itemize}
-  \end{exampleblock}
-  \vspace*{-3mm}
-  \begin{exampleblock}{\TL}
-    \vspace*{-3mm}
-    \begin{itemize}
-      \item 开始菜单里找 Tex Live Manage
-      \item 设置仓库地址 \texttt{tlmgr option repository} {\small\ttfamily
-        http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet}
-      \item 使用 \texttt{tlmgr install <pkgname>}命令
-    \end{itemize}
-  \end{exampleblock}
-  \vspace*{-3mm}
-  \begin{exampleblock}{\CTeX 或 \MiKTeX}
-    \vspace*{-3mm}
-    \begin{itemize}
-      \item 开始菜单里找 CTeX / MiKTeX -> Package Manager
-      \item 在 WinEdt 里 MiKTex Options -> Packages
-    \end{itemize}
-  \end{exampleblock}
-\end{frame}
-
 \begin{frame}[fragile]
   \frametitle{使用在线协作平台}
   \begin{itemize}
@@ -444,6 +428,35 @@ fc-cache -fsv
       \end{itemize}
     \item 容量有一定限制
   \end{itemize}
+\end{frame}
+
+
+\begin{frame}{后期安装宏包}
+  \begin{exampleblock}{很多时候需要自己安装宏包}
+    \vspace*{-3mm}
+    \begin{itemize}
+      \item 发行版没有预装
+      \item 宏包需要更新
+    \end{itemize}
+  \end{exampleblock}
+  \vspace*{-3mm}
+  \begin{exampleblock}{\TL}
+    \vspace*{-3mm}
+    \begin{itemize}
+      \item 开始菜单里找 Tex Live Manage
+      \item 设置仓库地址 \texttt{tlmgr option repository} {\footnotesize\ttfamily
+        http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet}
+      \item 使用 \texttt{tlmgr install <pkgname>}命令
+    \end{itemize}
+  \end{exampleblock}
+  \vspace*{-3mm}
+  \begin{exampleblock}{\CTeX 或 \MiKTeX}
+    \vspace*{-3mm}
+    \begin{itemize}
+      \item 开始菜单里找 CTeX / MiKTeX -> Package Manager
+      \item 在 WinEdt 里 MiKTex Options -> Packages
+    \end{itemize}
+  \end{exampleblock}
 \end{frame}
 
 %\begin{frame}
@@ -463,7 +476,7 @@ fc-cache -fsv
 %\end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{网络安装后测试}
+  \frametitle{安装后测试}
 
   \begin{itemize}
     \item 编辑 \texttt{hello.tex} （Windows 下不要用中文文件名；注意

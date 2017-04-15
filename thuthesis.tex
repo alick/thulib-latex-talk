@@ -6,8 +6,8 @@
   \begin{itemize}
   \item 最早：王磊~(2004.4)
   \item 2005 年：薛瑞尼
-  \item 最新正式版：5.3.1 (2016-03-20)
-  \item 最近更新：2016/05/16
+  \item 最新正式版：5.3.2 (2017-03-26)
+  \item 最近更新：2017/03/26
   \item 全面支持本科、硕士、博士、博士后论文格式
   \end{itemize}
   \begin{figure}[htbp]
@@ -20,31 +20,19 @@
 \end{frame}
 
 \begin{frame}{安装\ThuThesis}
-
-\begin{itemize}
-	\item \TL 已经带了，一般不用特地装
-    \item 也可以到 CTAN 自行下载
-	\item 但是每年都会更新，有时需要装最新开发版……
-\end{itemize}
-	
-
-\end{frame}
-
-\begin{frame}{安装\ThuThesis}
       \begin{columns}
         \begin{column}{.7\textwidth}
   \begin{itemize}
+    \item 下载最新正式版
+      \begin{itemize}
+        \item \url{http://mirrors.ctan.org/macros/latex/contrib/thuthesis.zip}
+      \end{itemize}
     \item 下载最新开发版
       \begin{itemize}
         \item \url{https://github.com/xueruini/thuthesis}
         \item 右边栏
           \href{https://github.com/xueruini/thuthesis/archive/master.zip}%
           {Download ZIP} 按钮
-        %\item Git 用户还可以直接克隆仓库
-      \end{itemize}
-    \item 下载最新正式版
-      \begin{itemize}
-        \item \url{http://mirrors.ctan.org/macros/latex/contrib/thuthesis.zip}
       \end{itemize}
   \end{itemize}
         \end{column}
@@ -59,12 +47,13 @@
     \item 安装
       \begin{itemize}
         \item 解压缩看文档 \texttt{README.md}
+        \item Windows: 文件夹空白处按Shift+鼠标右键，点击``在此处打开命令行窗口''
         \item 模板文档类：XeLaTeX 编译一次 \texttt{thuthesis.ins} $\Rightarrow$
           \texttt{thuthesis.cls} 和 \texttt{thuthesis.cfg}
-		\item 用户手册：XeLaTeX 编译两次 \texttt{thuthesis.dtx} $\Rightarrow$
-          \texttt{thuthesis.pdf}
         \item 论文示例：对 \texttt{main.tex} 执行一次 XeLaTeX，一次 BibTeX，再两次
           XeLaTeX
+        \item 用户手册：XeLaTeX 编译两次 \texttt{thuthesis.dtx} $\Rightarrow$
+          \texttt{thuthesis.pdf}
         \item 可使用或参考附带的 Makefile
       \end{itemize}
   \end{itemize}
@@ -187,5 +176,23 @@ proof & corollary & example & exercise &\\
     \end{column}
   \end{columns}
 \end{frame}
+
+\begin{frame}{\ThuThesis 问题}
+    \begin{itemize}
+      \item 常见问题
+        \begin{itemize}
+          \item 参考文献列表出错、缺少字体、无法编译 ...
+          \item \url{https://github.com/xueruini/thuthesis/wiki/FAQ}
+        \end{itemize}
+      \item 主动提问
+        \begin{itemize}
+          \item GitHub Issues 提问
+          \item \TeX @newsmth 查找或发文
+          \item \href{http://groups.google.com/group/thuthesis}\ThuThesis{} Google Group 发问
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
 
 %%% vim: set sw=2 isk+=\: et tw=80 cc=+1 formatoptions+=mM:
