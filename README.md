@@ -1,4 +1,4 @@
-2015 年起，每年 4 月、11 月清华大学如树管专题培训讲座 《如何使用 LaTeX 排版论文》
+2015 年起，每年 4 月、11 月清华大学图书馆专题培训讲座 《如何使用 LaTeX 排版论文》
 
 PDF 版本讲稿下载：<https://github.com/tuna/thulib-latex-talk/raw/master/latex-talk.pdf>
 
