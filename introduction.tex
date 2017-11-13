@@ -213,7 +213,7 @@
     \item \TL
       \begin{itemize}
         \item 跨平台：Windows, Linux, Mac OS X (\MacTeX)
-        \item 每年一个新版本发布，当前 \TL 2016
+        \item 每年一个新版本发布，当前 \TL 2017
       \end{itemize}
     \item \MiKTeX
       \begin{itemize}
@@ -358,9 +358,9 @@ sudo chown yourname:yourname /usr/local/texlive
     \item
       添加环境变量到 \nolinkurl{~/.bash_profile} 文件：
       \begin{lstlisting}[language=bash]
-export PATH=/usr/local/texlive/2015/bin/x86_64-linux:$PATH
-export MANPATH=/usr/local/texlive/2015/texmf/doc/man:$MANPATH
-export INFOPATH=/usr/local/texlive/2015/texmf/doc/info:$INFOPATH
+export PATH=/usr/local/texlive/2017/bin/x86_64-linux:$PATH
+export MANPATH=/usr/local/texlive/2017/texmf/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2017/texmf/doc/info:$INFOPATH
       \end{lstlisting}
   \item
     打开 \TeXLive 指南中文版 ``texlive-zh-cn.pdf''，
@@ -377,7 +377,7 @@ texdoc texlive-zh
   \item
     \XeTeX\ 系统字体配置
     \begin{lstlisting}[language=bash]
-cp /usr/local/texlive/2015/texmf-var/fonts/conf/texlive-fontconfig.conf \
+cp /usr/local/texlive/2017/texmf-var/fonts/conf/texlive-fontconfig.conf \
   /etc/fonts/conf.d/09-texlive.conf
 fc-cache -fsv
     \end{lstlisting}
