@@ -5,10 +5,10 @@
   \lstset{language=[LaTeX]TeX}
   \begin{lstlisting}[basicstyle=\ttfamily]
 \documentclass[a4paper]{article}
-% 文档类型，例如 article，[]内是选项，比如 a4paper 设置为 A4 纸
+% 文档类型，如 article，[]内是选项，比如 a4paper 设置为 A4 纸
 % 这里开始是导言区
 \usepackage{graphicx} % 引用宏包
-\graphicspath{{fig/}} % 设置
+\graphicspath{{fig/}} % 设置图片目录
 % 导言区到此为止
 \begin{document}
 这里开始是正文
@@ -71,7 +71,7 @@ $ a^2-b^2=(a+b)(a-b)$
 \end{tabular}
 \end{exampleblock}
 \end{frame}
-% 
+%
 \begin{frame}{\LaTeX{}命令举例}
 \cmdxmp{chapter}{前言}{\heiti 第 1 章\hspace{1em} 前言}
 \cmdxmp{section[精简标题]}{这个题目实在太长了放到目录里面不太好看}{\heiti 1.1
@@ -121,7 +121,7 @@ $ a^2-b^2=(a+b)(a-b)$
 \end{enumerate}
   \end{minipage}
 \end{frame}
-% 
+%
 
 \begin{frame}[fragile]{\LaTeX{} 数学公式}
 
@@ -291,7 +291,7 @@ V = \frac{4}{3}\pi r^3
 请参见表~\ref{tab:number}。
 \end{lstlisting}
 \column{.4\textwidth}
-\centering 
+\centering
 {\small 表~1. 编号与含义}\\[2pt]
 \begin{tabular}{cl}\toprule
 编号 & 含义 \\\midrule
@@ -312,6 +312,7 @@ V = \frac{4}{3}\pi r^3
 \begin{itemize}
 \item 位置参数指定浮动体摆放的偏好
 \item \verb|h| 当前位置(here), \verb|t| 顶部(top), \verb|b| 底部(bottom), \verb|p| 单独成页(p)
+\item \verb|!h| 表示重要，\verb|H| 表示强制\alert{（强烈不建议）}
 \end{itemize}
 \end{itemize}
 \end{frame}

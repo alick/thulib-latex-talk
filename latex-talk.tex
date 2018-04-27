@@ -1,6 +1,7 @@
-\documentclass[xcolor=table,dvipsnames,svgnames,aspectratio=169]{beamer}
+\documentclass[xcolor=table,dvipsnames,svgnames,aspectratio=169,fontset=none]{ctexbeamer}
 % Author: alick<alick9188@gmail.com>
 % Author: justin <justin.w.xd@gmail.com>
+% Author: Harry Chen <harry-chen@outlook.com>
 
 % This file is modified from a solution template for:
 
@@ -19,6 +20,11 @@
 % package/program, I grant the extra permission to freely copy and
 % modify this file as you see fit and even to delete this copyright
 % notice.
+
+\ctexset{
+    fontset = fandol,
+    punct = kaiming
+}
 
 \usepackage{tikz}
 \graphicspath{{fig/}}
@@ -48,7 +54,7 @@
 \usepackage{calligra}
 \usepackage{cclicenses} % CC symbols
 \usepackage{fontspec}
-\usepackage[UTF8]{ctex}
+%\usepackage[UTF8]{ctex}
 \usepackage{hologo}
 \usepackage{colortbl}
 \usepackage{pstricks}
@@ -58,8 +64,8 @@
 \usepackage[normalem]{ulem}
 \usepackage{stackengine}
 \hypersetup{
-pdfauthor={Justin Wong, Alick Zhao},
-pdfcopyright={Copyright (C) 2015 by Alick Zhao.
+pdfauthor={Harry Chen, Justin Wong, Alick Zhao},
+pdfcopyright={Copyright (C) 2015-2018 by Alick Zhao, Justin Wong and Harry Chen.
 Licensed under CC-BY-SA 4.0. Some rights reserved.},
 pdflicenseurl={http://creativecommons.org/licenses/by-sa/4.0/},
 }
@@ -78,11 +84,11 @@ pdflicenseurl={http://creativecommons.org/licenses/by-sa/4.0/},
 \newfontfamily\useTIPAfont{Times New Roman}
 
 % xeCJK conf setup
-\punctstyle{kaiming}
+%\punctstyle{kaiming}
 \renewcommand\CJKfamilydefault{\CJKsfdefault} % for slides
 
-\setCJKsansfont{WenQuanYi Micro Hei}
-\setCJKmonofont{WenQuanYi Micro Hei Mono}
+%\setCJKsansfont{WenQuanYi Micro Hei}
+%\setCJKmonofont{WenQuanYi Micro Hei Mono}
 
 \renewcommand{\TeX}{\hologo{TeX}}
 \renewcommand{\LaTeX}{\hologo{LaTeX}}
@@ -122,15 +128,15 @@ pdflicenseurl={http://creativecommons.org/licenses/by-sa/4.0/},
 \title
 {如何使用 \LaTeX 排版论文}
 
-\author[汪彧之] % (optional, use only with lots of authors)
-{汪彧之\\ \texttt{justin.w.xd@gmail.com}}
+\author[陈晟祺] % (optional, use only with lots of authors)
+{陈晟祺\\ \texttt{harry-chen@outlook.com}}
 
 \institute{清华大学 TUNA 协会}
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
 
 \date[图书馆专题培训讲座] % (optional)
-{2017 年 11 月}
+{2018 年 4 月}
 
 \subject{LaTeX, paper, ThuThesis}
 
@@ -149,9 +155,9 @@ pdflicenseurl={http://creativecommons.org/licenses/by-sa/4.0/},
 
 %\beamerdefaultoverlayspecification{<+->}
 
-\hypersetup{
+%\hypersetup{
 %pdfpagemode=FullScreen,
-}
+%}
 
 \logo{\includegraphics[height=.15\textheight]{libicon.pdf}}
 

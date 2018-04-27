@@ -14,13 +14,13 @@
           \item 最初由 高德纳 (Donald E.~Knuth) 于 1978 年开发
           \item 发音接近``泰赫''，而非``泰克斯''，
             Knuth 对此有\stackon[1pt]{强}{\tiny qi{\v a}ng}迫症
-          \item 最新版本为 \TeX\ 3.14159265 
+          \item 最新版本为 \TeX\ 3.14159265
           \item 漂亮、美观、稳定、通用
           \item 尤其擅长数学公式排版
         \end{itemize}
       \item \LaTeX\ (\textipa{/'la:tEx/}, \textipa{/'leItEk/})
         \begin{itemize}
-          \item Leslie Lamport 开发 
+          \item Leslie Lamport 开发
           \item 在 \TeX 的基础上的宏包， 降低使用门槛
           \item 极其丰富的宏包，提供扩展功能
           \item 广泛用于学术界，期刊会议论文模板
@@ -33,7 +33,7 @@
 
     %\vspace*{5mm}
     \includegraphics[width=\textwidth]{Lamport.jpg}
-      
+
   \end{columns}
 \end{frame}
 
@@ -213,18 +213,18 @@
     \item \TL
       \begin{itemize}
         \item 跨平台：Windows, Linux, Mac OS X (\MacTeX)
-        \item 每年一个新版本发布，当前 \TL 2017
+        \item 每年一个新版本发布，当前 \TL 2017（已经冻结，2018 即将发布）
       \end{itemize}
     \item \MiKTeX
       \begin{itemize}
         \item 专为 Windows 开发
-        \item 个人维护，作者失联
+        \item 个人维护，作者失联，新版跳票
       \end{itemize}
     \item \CTeX
       \begin{itemize}
         \item 中科院吴凌云研究员基于 \MiKTeX 开发
         \item 极大的方便了中文 \TeX 用户
-        \item 2012 之后停止开发
+        \item 2012 之后停止开发，不建议再使用
       \end{itemize}
   \end{itemize}
 \end{frame}
@@ -243,7 +243,7 @@
       \end{itemize}
     \item 在线安装包 （和相应的校验文件，以 .sha256 结尾）
       \begin{itemize} % several mirror url
-        \item {\footnotesize 
+        \item {\footnotesize
           \url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/}
         }
         \item 更多可见 \url{http://mirror.ctan.org/README.mirrors}
@@ -278,7 +278,7 @@ yum install perl-Tk 或 apt-get install perl-tk
 sudo mkdir /usr/local/texlive
 sudo chown yourname:yourname /usr/local/texlive
 ./install-tl -gui -repository \
-  http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/
+  https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/
         \end{lstlisting}
       \end{itemize}
 \item 截图\dots
@@ -347,7 +347,7 @@ sudo chown yourname:yourname /usr/local/texlive
     \hspace{2em}
     \includegraphics[width=.3\textwidth]{simple10-close.png}
   \end{figure}
-  
+
   \centering Windows 上安装过程比较慢，尤其是最后的生成索引阶段，请耐心等待
 
 \end{frame}
@@ -384,7 +384,7 @@ fc-cache -fsv
   \item 让系统的包管理器知道 TeX Live 已经装过了，所以安装一个 dummy package
     \begin{itemize}
       \item Arch Linux 用户装 AUR 里的 \verb|texlive-dummy|
-      \item Debian/Ubuntu 用户参照手册做一个包即可 
+      \item Debian/Ubuntu 用户参照手册做一个包即可
         \url{https://www.tug.org/texlive/debian.html\#vanilla}
       \item Feodra 用户可以在
         \url{https://copr.fedoraproject.org/coprs/fatka/texlive-dummy/} 下载
@@ -397,8 +397,8 @@ fc-cache -fsv
   \begin{itemize}
     \item \TeX{}编辑器
       \begin{itemize}
-        \item 专用编辑器：TeXworks、\alert{TeXstudio}、TeXmaker、WinEdt 等
-        \item 通用编辑器（加 LaTeX 插件）：Vim、Emacs、Sublime、Atom 等
+        \item 专用编辑器：TeXworks、\alert{TeXStudio}、TeXmaker、WinEdt 等
+        \item 通用编辑器（加 LaTeX 插件）：Vim、Emacs、VS Code、Sublime、Atom 等
       \end{itemize}
   \end{itemize}
   \begin{exampleblock}{TeXStudio 配置}
@@ -418,13 +418,13 @@ fc-cache -fsv
   \begin{itemize}
     \item 通过在线平台编辑、编译
       \begin{itemize}
-        \item Overleaf, SharedLaTeX
+        \item OverLeaf, ShareLaTeX（公司已经合并，站点独立运作）
       \end{itemize}
     \item 免去安装/升级等一系列烦恼
     \item 可以多人协作
     \item 支持中文，但有时需要自己上传字体
       \begin{itemize}
-        \item Overleaf 可直接使用ctex宏包
+        \item OverLeaf 可直接使用 ctex 宏集
       \end{itemize}
     \item 容量有一定限制
   \end{itemize}
@@ -443,9 +443,9 @@ fc-cache -fsv
   \begin{exampleblock}{\TL}
     \vspace*{-3mm}
     \begin{itemize}
-      \item 开始菜单里找 Tex Live Manage
+      \item 开始菜单里找 Tex Live Manager
       \item 设置仓库地址 \texttt{tlmgr option repository} {\footnotesize\ttfamily
-        http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet}
+        https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet}
       \item 使用 \texttt{tlmgr install <pkgname>}命令
     \end{itemize}
   \end{exampleblock}
@@ -483,8 +483,7 @@ fc-cache -fsv
       \LaTeX{} 文档对大小写敏感。）
       \lstset{language=[LaTeX]TeX}
       \begin{card} \begin{lstlisting}[basicstyle=\ttfamily]
-\documentclass{article}
-\usepackage{ctex}  % 加入中文支持
+\documentclass{ctexarticle} % 使用 ctex 适配过的 article 文档类
 \begin{document}
 \TeX{}你好！
 \end{document}
