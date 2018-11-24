@@ -213,7 +213,7 @@
     \item \TL
       \begin{itemize}
         \item 跨平台：Windows, Linux, Mac OS X (\MacTeX)
-        \item 每年一个新版本发布，当前 \TL 2017（已经冻结，2018 即将发布）
+        \item 每年一个新版本发布，当前 \TL 2018
       \end{itemize}
     \item \MiKTeX
       \begin{itemize}
@@ -358,9 +358,9 @@ sudo chown yourname:yourname /usr/local/texlive
     \item
       添加环境变量到 \nolinkurl{~/.bash_profile} 文件：
       \begin{lstlisting}[language=bash]
-export PATH=/usr/local/texlive/2017/bin/x86_64-linux:$PATH
-export MANPATH=/usr/local/texlive/2017/texmf/doc/man:$MANPATH
-export INFOPATH=/usr/local/texlive/2017/texmf/doc/info:$INFOPATH
+export PATH=/usr/local/texlive/2018/bin/x86_64-linux:$PATH
+export MANPATH=/usr/local/texlive/2018/texmf/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2018/texmf/doc/info:$INFOPATH
       \end{lstlisting}
   \item
     打开 \TeXLive 指南中文版 ``texlive-zh-cn.pdf''，
@@ -377,7 +377,7 @@ texdoc texlive-zh
   \item
     \XeTeX\ 系统字体配置
     \begin{lstlisting}[language=bash]
-cp /usr/local/texlive/2017/texmf-var/fonts/conf/texlive-fontconfig.conf \
+cp /usr/local/texlive/2018/texmf-var/fonts/conf/texlive-fontconfig.conf \
   /etc/fonts/conf.d/09-texlive.conf
 fc-cache -fsv
     \end{lstlisting}
@@ -418,13 +418,13 @@ fc-cache -fsv
   \begin{itemize}
     \item 通过在线平台编辑、编译
       \begin{itemize}
-        \item OverLeaf, ShareLaTeX（公司已经合并，站点独立运作）
+        \item OverLeaf, \sout{ShareLaTeX}（已经与前者合并）
       \end{itemize}
     \item 免去安装/升级等一系列烦恼
     \item 可以多人协作
     \item 支持中文，但有时需要自己上传字体
       \begin{itemize}
-        \item OverLeaf 可直接使用 ctex 宏集
+        \item OverLeaf 可直接使用 ctex 宏集和 thuthesis 文档模板，国内体验较好
       \end{itemize}
     \item 容量有一定限制
   \end{itemize}
